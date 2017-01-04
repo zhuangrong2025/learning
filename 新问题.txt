@@ -1,4 +1,4 @@
-
+1.2017-1-4 20:00 edit
 2、display:-webkit-box的问题，不平均分，
 3、a链接按钮点击是有链接默认的选中样式,active背景无效，header头部左右图标按钮--已解决
 4、Safari定位问题,可能是ipad mini，gps没打开，无sim卡
