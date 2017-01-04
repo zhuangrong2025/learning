@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.imgline li{
+  display: -webkit-flex;
+  -webkit-flex-flow:nowarp;/*不换行*/
+}
+.flex-tab{
+   display: -webkit-flex;
+}
+.flex-tab li{
+	-webkit-box-flex:1;
+	-webkit-flex:1;
+  flex:1;
+	width:0%;
+	height:30px;
+	text-align:center;
+	border:1px solid #eee;
+}
+</style>
+</head>
+<body >
+<ul class="imgline">
+	<li>
+  	<a href="#"><img src="ad02a.png"></a><a href="#"><img src="ad02b.png"></a>
+  </li>
+</ul>
+
+
+<ul class="flex-tab">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+</ul>
+</body>
+</html>

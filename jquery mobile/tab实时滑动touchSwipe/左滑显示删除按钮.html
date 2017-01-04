@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="../../newCss.css">
+<style>
+body,html{
+	overflow:hidden;	
+}
+.email-list{
+	border-top:1px solid #ddd;	
+}
+.email-list li{
+	background:#fff;
+	border-bottom:1px solid #ddd;
+}
+.email-list li > div{
+	padding:10px;
+	height:40px;
+	margin:0;
+	-webkittransform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	position:relative;
+}
+.email-list li > div span{
+	float:left;
+	width:60px;	
+}
+.email-list li > div div{
+	display:block;
+	margin-left:60px;
+	color:#999;
+	overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;	
+}
+.btn-del{
+	position:absolute;
+	top:5px;
+	right:-80px;
+	background:#f00;
+	color:#fff;
+	text-align:center;
+	height:30px;
+	width:80px;
+	line-height:30px;	
+}
+</style>
+<script src="../../jquery-1.11.1.min.js"></script>
+<script src="jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+$(function(){
+		$(".email-list li > div").swipe( { swipeLeft:swipe1, swipeRight:swipe2, threshold: 35} );
+		
+		function swipe1(event, direction, distance, duration) {
+			var btnPosi=$("#btn-del").css("right").split("px")[0];
+			console.log(btnPosi);
+			if(btnPosi=="-80"){
+				$("#btn-del").animate({ right :'-80px' }, 100);//定位时，用animate
+				$(".email-list li > div").css({"transform":"translate3d(-80px,0,0)","transition-duration":"0.5s"});
+			}
+		}
+		function swipe2(event, direction, distance, duration) {
+			var btnPosi=$("#btn-del").css("right").split("px")[0];
+			if(btnPosi=="-80"){
+				$("#btn-del").animate({ right :'-80px' }, 1000);
+				$(".email-list li > div").css({"transform":"translate3d(0,0,0)","transition-duration":"0.5s"});
+			}
+		}
+});
+
+</script>
+</head>
+<body>
+	<h3>未读邮件</h3>
+	<div class="email-list">
+  	<ul>
+    	<li>
+        <div>
+            <span>刁寒苗</span><div>上海中企签名项目图片处理</div>
+            <label class="btn-del" id="btn-del">删除</label>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

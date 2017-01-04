@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta charset="utf-8">
+<title></title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+.btn-ajax{
+  display:block;
+	width:150px;
+	padding:10px 0;
+	border:1px solid #eee;
+	text-align:center;
+	color:#000;
+	text-decoration:none;
+	margin:50px auto;
+}
+.btn-ajax:active{
+	background:#f8f8f8;  
+}
+
+#load-content{
+  padding:50px;
+	text-align:center;
+}
+</style>
+<script src="../jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$(".btn-ajax").on("click",function(){
+			$.ajax({  
+				type:"get",  
+				url:"ajax.html",  
+				dataType:"html",  
+				success:function(data){  
+							$('#load-content').html(data);
+					 } 
+				});	
+	})
+	
+	//ajax加载开始动画
+	$("#load-content").ajaxStart(function(){
+        $(this).html("<img src='loading.gif'> 加载中...");
+   });
+		
+});
+</script>
+</head>
+<body>
+	<a class="btn-ajax">ajax加载</a>
+  <div class="" id="load-content"></div>
+</body>
+</html>

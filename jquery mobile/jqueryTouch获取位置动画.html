@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.wrap{
+	position:absolute;
+	top:0;
+	left:0;
+	background:#f00;
+	width:100px;
+	height:100px;
+}
+</style>
+<script src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var touchstart=false;
+	var xi, xf, leftX = 0;
+	//起始位置
+	$(document).on('touchstart', function(e){
+			touchstart = true;
+			var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0]; 
+			xi=touch.pageX;
+			$("#xi").text(xi);
+	});
+	
+	//结束位置
+	$(document).on('touchend', function(e){
+		if (touchstart) {
+        touchstart = false;
+				e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0]; 
+				xf=touch.pageX;
+				leftX = parseInt($(".wrap").css("left").split("px")[0]) //保存当前位置
+				$("#xf").text(xf);
+		}	
+	});
+	
+	//移动位置
+	$(document).on('touchmove', function(e){
+		if (touchstart) {
+				e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0]; 
+				$(".wrap").css({
+            "left": (leftX + (touch.pageX - xi))
+        });
+		}	
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+	<div>start-pageX:<span id="xi"></span></div>
+	<div>end-pageX:<span id="xf"></span></div>
+ 	<div class="wrap">
+  	滑动
+  </div>
+</body>
+</html>

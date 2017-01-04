@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<script src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	 var flag = 0;
+	 $("#audio_btn").click(function(){
+		  if(flag == 1){
+					$(this).addClass("rotate");
+					$("#media").play()
+					flag = 0;
+			}else{
+					$(this).removeClass("rotate")
+					$("#media").pause()
+					flag = 1;
+			}	 
+	 })
+});
+</script>
+<title>无标题文档</title>
+<style>
+
+#audio_btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 200;
+    width: 30px;
+    height: 30px;
+}
+.off {
+    background-image: url(normalmusic.svg);
+    background-size: contain;
+}
+.rotate {
+    -webkit-animation: rotating 1.2s linear infinite;
+}
+@-webkit-keyframes rotating{
+ from {-webkit-transform: rotate(0deg);}
+ to {-webkit-transform: rotate(360deg);}
+}
+
+</style>
+</head>
+
+<body style="background-color:#193862"> 
+<div id="audio_btn" class="off rotate" >
+   <audio loop src="CountingStars.mp3" id="media" autoplay preload=""></audio>
+</div>
+</body>
+</html>

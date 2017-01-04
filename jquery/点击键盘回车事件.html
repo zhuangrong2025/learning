@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.plus{
+	position:absolute;
+	top:10px;
+	left:10px;
+  width:24px;
+	height:16px;
+	background:url(plus.png) no-repeat;
+}
+.nav a{
+	font-size:18px;
+	display:block;
+	padding:5px;	
+}
+</style>
+<script src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+function g(){
+	f();	
+}
+function f(){
+			var a=3;
+			var b=4;
+			var c=a*b;
+			alert('x');
+}
+
+$(function(){
+	//按下键盘回车
+	$(".search-ipt").keydown(function(event){  
+			if (event.keyCode == 13) {  
+				alert($(".search-ipt").val());
+			}
+			
+	})
+	
+	
+	$('.nav').on('click', function(e) {
+		  var clicked=e.currentTarget;
+			
+	});
+	
+	$("#del").on('click',function(){
+			f();
+			//$('.nav a').remove();
+	
+	});
+	
+});
+</script>
+</head>
+<body>
+	 <input type="text" value="请输入名称" class="search-ipt" >
+   
+   
+   
+   <h3>chrome developer tools调试</h3>
+   <div class="nav">
+   	<a>about</a>
+   	<a>concept</a>
+   	<a>Examples</a>
+   </div>
+   
+   <button id="del">del node</button>
+</body>
+</html>

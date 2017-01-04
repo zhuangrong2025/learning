@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script type="text/javascript">
+/**
+ *  css3关键帧算法
+ * @param {[type]} row   [description]
+ * @param {[type]} col   [description]
+ * @param {[type]} count [description]
+ */
+function calculationKeyframes(col, row, count) {
+		//矩阵生成step的处理
+		//  0 1
+		//  2 3
+		var keyframes = [];
+		var base = 100 / count;
+		//首次
+		keyframes.push(0 + '% { background-position:0% 0%}')
+		for (var i = 0; i < count; i++) {
+				//当前行数
+				var currRow = Math.ceil((i + 1) / col); //当前行数
+				var currCol = Math.floor(i / col); //当前列数  
+				var period = currCol * col; //每段数量  
+				var x = 100 * (i - period)
+				var y = 100 * currCol;
+				x = x == 0 ? x : "-" + x;
+				y = y == 0 ? y : "-" + y;
+				keyframes.push(((i + 1) * base) + '% { background-position: ' + x + '% ' + y + '%}')
+		}
+		return keyframes.join("")
+}
+
+//2行，2列，但是总数4个
+console.log(calculationKeyframes(2, 2, 4))
+</script>
+
+<style>
+.boat{
+	background-image:url(boat-sprite.png);
+	background-size:200% 200%;	/*sprite图必须是矩阵，宽高必须倍数，所以放大后刚好*/
+	background-position:0 0;
+	-webkit-animation:sprite1 0.8s step-start infinite;
+}
+.boat2{
+	background-image:url(boat-sprite.png);
+	background-size:200% 200%;	
+	background-position:0 0;
+	background-position:0 0;
+}
+
+@-webkit-keyframes sprite1{
+	0% { background-position:0% 0%}
+	25% { background-position: 0% 0%}
+	50% { background-position: -100% 0%}
+	75% { background-position: 0% -100%}
+	100% { background-position: -100% -100%}
+}
+</style>
+</head>
+<body>
+<div style="font-weight:bold; clear:both">sprite原图</div>
+  <img src="boat-sprite.png">
+
+<div style="background:#eee; font-weight:bold;padding:5px 0">sprite图自适应大小</div>
+	64px<div class="boat2" style="width:64px; height:64px;"></div>
+	96px<div class="boat2" style="width:96px; height:96px;"></div>
+  
+<div style="background:#eee; font-weight:bold;padding:5px 0">动画实例</div>
+  64px<div class="boat" style="width:64px; height:64px;"></div>
+  96px<div class="boat" style="width:96px; height:96px;"></div>
+
+</body>
+</html>

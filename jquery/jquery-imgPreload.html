@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<script>
+$(function(){
+	$("#btn1").on("click",function(){
+		$.data('#btn1',"greeting", "Hello World");
+	});
+	$("#btn2").click(function(){
+		alert($("div").data("greeting"));
+	});
+	
+var img = new Image();
+  img.onload = function(){
+	alert(1);	
+}
+	  /* 图片预加载-ok
+		$("img")[0].onload = function(){
+				$(this).attr("src","light01.png");
+		}
+		*/
+})
+</script>
+<title></title>
+<style>
+.picWrap{
+  width:200px;
+	height:200px;
+	border:1px solid #ccc;
+}
+</style>
+</head>
+<body>  
+<button id="btn1">把数据添加到 div 元素</button><br />
+<button id="btn2">获取已添加到 div 元素的数据</button> 
+	<img  src="loading.gif">
+
+</body>
+</html>
+
+
+
+

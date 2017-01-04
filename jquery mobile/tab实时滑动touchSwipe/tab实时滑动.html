@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="../../newCss.css">
+<style>
+html,body{
+	width:100%;
+	height:100%;	
+	overflow:hidden;
+}
+.tabs-content{
+	 width:100%;
+	 height:100%;
+	 overflow:hidden;
+	 background:#f00;
+}
+.tabs-content .tabs-box{
+	width:100%;
+	height:100%;
+	-webkittransform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	position: relative;
+	z-index: 999999;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.tabs-content .tabs-box > div{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	font-size:28px;
+	text-align: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-flex-shrink: 0; /*铺满不平均分*/
+	flex-shrink: 0;
+}
+</style>
+<script src="../../jquery-1.11.1.min.js"></script>
+<script src="jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+var IMG_WIDTH=0;
+var currentImg = 0;
+var maxImages = 3;
+var speed = 300;
+
+var imgs;
+
+var swipeOptions = {
+		triggerOnTouchEnd: true,
+		swipeStatus: swipeStatus,
+		allowPageScroll: "vertical",
+		threshold: 75
+};
+
+$(function(){
+		IMG_WIDTH = $(window).width();
+		imgs = $(".tabs-box");
+		imgs.swipe(swipeOptions);
+		$(window).resize(function () { //屏幕改变时初始化宽度
+				IMG_WIDTH = $(window).width(); 
+				$(".tabs-box div").width($(window).width());
+				$(".tabs-box").css({"transform":"translate3d(" + -IMG_WIDTH*currentImg + "px,0,0)","transition-duration":"0.01s"});//要用translate3d，不能用translate
+		});
+});
+function swipeStatus(event, phase, direction, distance) {
+		if (phase == "move" && (direction == "left" || direction == "right")) {
+				var duration = 0;
+	
+				if (direction == "left") {
+						scrollImages((IMG_WIDTH * currentImg) + distance, duration);
+				} else if (direction == "right") {
+						scrollImages((IMG_WIDTH * currentImg) - distance, duration);
+				}
+	
+		} else if (phase == "cancel") {
+				scrollImages(IMG_WIDTH * currentImg, speed);
+		} else if (phase == "end") {
+				if (direction == "right") {
+						previousImage();
+				} else if (direction == "left") {
+						nextImage();
+				}
+		}
+	}
+	
+	function previousImage() {
+		currentImg = Math.max(currentImg - 1, 0);
+		scrollImages(IMG_WIDTH * currentImg, speed);
+	}
+	
+	function nextImage() {
+		currentImg = Math.min(currentImg + 1, maxImages - 1);
+		scrollImages(IMG_WIDTH * currentImg, speed);
+	}
+	
+	function scrollImages(distance, duration) {
+		//移动的速率，可以平滑滑动
+		imgs.css("transition-duration", (duration / 1000).toFixed(1) + "s"); 
+	
+		var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
+		imgs.css("transform", "translate3d(" + value + "px,0,0)");
+		console.log(IMG_WIDTH+","+value)
+	}
+</script>
+</head>
+<body>
+	<div class="tabs-content">
+  	<div class="tabs-box">
+      <div style="background:#eee;">1</div>
+      <div style="background:#ccc;">2</div>
+      <div style="background:#ddd;">3</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+1、手势向上滑动，块高度变小，图标逐渐变小，到一定阀值时固定（参考qq公众号，查看公众号信息，百度手机助手，安全软件等）
+向下则相反，用原生touch事件或用jquery touchwipe组件
+2、列表项左滑动，删除，右滑动，标记信号，
+模仿 window10 outlook，邮件列表
+3、仿苏宁易购(m.suning.com)，底部加号导航，点击+，动画展开菜单，圆形，
+4、输入框获取焦点是在键盘上方，图层是position：fixed或overflow的情况下
+5、html5相册上传手机图片，摄像头，视频等
+http://www.17sucai.com/search/s?q=%E4%B8%8A%E4%BC%A0
+
+6、获取地理位置
+7、标题行-多项--点击下拉显示项目-类似网站下拉菜单，解决方法，弹出层+tabs间切换div
+8、糯米网，详情页，锚点定位-ok
+http://m.nuomi.com/fz/deal/rohha7o1?s=d5bc10db4e8f202e7a997b6cc935f380&rid=3d70e2a954bb0f441cbaea9b6fcb8e69
+9、在原来我的tabs中用上flexbox，和translate3d来切换-ok；
+10、向上滚动显示，向下滚动隐藏

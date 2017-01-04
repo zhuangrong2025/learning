@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+*{padding:0; margin:0;font-size:12px;}
+.box{
+  display: block;
+  background-color: #fff;
+  color: #333;
+  padding: 10px 0;
+  margin: 10px;
+  border-radius: 3px;
+  font-size: 18px;
+	border:1px solid #ddd;
+	text-decoration:none;
+	width:300px;
+	height:100px;
+}
+.box1{
+	
+	/*居中*/
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	display: box;
+	box-orient: horizontal;
+	box-pack: center;
+	box-align: center;
+}
+.box1 i,.box1 span{
+	display:inline-block;
+	margin:0 2px;
+}
+.box1 i{
+	width:16px;
+	height:16px;
+	-webkit-animation: anim4 .8s linear infinite;
+	background:url(load-sprite.png) no-repeat;
+	background-position:-3px -4px;
+	background-size:50px 50px;/*不能用100%*/
+}
+/*box2*/
+.box2{
+  
+}
+.box2-in{
+  background:#eee;
+	width:150px;
+	margin:0 auto;
+	font-size:12px;
+}
+/*box3*/
+.box3{
+	text-align:center;
+}
+.box3-in{
+  display:inline-block;
+}
+.box3-in li{
+	margin:0 3px;
+	float:left;
+	height:30px;
+	background:#eee;
+	padding:3px 10px;
+}
+
+/*box4*/
+.box4{
+  text-align:center;
+	height:100px;  /*必须已知高度*/
+  display: -webkit-flex;
+  justify-content: center;
+  flex-direction: column;
+}
+/*box4*/
+.box5{
+  text-align:center;
+}
+.box5-in{
+	display:inline-block;
+	border:1px solid #000;
+	text-align:left;
+}
+h3{
+  background:#eee;
+}
+.box6{
+	text-align:center;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	display: box;
+	box-orient: horizontal;
+	box-pack: center;
+	box-align: center;
+}
+.box6-in{
+  display:inline-block
+}
+.box6 span{
+  display:block;
+	height:20px;
+	width:50px;
+	background:#eee;
+	margin:5px 0;
+}
+/*box7*/
+.box7{
+  display: flex;
+  justify-content: center;
+}
+.box7 div{
+  background:#eee;
+	margin:5px;
+	padding:0 10px;
+	font-size:12px;
+}
+/*box8*/
+.box8{
+	text-align:center;
+  display:table;
+}
+.box8-in{
+  display:table-cell; /*不能设置高度宽度，都无效*/
+	border:1px solid #000;
+	vertical-align:middle;  
+}
+</style>
+</head>
+<body>
+<!--水平居中-->
+  <h3>水平居中</h3>
+  <div class="box box2">
+  	<div class="box2-in">box2-margin:0 auto 固定宽度</div>
+  </div>
+  
+  <div class="box box5">
+  	<div class="box5-in">box5-水平居中 宽度未知<br>父-text-align:center ;<br>子 display:inline-block</div>
+  </div>
+   <div class="box box7">
+  	<div>box7 -flex;方式</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+ 
+  <div class="box box3">
+  	<ul class="box3-in">
+    	<li>box3</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </div>
+  
+<!--垂直居中-->
+  <h3>垂直居中</h3>
+  
+ 	<div class="box box1"><i></i><i></i><span>box1-元素并排</span></div>
+  
+  <div class="box box4">
+  	box4-文本，高度已知
+  </div>
+  <div class="box box8">
+  	<div class="box8-in">box8-文本，display:table-cell</div>
+  	<div class="box8-in">box8-文本，display:table-cell</div>
+  	<div class="box8-in">box8-文本，display:table-cell</div>
+  </div>
+  <div class="box box6">
+  	<div class="box6-in">
+      <span>box6</span>
+      <span>竖排</span>
+    </div>
+  </div>
+</body>
+</html>

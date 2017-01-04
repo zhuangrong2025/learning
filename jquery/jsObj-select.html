@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<title></title>
+<style>
+*{font-size:16px;}
+.ipt{
+  border:1px solid #aaa;
+	height:28px;
+	line-height:28px;
+	background-color:#fff;
+	cursor: pointer;
+	padding:0 5px;
+	font-size:15px;
+}
+.ipt + i{
+	position:relative;
+	width:0;
+  display:inline-block;
+}
+.ipt + i:after{
+	position:absolute;
+	top:-16px;
+	left:-22px;
+	content:"";
+  display:block;
+	width:16px;
+	height:16px;
+	background-image:url(combo.png);
+	background-position:2px 4px;
+	background-repeat:no-repeat;
+	z-index:1;
+}
+.select-mask{
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	position: fixed;
+	background: transparent;
+	z-index: 9;
+	display: none;
+	background:#000 \9;
+	background:rgba(0,0,0,.0);
+	filter: alpha(opacity=0)
+}
+.select-panel{
+  position:absolute;
+	top:0;
+	left:0;
+	background-color:#fff;
+	min-height:100px;
+	min-width:100px;
+	border:1px solid #ddd;
+	z-index:10;
+}
+.select-panel li{
+  border-bottom:1px solid #eee;
+	padding:5px 8px;
+}
+.select-panel li:hover{
+  background-color:#3E9FE8;
+	color:#fff;
+	cursor:pointer;
+}
+div,
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+	vertical-align: middle;
+	outline: 0;
+	font-size:13px; 
+  -webkit-box-sizing: border-box;  
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+td{
+  padding:10px 5px;
+}
+</style>
+<script type=text/javascript>
+$(function(){
+	//创建部门
+	var selectList = new SelectList({
+				$el: $("#select")[0],
+				list: [
+							{"FORMAT_VAL":"01", "FORMAT_NAME": "综合部"},
+							{"FORMAT_VAL":"02", "FORMAT_NAME": "客服中心"},
+							{"FORMAT_VAL":"03", "FORMAT_NAME": "技术部"},
+							{"FORMAT_VAL":"04", "FORMAT_NAME": "研发部"},
+							{"FORMAT_VAL":"05", "FORMAT_NAME": "销售部"}
+				]
+		  })
+			
+	//创建产品
+	var productList = new SelectList({
+				$el: $("#product")[0],
+				value : "02",
+				list: [
+							{"FORMAT_VAL":"01", "FORMAT_NAME": "综合管理系统"},
+							{"FORMAT_VAL":"02", "FORMAT_NAME": "法人结算系统"},
+							{"FORMAT_VAL":"03", "FORMAT_NAME": "基金管理系统"}
+				]
+		 })
+	//创建物品
+	var wupinList = new SelectList({
+				$el: $("#wupin")[0],
+				value : "01",
+				list: [
+							{"FORMAT_VAL":"01", "FORMAT_NAME": "杯子"},
+							{"FORMAT_VAL":"02", "FORMAT_NAME": "桌子"},
+							{"FORMAT_VAL":"03", "FORMAT_NAME": "门窗"}
+				]
+		 })
+		 
+	//创建远程获取json
+	var jsonList = new SelectList({
+				$el: $("#jsonList")[0],
+				value : "01",
+				url : "http://192.168.95.1/data.json",
+		 })
+		 
+		 
+		 //
+		 
+	    
+		  
+		 
+})
+
+//下拉组件
+;(function($){
+	var  SelectList = function(config){
+					 var _this =  this;
+					 this.body = $("body");
+					 this.mask = $("<div class='select-mask'>");
+		       
+					 this.config = {
+						 	$el: this,
+							placeholder : "请选择部门",
+							displayField : "FORMAT_NAME",
+							valueField : "FORMAT_VAL",
+							value : "03",
+							url : null,
+							list: null
+						 };
+						 
+					 $.extend(this.config,config);
+					 this.init();
+					 
+					 this.body.on("click","[data-role = "+ _this.config.$el.id +"]",function(e){
+						  e.stopPropagation();
+					    _this.choose($(this));
+					 })
+					 
+					 
+					 
+	     }
+	SelectList.prototype = {
+		  //初始化创建input
+			init:function(){
+				var _this =  this,
+			      sel = "",
+						val = _this.config.value,
+						selIdx = 0,
+				    seled = "";
+						
+						if(_this.config.list){
+							
+							selIdx = _this.getIdx(val)
+							seled = _this.config.list[selIdx]["FORMAT_NAME"]
+							
+							sel = '<div class="select-wrap">'
+											+'<input type="text" data-role="'+ _this.config.$el.id +'"  class="ipt" readonly="" unselectable="on" value ="'+seled+'" placeholder="'+ _this.config.placeholder +'" >'
+											+'<i></i>'
+										+'</div>'
+										
+							_this.config.$el.innerHTML = sel;
+							
+							_this.selectWrap = $(".select-wrap");
+							_this.ipt = _this.selectWrap.find("[data-role=" + _this.config.$el.id + "]")
+				    }
+				
+				
+				
+			},
+			
+			//获取索引值
+			getIdx:function(value){
+				var _this =  this,
+					  index = 0;
+				
+				if(_this.config.list){
+						for ( i in _this.config.list){
+							index = i
+							if(_this.config.list[i]["FORMAT_VAL"] == value)	{
+								return index;
+							}
+						}
+				}
+						
+									
+			},
+			
+			
+			//点击输入框
+			choose:function(objIpt){
+				var _this = this,
+				    selPanel = "";
+						selList = ""
+				
+				
+				
+				for ( i in _this.config.list){
+						selList +='<li>'+ _this.config.list[i]["FORMAT_NAME"] +'</li>'	
+				}
+				
+				selPanel = '<div class="select-panel"><ul>'+ selList +'</ul></div>'
+									
+				_this.body.append(selPanel);
+				_this.body.append(_this.mask);
+				
+				$(".select-panel").css({"top":(_this.ipt.offset().top + 30) + "px","left":_this.ipt.offset().left + "px","min-width":(_this.ipt.width()+10)+ "px"})
+				_this.mask.show();
+				
+				_this.body.find(".select-panel li").click(function(){
+					 _this.selected(objIpt,$(this))
+				})
+				_this.mask.on("click",function(e){
+						e.stopPropagation();
+							_this.destroy();
+				});
+				
+				//this.getData();
+
+			},
+			
+			//选中下拉项
+			selected:function(objIpt,objLi){
+				 var _this = this;
+				 objIpt.val(objLi.text());
+				 _this.destroy();
+			},
+			
+			//删除
+			destroy:function(){
+				 var _this = this;
+				 $(".select-panel").remove();
+				 _this.mask.remove();
+			},
+			
+			//获取远程json
+			getData:function(){
+				 var _this = this;
+				 
+				 if(!_this.config.list){
+					 $.ajax({
+							type: 'post',
+							url: _this.config.url,
+							dataType: 'json',
+							success: function(data){
+								 _this.config.list = data;
+							}
+					});
+					
+				 }
+				  
+			}
+	}
+	window.SelectList = SelectList;
+	
+})(jQuery)
+</script>
+</head>
+<body style="padding:100px">
+	<table>
+  	<tr>
+    	<td height="300">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  	<tr>
+    	<td width="70"><label>部门：</label></td>
+      <td><div id="select"></div></td>
+    </tr>
+  	<tr>
+    	<td><label>产品：</label></td>
+      <td><div id="product"></div></td>
+    </tr>
+  	<tr>
+    	<td><label>物品：</label></td>
+      <td><div id="wupin"></div></td>
+    </tr>
+   	<tr>
+    	<td><label>jsonList：</label></td>
+      <td><div id="jsonList"></div></td>
+    </tr>
+ </table>
+</body>
+</html>
+
+
+

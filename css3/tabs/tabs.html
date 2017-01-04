@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>dc</title>
+<link rel="stylesheet" href="css/doctor.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+	/*类别*/
+	$("#category-bar li:eq(0)").click(function(){
+			 
+		    $(".tab_box1 > div").eq(0).show().siblings().hide();
+				if($(this).siblings().text() == "类别"){
+						$(this).siblings().removeClass("curr")
+				}
+				$(this).addClass("curr");
+  })
+	$("#category-bar li:eq(1)").click(function(){
+		    $(".tab_box1 > div").eq(1).show().siblings().hide();
+				if($(this).siblings().text() == "地区"){
+						$(this).siblings().removeClass("curr")
+				}
+				$(this).addClass("curr");
+  })
+	
+	/*选项*/
+	$("#city dd").each(function(){
+		$(this).click(function(){
+				$("#category-bar li:eq(0)").addClass("curr")
+				$("#category-bar li:eq(0) span").text($(this).find("label").text());
+				$("#category-bar li:eq(0)").css("background-image","none")
+				$("#city").hide();
+		})
+  })
+	$("#disease dd").each(function(){
+		$(this).click(function(){
+				$("#category-bar li:eq(1)").addClass("curr")
+				$("#category-bar li:eq(1) span").text($(this).find("label").text());
+				$("#category-bar li:eq(1)").css("background-image","none")
+				$("#disease").hide();
+		})
+  })
+})
+</script>
+<style>
+</style>
+</head>
+<body>
+<!--头部-->
+<div class="eye-header">
+	<input type="text" class="ipt-search" placeholder="请输入姓名查找">
+</div>
+<!--条件-->
+<div class="category-wrap">
+	<ul id="category-bar">
+  	<li><span>地区</span><i></i></li>
+  	<li><span>类别</span><i></i></li>
+  </ul>
+</div>
+<div class="tab_box1">
+	<div style="display:none"  id="city">
+  	<dl class="city-item">
+    	<dd><label>北京</label></dd>
+    	<dd><label>上海</label></dd>
+    	<dd><label>深圳</label></dd>
+    	<dd><label>南京</label></dd>
+    </dl>
+  </div>
+	<div style="display:none" id="disease">
+  	<dl class="city-item">
+    	<dd><label>小学</label></dd>
+    	<dd><label>大学</label></dd>
+    	<dd><label>中学</label></dd>
+    </dl>
+  </div>
+</div>
+<!--列表-->
+<div class="doctor-list">
+    <ul>
+      <li>
+        <a href="detail.html">
+          <div class="doctor-pic" style="background-image:url(images/doctor.png)"></div>
+          <div class="doctor-info">
+            <dt><span>孙旭光</span><label>主任医师</label></dt>
+            <dd>北京同仁医院眼科</dd>
+            <dd>擅长：干眼，角膜病，葡萄膜炎</dd>
+          </div>
+        </a>
+      </li>
+      <li>
+      	<a href="detail.html">
+          <div class="doctor-pic" style="background-image:url(images/doctor.png)"></div>
+          <div class="doctor-info">
+            <dt><span>孙旭光</span><label>主任医师</label></dt>
+            <dd>北京同仁医院眼科</dd>
+            <dd>擅长：干眼，角膜病，葡萄膜炎</dd>
+          </div>
+        </a>
+      </li>
+    </ul>
+</div>
+
+</body>
+</html>

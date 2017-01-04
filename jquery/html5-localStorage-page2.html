@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<script type=text/javascript>
+</script>
+<script type=text/javascript>
+$(function(){
+	//读取localStorage
+	var name = localStorage.getItem("myname");
+	$("#getName").text(name);
+	
+	//读取localStorage
+	var students = localStorage.getItem("students");
+	students = JSON.parse(students);
+	
+	var  currentKey;
+	//遍历取得key ，取得上个页面点击的对象对应的值
+	for(i in students){
+					if(students[i].op == true){
+							currentKey = i;
+							
+					}
+		  };
+			
+	//显示DOM
+	var studentInfo = "";
+	studentInfo = '<ul>'
+									+'<li><label>名字：</label><span>' + students[currentKey].name + '</span></li>'
+									+'<li><label>年龄：</label><input type="text" id="age" value="' + students[currentKey].age + '"></li>'
+							 +'</ul>'
+	
+	$("#student").html(studentInfo);
+	
+	//修改
+	$(".btn").on("click",function(){
+		 if(students[currentKey].age != $("#age").val()){
+			students[currentKey].age = $("#age").val();
+		 }else{
+			  alert("请输入新值")
+				return false; 
+		  }
+		 students = JSON.stringify(students);
+		 localStorage.setItem("students",students);
+		 window.location = "页面间传递数据-html5方式localStorage.html";
+	})
+})
+</script>
+
+<title></title>
+<style>
+.line{
+  border:1px solid #eee;
+	padding:10px;
+}
+.line span{
+  padding-left:30px
+}
+.btn{
+  margin-top:10px;
+	border:none;
+	background:#0cf;
+}
+.gray{
+	display:block;
+  color:#666;
+}
+input[type=text]{
+  border:1px solid #ddd;
+}
+li{padding:10px;}
+</style>
+</head>
+<body style="padding:100px;"> 
+	<h3>1、从localStorage中获取的值为:</h3>
+	<span id="getName" style="color:#00f"></span>
+  <p></p>
+  <h3>2、json存到localstorage中的值为：</h3>
+  <span id="student"></span>
+  <button class="btn">修改</button>
+  
+</body>
+</html>
+
+
+
+

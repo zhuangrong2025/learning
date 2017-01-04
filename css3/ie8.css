@@ -1,0 +1,11 @@
+input[type=checkbox],input[type=radio]{
+	display: block !important;
+	float: left;
+	margin: 0 15px;
+	width:18px;
+	height:18px;
+}
+
+.chk_1 + label,.chk_2 + label{
+	display: none;
+}

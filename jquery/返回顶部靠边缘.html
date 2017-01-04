@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+.content{
+	border:1px solid #ddd;
+	background:#f8f8f8;
+	width:1202px;
+	height:1500px;
+	margin:0 auto;
+}
+.back-top{
+	position:fixed;
+	border:1px solid #ddd;
+	top:70%;
+	left:50%; /*以页面中线为基准点*/
+	margin-left:610px; /*偏移中心多少像素*/
+	width:45px;
+	height:33px;
+	background:#eee url(back-top.png) no-repeat center center;
+}
+</style>
+<script src="../jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//返回顶部
+	$(".back-top").hide();
+	$(window).scroll(function(){
+		if ($(window).scrollTop()>320){
+			$(".back-top").fadeIn();
+		}else{
+			$(".back-top").fadeOut();
+		}
+	});
+	
+	//当点击跳转链接后，回到页面顶部位置
+	$(".back-top").click(function(){
+		$('body,html').animate({scrollTop:0},200);
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+	<div class="content">
+    	11
+    </div>
+	<div class="back-top"></div>
+    
+</body>
+</html>

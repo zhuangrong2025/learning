@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>test</title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script> 
+<script>
+$(function(){
+	/*点击a*/
+	$("nav a").each(function(i){
+		$(this).on("click",function(){
+			$(this).addClass("active").siblings().removeClass("active");
+			var dis=i*100;
+			$(".nav-line").css("transform", "translate3d("+ dis +"%,0,0)");
+		})
+	})
+	
+	/*滚动*/
+	$(window).scroll(function(){
+		
+		var menu = $("#menu");
+		var curId = "";
+		var top = $(document).scrollTop(); //滚动条位置
+		var items = $(".optItem");    //查找.optItem对应的ID值
+		items.each(function(){
+				var m = $(this);                        //定义变量，获取当前类
+				var itemsTop = m.offset().top;        //定义变量，获取当前类的top偏移量
+				if(top > itemsTop-320){  //320保证最后一个选项能激活
+						curId = "#" + m.attr("id");
+						$("#menu").css({"position":"fixed","top":"0","left":"0","right":"0"});
+				}else if(top < $(".top-offset").offset().top){
+					  //itemsTop值是变化的，所以top要参与一个固定的对象距离头部的位置
+						$("#menu").css({"position":"static"});
+						return false;
+				}
+		});
+		var curLink = menu.find(".active");
+		if( curId && curLink.attr("href") != curId ){
+				 curLink.removeClass("active");
+				 menu.find( "[href=" + curId + "]" ).addClass("active")
+				 var dis=( menu.find( "[href=" + curId + "]" ).index())*100;
+				 $(".nav-line").css("transform", "translate3d("+ dis +"%,0,0)");
+     }
+	})
+})
+</script>
+<style>
+html{
+  font-size:16px;
+	color:#000;
+}
+header{
+  background:#f30;
+	height:130px;
+	line-height:130px;
+	text-align:center;
+	color:#fff;
+}
+
+section{
+  padding:10px 20px;
+}
+/*新闻tabs*/
+nav{
+	background:#fff;
+}
+nav > div{
+  display: -webkit-box;
+  display: -webkit-flex;
+	display:flex;
+}
+nav a{
+	display:block;
+	-webkit-box-flex:1;
+  -webkit-flex:1;
+	flex:1;
+	height:100%;
+	text-align:center;
+	padding:8px 0;
+	-webkit-transition: color .3s;
+	transition:color .3s ;
+	text-decoration:none;
+	color:#000;
+}
+nav a.active{
+  color:#f60;
+	text-decoration:none;
+}
+.nav-line{
+  display:block;
+	height:2px;
+	width:25%;
+	-webkit-transform:translate3d(0,0,0);
+	transform:translate3d(0,0,0);
+	-webkit-transition: -webkit-transform .3s;
+	transition: transform .3s ;
+	background:#f60;
+}
+.top-offset{
+  background:#eee;
+}
+</style>
+</head>
+<body >
+<header>标题</header>
+<div class="top-offset">头部距离这个div元素的偏移量是固定</div>
+<!--导航tabs-->
+<nav class="nav-tabs" id="menu">
+	<div>
+    <a href="#art1" class="active">文章1</a>
+    <a href="#art2">文章2</a>
+    <a href="#art3">文章3</a>
+    <a href="#art4">文章4</a>
+  </div>
+<span class="nav-line"></span>
+</nav>
+<!--//导航tabs-->
+<section>
+	<article>
+  	<h1 id="art1" class="optItem">文章1</h1>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+  </article>
+</section>
+<section>
+	<article>
+  	<h1 id="art2" class="optItem">文章2</h1>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+  </article>
+</section>
+<section>
+	<article>
+  	<h1 id="art3" class="optItem">文章3</h1>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+  </article>
+</section>
+<section>
+	<article>
+  	<h1 id="art4" class="optItem">文章4</h1>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+    <p>三个标签的基本概念想必大家对其不是很了解下,语义是从无到有,逐渐增强,下面有一个简单的网页,供大家参考,希望可以对html5的结</p>
+  </article>
+</section>
+
+</body>
+</html>

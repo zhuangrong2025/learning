@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>test</title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script> 
+<script>
+$(function(){
+	
+	 //滚动显示对应的字母
+	 var timeout = false; 
+	 $(window).scroll(function(){
+		 
+		//停止滚动隐藏
+		if (timeout){clearTimeout(timeout);} 
+		timeout = setTimeout(function(){ 
+				$(".character-big").fadeOut() 
+		},600);
+		
+		//显示当前大字母
+		var menu = $("#character-menu");
+		var curId = "";
+		var top = $(document).scrollTop(); //滚动条位置
+		var items = $(".optItem");    //查找.optItem对应的ID值
+		items.each(function(){
+					var m = $(this);                        
+					var itemsTop = m.offset().top;  //获取当前类的top偏移量
+					if(top > itemsTop-150){
+							curId ="#" + m.attr("id");
+							$(".character-big").fadeIn().text(curId.split("#")[1]);
+							$(".city-title").css({"position":"static"});
+							$("#t"+curId.split("#")[1]).css({"position":"fixed","top":"0","left":"0","right":"0"});
+							
+					}else if(top < 100){ //根据A标题所处的scrollTop值，把A标题的fixed去掉
+							$(".city-title").css({"position":"static"});
+					}
+			});
+		 var curLink = menu.find(".active");
+		 if( curId && curLink.attr("href") != curId ){
+			     curLink.removeClass("active");
+           menu.find( "[href=" + curId + "]" ).addClass("active")
+     }
+	})
+	
+	//点击字母
+	$("#character-menu a").on("click",function(){
+				$(".city-title").css({"position":"static"});
+				$(this).addClass("active").siblings().removeClass("active");
+	})
+})
+ 
+</script>
+<style>
+html{
+  font-size:16px;
+}
+/*城市字母*/
+.city-title{
+  background:#CAECF8;
+	padding:.5rem 1rem;
+	color:#000;
+}
+.city-list li{
+	background:url(../img/dot.png) no-repeat .8rem center;
+	background-size:1.2rem;
+	padding:.6rem 0 .6rem 1rem;
+	margin:.2rem 0;
+	font-size:1.125rem;
+	border-bottom:1px solid #eee;
+}
+.city-list li:active{
+  background-color:#f8f8f8;
+}
+
+/*定位城市*/
+.city-location {
+	padding:0 2rem 0 0;
+	background:url(../img/icon-location.png) no-repeat right center;
+	background-origin:content-box;
+	background-size:1.125rem auto;
+}
+.city-location .city-get{
+	padding:.3rem 0 .3rem 0;
+	margin:.8rem 0;
+}
+.city-location .city-get:active{
+  background-color:#f8f8f8;
+}
+.city-location .city-get label{
+  padding:0 0 0 3rem;
+}
+.city-location .city-get span{
+	display:block;
+	background:url(../img/dot.png) no-repeat .8rem center;
+	padding:0 0 0 2.3rem;
+	background-size:1.2rem;
+}
+
+/*字母表*/
+.character-show{
+  position:fixed;
+	top:3.2rem;
+	right:1rem;
+	font-size:13px;
+}
+.character-show a{
+  display:block;
+	width:15px;
+	height:15px;
+	line-height:15px;
+	margin:1px 0;
+	text-align:center;
+	color:#bfbfbf;
+	text-decoration:none;
+}
+.character-show a:active,.character-show a.active{
+  background:#f30;
+	color:#fff;
+	border-radius:50%;
+}
+.character-big{
+	position:fixed;
+	color:#000;
+	top:50%;
+	left:50%;
+	font-size:3rem;
+	text-align:center;
+	-webkit-transform:translate3d(-50%,-50%,0);  /*与top:50%结合，让popup居中*/
+	transform:translate3d(-50%,-50%,0);
+}
+</style>
+</head>
+<body >
+<!--城市列表-->
+<div class="city-title">定位城市</div>
+<div class="city-location">
+	<div class="city-get" id="city-get"><label><img src="loading.gif">正在定位中...</label></div>
+  <!--<div class="city-get" id="city-get"><span>福州</span></div>-->
+</div>
+<div class="city-title">热门城市</div>
+<div class="city-list">
+	<ul>
+  	<li>北京</li>
+  	<li>上海</li>
+  	<li>广州</li>
+  	<li id="A" class="optItem">深圳</li>
+  </ul>
+</div>
+<div class="city-title" id="tA">A</div>
+<div class="city-list">
+	<ul>
+  	<li>鞍山</li>
+  	<li>阿拉善</li>
+  	<li>安庆</li>
+  	<li>安阳</li>
+  	<li>阿坝藏族羌族</li>
+  	<li>安顺</li>
+  	<li>阿里</li>
+  	<li>安康</li>
+  	<li>澳门</li>
+  	<li>安吉</li>
+  	<li id="B" class="optItem">阿勒泰</li>
+  </ul>
+</div>
+<div class="city-title" id="tB">B</div>
+<div class="city-list">
+	<ul>
+  	<li>璧山</li>
+  	<li>北京</li>
+  	<li>保定</li>
+  	<li>包头</li>
+    <li>滨州</li>
+    <li>蚌埠</li>
+    <li>宝鸡</li>
+    <li>北海</li>
+    <li>毕节</li>
+    <li>巴中</li>
+    <li>毕节</li>
+    <li>亳州</li>
+    <li>保亭</li>
+    <li id="C" class="optItem">白沙</li>
+  </ul>
+</div>
+<div class="city-title" id="tC">C</div>
+<div class="city-list">
+	<ul>
+  	<li>长乐</li>
+  	<li>长寿</li>
+  	<li>长沙</li>
+  	<li>重庆</li>
+    <li>常熟</li>
+    <li>成都</li>
+    <li>长春</li>
+    <li>常州</li>
+    <li>承德</li>
+    <li>沧州</li>
+    <li>长治</li>
+    <li>赤峰</li>
+    <li>朝阳</li>
+    <li>滁州</li>
+  </ul>
+</div>
+<!--//城市列表-->
+<!--//字母表-->
+<div class="character-show" id="character-menu">
+	<a href="#A">A</a>
+	<a href="#B">B</a>
+	<a href="#C">C</a>
+	<a href="#D">D</a>
+	<a href="#E">E</a>
+	<a href="#F">F</a>
+	<a href="#G">G</a>
+	<a href="#H">H</a>
+	<a href="#I">I</a>
+	<a href="#J">J</a>
+	<a href="#K">K</a>
+	<a href="#L">L</a>
+	<a href="#M">M</a>
+	<a href="#N">N</a>
+	<a href="#O">O</a>
+	<a href="#P">P</a>
+	<a href="#Q">Q</a>
+	<a href="#R">R</a>
+	<a href="#S">S</a>
+	<a href="#T">T</a>
+	<a href="#U">U</a>
+	<a href="#V">V</a>
+	<a href="#W">W</a>
+	<a href="#X">X</a>
+	<a href="#Y">Y</a>
+	<a href="#Z">Z</a>
+</div>
+<!--字母表-->
+<div class="character-big" style="display:none">M</div>
+
+</body>
+</html>

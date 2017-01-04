@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="newCss.css"> 
+<style>
+h1{
+	font-size:1.2em	;
+}
+.x-blank{
+	height:20px	
+}
+</style>
+</head>
+<body>
+	<div class="container">
+    <a href="#">默认链接样式</a>  &nbsp;&nbsp;&nbsp;<a href="#" class="text-primary">链接样式一</a>&nbsp;&nbsp;&nbsp;<a href="#" class="text-success">链接样式二</a>&nbsp;&nbsp;&nbsp;<a href="#" class="text-warning">链接样式三</a>
+    <div class="x-blank"></div>
+    <input type="text" value="字体大小">
+    <div class="x-blank"></div>
+    <div style="width:300px; height:200px; border:10px solid #ddd; background:#fff;padding:50px">box-sizing: border-box;如padding为100px,但总宽高不变，border为10px总宽不变</div>
+    <div class="x-blank"></div>
+    <h3>text-hide</h3>
+    这有字【<span class="text-hide">这里有字</span>】
+    
+    <div class="x-blank"></div>
+    <h3>hr分割线</h3>
+    <hr></hr>
+    <div class="">hr分割线</div>
+     <div class="x-blank"></div>
+    <h3>placeholder </h3>
+    <input type="text" placeholder="placeholder">
+    
+    <div class="x-blank"></div>
+    <h3>表格table</h3>
+    <table width="100%" >
+      <thead>
+        <tr>
+          <th>标题</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>内容</td>
+        </tr>
+        <tr>
+          <td>内容</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="x-blank"></div>
+    <h1>!important 优先级最高，高于style</h1>
+    <div class="pull-left my-right" style="float:right">pull-left</div>
+    
+    <div class="x-blank"></div>
+    <h1>invisible{visibility: hidden}元素的 display 属性不被改变，并且这个元素仍然能够影响文档流的排布</h1>
+    <div class="pull-left" style="background:#eee; width:200px; height:100px;">块1,<br>中间还有个块2，被隐藏但不影响布局</div>
+    <div class="pull-left invisible" style="background:#ddd; width:200px; height:100px;">块2</div>
+    <div class="pull-left" style="background:#ccc; width:200px; height:100px;">块3</div>
+    <div class="clearfix"></div>
+    
+    <div class="x-blank"></div>
+    <h1>按钮</h1>
+    <div class="">
+    	<button class="btn btn-default">默认</button> <button class="btn btn-primary">样式一</button>
+      <a href="#" class="btn btn-default">链接按钮</a>
+    </div>
+    
+    <div class="x-blank"></div>
+    <h1>输入框</h1>
+    <input type="text" class="form-control" placeholder="表单">
+    
+    <div class="x-blank"></div>
+    <style>
+    	.list-inline li{ display:inline-block; background:#eee; padding:10px; width:30%; word-spacing:0; letter-spacing:0}
+    </style>
+    <h1>列表list-inline,display:inline-block有空隙，用float:left没有空隙</h1>
+    <ul class="list-inline">
+    	<li>1</li>
+    	<li>1</li>
+    	<li>1</li>
+    </ul>
+    <style>
+			.span-inline{ text-align:center;padding:10px; border:1px solid #ccc; margin-top:10px}
+    	.span-inline span{ display:inline-block; background:#eee; padding:10px; width:40%;}
+    </style>
+    <div class="span-inline">
+    	<span>内联元素水平居中</span><span>去掉标签中间的间隔后，就没有间隙了</span>
+    </div>
+    
+    <div class="x-blank"></div>
+    <h1>img-circle，圆形 border-radius: 50%; 头像样式名，通用为.avatar</h1>
+    <img src="img.jpg" width="100" height="100" class="img-circle">
+    
+    <div class="x-blank"></div>
+    <h1>图片自适应</h1>
+    <img src="img.jpg">
+    
+    <div class="x-blank"></div>
+    <h1>背景色</h1>
+    <div class="bg-primary">背景色1</div>
+    <div class="bg-success">背景色2</div>
+    
+    
+  </div>
+    
+</body>
+</html>

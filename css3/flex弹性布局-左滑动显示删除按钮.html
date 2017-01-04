@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.wraper{
+	position: relative;
+	overflow:hidden;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.wraper div{
+	width:100%;
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+}
+.wraper div.t1{
+	width:100%;
+	-webkit-flex-shrink: 0;
+	flex-shrink: 0;
+	background:#eee;
+}
+.wraper div.t2{
+	width:20%; /*超出20%，可用于删除按钮宽度*/
+	-webkit-flex-shrink: 0;
+	flex-shrink: 0;
+	background:#ccc;
+}
+</style>
+</head>
+<body >
+	<div class="wraper">
+    <div class="t1">1，右边还有超出的部分</div>
+    <div class="t2">2</div>
+  </div>
+</body>
+</html>

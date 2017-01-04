@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="../jquery-1.8.3.min.js"></script>
+<style>
+.chk_1,.chk_2,.chk_3,.chk_4 {
+    display: none;
+}
+/*******STYLE 1*******/
+
+.chk_1 + label {
+	background-color: #fff;
+	border: 1px solid #DCDCDC;
+	width:16px;
+	height:16px;
+	border-radius: 1px;
+	display: inline-block;
+	position: relative;
+	margin-right: 3px;
+}
+.chk_1:checked + label:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0px;
+	display:block;
+	width:16px;
+	height:16px;
+	background:url(icon-checked.png) no-repeat center center;
+}
+
+.chk_2 + label {
+	background-color: #fff;
+	border: 1px solid #DCDCDC;
+	width:16px;
+	height:16px;
+	border-radius: 16px;
+	-webkit-border-radius: 16px;
+	display: inline-block;
+	position: relative;
+	margin-right: 3px;
+}
+.chk_2:checked + label:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0px;
+	display:block;
+	width:16px;
+	height:16px;
+	background:url(icon-radioed.png) no-repeat center center;
+}
+
+</style>
+<!--[if IE 8]>
+<link href="ie8.css" rel="stylesheet" type="text/css">
+<![endif]-->
+
+<script type="text/javascript">
+$(function(){
+    $("#btn").click(function(){
+        alert($("#checkbox_a1").is(':checked'))
+    });
+    $("#btn2").click(function(){
+        alert($("input[name=car-merge]:checked").val())
+    });
+});
+</script>
+
+</head>
+<body style="padding:200px">
+<label class="login-auto checkbox pull-left">
+   <input type="checkbox" id="checkbox_a1" class="chk_1"  /><label for="checkbox_a1"></label>自动登录
+</label>
+<span style="padding:0 0 0 30px">
+<button id="btn">查看选中状态1</button></span>
+<div class="" style="height:100px"></div>
+<label class="radio-inline" style="clear:both;">
+    <input type="radio" name="car-merge" class="chk_2" id="yes" value="需要" checked><label for="yes"></label>需要
+</label>
+
+<label class="radio-inline" style=" clear:both;margin-top:10px; display:block">
+    <input type="radio" name="car-merge" class="chk_2" id="no" value="不需要"><label for="no"></label>不需要
+</label>
+
+<span style="padding:30px 0 0 30px; display:block">
+<button id="btn2">查看选中状态2</button></span>
+<div class="" style="height:100px"></div>
+  
+   <input type="text" value="111"> 
+    
+</body>
+</html>

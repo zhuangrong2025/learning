@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<title></title>
+<style>
+</style>
+<script type=text/javascript>
+$(function(){
+	 //获取远程json
+	 $.ajax({
+				type: 'post',
+				url: 'http://192.168.95.1/data.json',
+				dataType: 'json',
+				success: function(data){
+						//返回的数据
+					 $("#json-list").html(data[0].FORMAT_NAME); //调用回调函数渲染网格数据
+				}
+		});
+						
+						
+})
+</script>
+</head>
+<body>  
+<div id="json-list"></div>
+</body>
+</html>
+
+
+

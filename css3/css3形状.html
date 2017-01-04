@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+#oval {
+	width: 200px;
+	height: 100px;
+	background: red;
+	-moz-border-radius: 100px / 50px;
+	-webkit-border-radius: 100px / 50px;
+	border-radius: 100px / 50px;
+}
+#triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 100px solid red;
+	border:1px solid #000;
+}
+#base {
+  background: red;
+  display: inline-block;
+  height: 55px;
+	position: relative;
+	width: 160px;
+}
+#base:before{
+	content:"";
+	position:absolute;
+   right: 80%;
+   top: -28px;
+   width: 0;
+   height: 0;
+   border-top: 13px solid transparent;
+   border-right: 13px solid transparent;
+   border-bottom: 19px solid red;
+}
+#talkbubble {
+   width: 120px;
+   height: 80px;
+   background: red;
+   position: relative;
+   -moz-border-radius:    10px;
+   -webkit-border-radius: 10px;
+   border-radius:         10px;
+}
+#talkbubble:before {
+   content:"";
+   position: absolute;
+   right: 100%;
+   top: 26px;
+   width: 0;
+   height: 0;
+   border-top: 13px solid transparent;
+   border-right: 13px solid transparent;
+   border-bottom: 26px solid red;
+}
+/*梯形*/
+#trapezoid { 
+	border-bottom: 150px solid red; 
+	border-left: 50px solid transparent; 
+	border-right: 0 solid transparent; 
+	height: 0; 
+	width: 200px; 
+} 
+
+.panel {
+	border-radius: 0;
+}
+
+/*精简版*/
+.panel2{
+	position: relative;
+}
+.arrow2{
+	width:100px;
+	position: absolute;
+	z-index: 10;
+	border-color: #fff;
+	border: 1px solid #000;
+	border-radius:5px;
+	padding:5px 10px;
+}
+.arrow2.top:before {
+	border-bottom-color:#000;
+	top: -16px;
+}
+.arrow2.top:after {
+	top: -7px;
+	border-bottom-color:#fff;
+	border-top-width: 0;
+}
+.arrow2:before, .arrow2:after {
+	position: absolute;
+	left: 50%;
+	display: block;
+	width: 0;
+	height: 0;
+	margin-left: -9px;
+	border-width: 8px;
+	border-color: transparent;
+	border-style: solid;
+	content: "";
+}
+
+/*结构版多一个span*/
+.panel {
+	width:100px;
+	border-radius: 5px;
+	position: relative;
+	border: 1px solid #000;
+}
+
+.arrow {
+	position: absolute;
+	z-index: 10;
+	border-color: #fff;
+}
+
+.arrow.top {
+	top: -9px;
+	left: 50%;
+	margin-left: -9px;
+}
+.arrow.top:before {
+	border-bottom-color:#000;
+	top: -8px;
+}
+.arrow.top:after {
+	top: 1px;
+	left: 0px;
+	border-bottom-color: inherit;
+	border-top-width: 0;
+}
+.arrow:before, .arrow:after {
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 8px;
+	content: "";
+}
+
+</style>
+</head>
+<body style="padding:200px;">
+	<div id="oval"></div>
+	<div id="triangle-up"></div>
+    <div style="height:100px"></div>
+    <div id="base"></div>
+    <div style="height:100px"></div>
+    <div id="talkbubble"></div>a
+    <div style="height:100px"></div>
+    <div id="trapezoid"></div>
+    
+    <!--精简版-箭头边框-->
+    <div style="height:100px"></div>
+    <div class="panel2">
+      <span class="arrow2 top">
+      	Arrow at the top
+      </span>
+    </div>
+    
+    <!--精简版-箭头边框-->
+    <div style="height:100px"></div>
+    <div class="panel">
+      <span class="arrow top"></span>
+      Arrow at the top
+    </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title></title>
+<script src="../jquery-1.8.3.min.js"></script>
+<style>
+*{
+		font-family:"Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei",Arial,SimSun, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-webkit-box-sizing: border-box;
+			 -moz-box-sizing: border-box;
+						box-sizing: border-box;
+}
+
+body{
+	padding:10px	
+}
+.switch {
+  height: 29px;
+  width: 56px;
+  position:relative;
+  /*background: #d1d1d1;*/
+}
+.control {
+  height: 25px;
+  width: 25px;
+  outline: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  -webkit-appearance: none;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #efefef;
+  background-image: -webkit-linear-gradient(top, #fff 0%, #eee 100%);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.control:checked {
+  left: 25px;
+}
+.checkbox {
+  height: 27px;
+  width: 54px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 10000;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  background: #ccc;
+	overflow:hidden;
+}
+.checkbox:after {
+  height: 27px;
+  width: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: 9999;
+  -webkit-border-radius: 0;
+  background: #b1dd00;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.control:checked + .checkbox:after {
+	top:1px;
+  left: 2px;
+  height: 25px;
+  width: 45px;
+  -webkit-border-radius: 15px;
+}
+
+/*仿ios样式*/
+.switch-ios {
+  position:relative;
+  /*background: #d1d1d1;*/
+}
+.control-ios {
+  position: absolute;
+  top: 0;
+  left: 0;
+  outline: 0;
+  z-index: 10001;
+  width: 56px;
+  height: 56px;
+  -webkit-appearance: none; /*ios表单样式的阴影去除*/
+	-webkit-tap-highlight-color:transparent;    /*避免点击时选中色块*/ 
+  -webkit-user-select:none;  
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 1px 3px 2px 2px rgba(0, 0, 1, 0.1);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.control-ios:checked {
+  left: 41px;
+  box-shadow: -2px 2px 2px 2px rgba(0, 0, 1, 0.1);
+}
+.checkbox-ios {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  z-index: 10000;
+  width: 102px;
+  height: 62px;
+  -webkit-border-radius: 32px;
+  border-radius: 32px;
+  background: #fff;
+	border:3px solid #e5e5e5;
+	overflow:hidden;
+}
+.checkbox-ios:after {
+  height: 60px;
+  width: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: 9999;
+  -webkit-border-radius: 0 32px 32px 0;
+  background: #53d769;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+}
+
+.control-ios:checked + .checkbox-ios:after {
+  width: 100px;
+}
+.dd:disabled{
+  background:#000;
+}
+</style>
+
+<script type="text/javascript">
+$(function(){
+		/*解决移动端active伪类效果*/
+		document.body.addEventListener('touchstart', function(){});
+    $("#btn").click(function(){
+        alert($("#control").is(':checked'))
+    });
+});
+</script>
+
+</head>
+<body>
+  <input type="text" disabled class="dd" value="只读">
+  <button id="btn" style="margin:30px 0">查看选中状态1</button></span>
+  <div class="switch">
+    <input type="checkbox" id="control" class="control">
+    <label for="control" class="checkbox"></label>
+  </div>
+  
+  <div style="margin:130px 0 10px; font-size:20px">仿ios设置开关</div>
+  <div class="switch-ios">
+    <input type="checkbox" id="control-ios" class="control-ios">
+    <label for="control-ios" class="checkbox-ios"></label>
+  </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<title></title>
+<style>
+.list{
+  width:300px;
+}
+.list li{
+	float:left;
+  width:33.3%;
+	height:30px;
+	padding:5px;
+	border-bottom:1px solid #ddd;
+}
+</style>
+</head>
+<body>  
+<div class="list" id="list">
+	<!--<ul>
+  	<li>1</li>
+  	<li>2</li>
+  	<li>3</li>
+  </ul>-->
+</div>
+</body>
+</html>
+<script type=text/javascript>
+var data = {
+			typeId:"dataId",
+			goods:{
+					"01": {name:"白菜", price:"10",num:1},
+					"02": {name:"黄瓜", price:"20",num:0}
+		  }
+    }
+var Vegetable = {
+			json:{},
+			htmlBtn:function(num,id){
+				if(!num){
+					  return '<a href="javascript:" id="'+id+'">购买</a>'
+				}else{
+						return '<a href="javascript:">'+ num +'</a>'
+				}
+			},
+			htmlList:function(){
+				var goods = this.json.goods;
+				var strHtml = "";
+				for( key in goods){
+					strHtml += '<ul>'
+											+'<li>'+ goods[key].name +'</li>'
+											+'<li>'+ goods[key].price +'斤</li>'
+											+'<li>'+ this.htmlBtn(goods[key].num,key) +'</li>'
+										+'</ul>'
+					
+				}
+				return strHtml;
+			},
+			eventBind:function(){
+				 	var _this = this;
+					var goods = _this.json.goods;
+					$("#list a").each(function(index) {
+            $(this).click(function(){
+							 if($(this).html() == "购买"){
+								 $(this).html("已购买")
+							 }
+							
+						})
+          });
+					
+			},
+			//添加数据
+			htmlAppend:function(){
+				$("#list").html(this.htmlList());
+				this.eventBind();
+				
+			},
+			//初始化
+			init:function(){
+				this.json = data;
+				this.htmlAppend();
+				
+			}
+    }
+		
+		//调用
+		Vegetable.init();
+
+
+</script>
+
+
+

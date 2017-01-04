@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<!--<script src="dom.js" async defer ></script>-->
+<title></title>
+<style>
+</style>
+<script type="text/javascript">
+var Calculate = (function(){
+			return {
+				//属性
+				_val:80,
+				
+				//方法
+				_sum:function(a,b){
+					var rnd = Math.random() * 200;
+					rnd = parseInt(rnd);
+					a += rnd;
+					debugger;
+					b += 2 * rnd;
+					return a + b + this.val	
+				}
+			}
+				
+		})()
+		
+//用点语法调用
+//console.log(Calculate.val)
+//console.log(Calculate.sum(10,20))
+$(function(){
+	var liObj = $("#list li").slice(0,4)
+	liObj.each(function(){
+		console.log($(this).text())
+	})
+	
+})
+</script>
+</head>
+<body> 
+
+<ul id="list" class="j-poster">
+	<li>list1a</li>
+	<li>list2b</li>
+	<li>list3c</li>
+	<li>list4d</li>
+	<li>list5e</li>
+	<li>list6f</li>
+</ul>
+<ul id="list2" class="j-poster">
+	<li>list1</li>
+	<li>list2</li>
+	<li>list3</li>
+</ul>
+<ul class="j-poster">
+	<li>list1</li>
+	<li>list2</li>
+	<li>list3</li>
+</ul>
+<button id="btn">添加行</button>
+<script>
+var foo = [1, 2]  //引用类型，指针指向同一片内存空间
+bar = foo;
+ 
+bar[0] = 9;
+ 
+//console.log(foo[0], bar[0]); //9,9
+
+var items = []
+
+items.push("a");
+items.push("b")
+console.log(items.length)
+
+itemCopy = items.slice()
+console.log(itemCopy)
+
+	
+
+
+
+
+String.prototype.repeatify = function(times){
+		var str = '';
+		for (i = 0; i < times ; i++){
+			str += this	
+		}
+		return str;
+}
+
+//console.log(('hello').repeatify(3))
+var currentPage = true;
+var test;
+if(currentPage){
+
+	test = function test(){
+	  console.log("test")	
+	}
+}
+test();
+ 
+var person  = {
+	   age:28
+}
+var age1;
+function getProp(pro){
+		return person[pro]
+}
+//alert(getProp("age"))
+var a = 'a',
+    b = 'b',
+		i;
+var arr = [];
+arr[0] = 'a';
+arr[1] = 'b';
+arr[2] = 'c';
+
+		var list = arr.join('|')
+	  //console.log(list)
+		
+		var items,
+		    messages,
+				length,
+				i;
+		messages = [{
+								state: 'success',
+								message: 'this one work'
+			        },{
+								state: 'error',
+								message: 'this one did not work'
+							}]
+		
+		function getMsg(messages){
+			items = [];
+			
+			//循环
+			for( i = 0; i < messages.length; i++ ){
+					items[i] = messages[i].message
+				}
+				
+			return '<ul><li>' + items.join('</li></li>') + '</li></ul>'
+			
+		}
+		//console.log(getMsg(messages))
+		var age = 1;
+		var hasAge = Boolean(age);
+		  console.log(hasAge)
+  		
+     					
+//get(),set() Jedi类
+var Jedi = function(options){
+			options || (options = {})
+			var lightsaber = options.lightsaber || 'blue';
+			this.name = options.name || 'no name';  
+			this.set("lightsaber1",lightsaber);
+			this.set("city","FUZHOU");
+}
+Jedi.prototype.set = function(key,value){
+	this[key] = value;
+}
+Jedi.prototype.get = function(key){
+	console.log(this[key])	
+}
+Jedi.prototype.jump = function(){
+	this.jump = true;
+	return this  
+}
+Jedi.prototype.setHeight = function(height){
+	this.height = height;
+		return this;
+}
+Jedi.prototype.getName = function(height){
+	return this.name;
+}
+
+
+var jedi1 = new Jedi()
+jedi1.get("city")
+
+var luke = new Jedi()
+luke.jump()
+    .setHeight(20);
+console.log(luke.height)
+
+$(function(){
+	$.TabChange("tabs",1)
+/*tabs切换组件*/
+
+})
+$.TabChange = function(obj,num){
+	$("li","#" + obj).each(function(index){
+			$(this).click(function(i){
+			 	$("div.tab-box" + num + " > div").eq(index).show().siblings().hide();
+				$(this).addClass("curr").siblings().removeClass("curr");
+			})													
+	})
+}
+</script>
+
+</body>
+
+</html>
+
+
+

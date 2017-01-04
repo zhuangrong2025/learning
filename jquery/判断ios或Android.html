@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<script>
+$(function(){
+	
+	/**********判断浏览器类型**********/
+	var u = navigator.userAgent, app = navigator.appVersion;
+	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+	/*alert('是否是Android：'+isAndroid);
+	alert('是否是iOS：'+isiOS);*/
+	
+	/*弹出导航菜单*/
+	$("#icon-nav").on("click",function(e){
+		 	e.preventDefault();
+			$("#nav").show();
+			$("#mask").show();
+	})
+	$("#mask").on("touchstart",function(e){
+		  e.preventDefault();
+			$("#mask").hide();
+			$("#nav").hide();
+	})
+	
+	$("#nav a").on("click",function(){
+			$("#mask").hide();
+			if(isAndroid == true){
+				$("#nav").fadeOut("15"); //判断浏览器类型
+			}
+			if(isiOS == true){
+				$("#nav").hide(); //判断浏览器类型
+			}
+	})
+	
+	
+})
+</script>
+<style>
+/*头部*/
+header{
+	position:relative;
+	height:44px;
+	text-align:center;
+	background:#eee;
+}
+header img{
+	vertical-align:top;
+	margin:0 auto;
+	height:44px;
+}
+header a.icon-qq{
+	background-image: url(../images/icon-qq.png);
+	left: 0;
+}
+header a.icon-nav{
+	background-image: url(icon-nav.png);
+	right: 0;
+}
+header a.icon-qq,
+header a.icon-nav{
+  position: absolute;
+	top: 0;
+	display: block;
+	width: 44px;
+	height: 44px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%;
+	cursor: pointer;
+}
+
+/*导航*/
+nav{
+	display:none;
+	width:160px;
+	position:absolute;
+	top:44px;
+	right:0;
+  background:rgba(0,0,0,0.8);
+	z-index: 999;
+}
+nav a{
+	display:block;
+	font-size:10px;
+  color:#fff;
+	height:32px;
+	padding:8px 0;
+	border-bottom:1px solid rgba(255,255,255,0.1);
+	text-decoration:none;
+}
+nav a:active{
+  background:rgba(0,111,211,0.8);
+	color:#fff;
+}
+.mask {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: #000;
+	opacity: 0.0;
+	z-index: 99;
+}
+.mask {
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width:100%;
+	height:100%;
+	background: #000;
+	opacity: 0.5;
+	z-index: 99;
+}
+
+</style>
+</head>
+<body >
+<div class="mask" id="mask"></div>
+<header>
+	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=593483805&amp;site=qq&amp;menu=yes" class="icon-qq"></a>
+  标题
+	<a href="#" class="icon-nav" id="icon-nav"></a>
+  <nav class="zaihu-nav" id="nav">
+  	<a href="#">首页</a>
+  	<a href="#">首页</a>
+  	<a href="#">首页</a>
+  	<a href="#">首页</a>
+  	<a href="#">首页</a>
+  	<a href="#">首页</a>
+  </nav>
+</header>
+
+<h3>判断ios和Android,点击右上角</h3>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<a href="#">返回</a>
+</body>
+</html>
+
+

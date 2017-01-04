@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+.hh{
+	-webkit-transition:height 0.3s linear;	
+} 
+</style>
+<script>
+
+$(function(){
+	
+	//返回顶部
+	$(".back-top").hide();
+	$(window).scroll(function(){
+		var tt=$(window).scrollTop();
+		if(tt < 120 ){
+				$("#divh").height("220");
+			  //$("#divh").height($(window).scrollTop());
+			return;
+		}
+		if(tt > 50){
+				$("#divh").height("50");
+		}
+		
+		
+	});
+})
+</script>
+</head>
+<body >
+<!--头部-->
+<div style="height:220px; width:100%; background:#eee;position:fixed; top:0;left:0" id="divh" class="hh">aaa</div>
+<div class="" style="height:1300px; width:1002px; margin:0 auto; border:1px solid #ccc;">
+  <p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p>
+</div>
+<!--//头部-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

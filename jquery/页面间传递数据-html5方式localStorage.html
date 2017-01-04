@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<title></title>
+<style>
+a{ text-decoration:underline}
+.border-table th,
+.border-table td{
+  border:1px solid #ccc;
+	padding:5px 20px;
+	text-align:center;
+}
+</style>
+</head>
+<body style="padding:100px;"> 
+	<h3>1、查看已经存到localstorage中的myname</h3>
+	<ul>
+  	<li><label>name:</label> <span id="name">yuanzm</span>  &nbsp;&nbsp;&nbsp;<a href="html5-localStorage-page2.html">view</a></li>
+  </ul>
+  <p></p>
+	<h3>2、查看用json存到localstorage中列表 &nbsp;&nbsp;</h3>
+	<!--<table class="border-table">
+  	<thead>
+    	<tr>
+      	<th>名字</th>
+      	<th>年龄</th>
+      	<th>操作</th>
+      </tr>
+    </thead>
+  	<tr>
+    	<td>刘宇</td>
+      <td><span id="na"></span></td>
+    	<td><a href="javascript:">修改</a></td>
+    </tr>
+  	<tr>
+    	<td>张扬</td>
+      <td>17</td>
+      <td><a href="javascript:">修改</a></td>
+    </tr>
+  </table>-->
+  
+  <div id="list"></div>
+<script type=text/javascript>
+
+	/*************json数据存到localstorage*************/
+  //json
+	var students = {
+				liuyu:{name: "刘宇", age: "18", op: false},
+				zhangyan:{name: "张扬", age: "17", op: false}
+	}
+	
+	//判断是否有key值，有就读取新的，没有就用默认json数据初始化
+	if(localStorage.students){
+				var s = localStorage.getItem("students");
+				students = JSON.parse(s)  //解析后，才是对象，才能进行取值操作s["liuyu"]
+	}
+	
+	//显示列表
+	var tableHtml = "",
+			theadHtml = "",
+			tbodyHtml = "",
+			tfootHtml = "";
+			
+	theadHtml = '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="border-table"><thead>'
+														+'<tr>'
+															+'<th>姓名</th>'
+															+'<th>年龄</th>'
+															+'<th>操作</th>'
+														+'</tr>'
+												 +'</thead>'
+												 +'<tbody>';
+	 //循环数据
+	 for(key in students){
+		 tbodyHtml +='<tr>'
+										+'<td>'+students[key].name+'</td>'
+										+'<td>'+students[key].age+'</td>'
+										+'<td><a href="javascript:" id='+ key +'>修改</a></td>'
+									+'</tr>'
+	 }	
+	 tfootHtml='</tbody></table>'
+	 tableHtml = theadHtml + tbodyHtml + tfootHtml;
+	 
+	 $("#list").html(tableHtml);
+	
+	//当前点击的<a>的id
+	$("#list").on("click","a",function(){
+			var currentName = $(this).attr("id");
+			for(key in students){
+					 students[key].op = false
+				}
+		  students[currentName].op = true
+			
+			//字符化后可以存入localstorage，如果没用stringify()，存的是对象object
+			students = JSON.stringify(students);
+			localStorage.setItem("students",students);
+			
+			window.location = "html5-localStorage-page2.html";
+	})
+	
+	/****************基本操作***********************/
+  //存入localStorage 以key,value
+	localStorage.setItem("myname","yuanzm");
+	
+	//读取localStorage
+	var name = localStorage.getItem("myname");
+	
+
+</script>
+
+</body>
+</html>
+
+
+
+

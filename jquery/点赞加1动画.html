@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.plus{
+	position:absolute;
+	top:10px;
+	left:10px;
+  width:24px;
+	height:16px;
+	background:url(plus.png) no-repeat;
+}
+</style>
+<script src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var flag=0;
+	var num=parseInt($("#num").text());
+	$("#heart").click(function(){
+			if(flag==0){
+				$(".plus").animate({top:"30px",opacity:"0"},500);
+				flag=1;
+				num=num+1;
+				$("#num").text(num);
+			}
+	})
+});
+</script>
+</head>
+<body>
+	<div class="" style="position:relative">
+    <img src="heart.png" id="heart">
+    <span class="plus"></span>
+    <label id="num">99</label>
+  </div>
+</body>
+</html>

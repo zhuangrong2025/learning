@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<!--<script src="dom.js" async defer ></script>-->
+<title></title>
+<style>
+</style>
+<script type=text/javascript>
+$(function(){
+	Carousel.init($(".j-poster"))
+})
+
+;(function($){
+	var Carousel = function(poster){
+					console.log($(poster).attr("data-setting"))	
+	    }
+	Carousel.prototype = {
+			
+	}
+	Carousel.init = function(posters){
+		 var _this = this;
+		 
+		 posters.each(function(){
+				 new Carousel($(posters))
+		 })
+	}
+	
+	window.Carousel = Carousel;	
+	
+})(jQuery)
+</script>
+</head>
+<body> 
+<div class="j-poster" data-setting = "{ width:200,
+																				height:300}">
+</div>
+<div class="j-poster" data-setting = "{ width:1200,
+																				height:1300}">
+</div>
+
+
+
+</body>
+</html>
+
+
+

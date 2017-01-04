@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{background:#666;}
+img
+{
+	position:absolute;left:200px;top:50px;
+	-webkit-animation-name:myfirst, rotate-back;
+	-webkit-animation-duration:1000ms, 10000ms;
+	-webkit-animation-timing-function:linear, linear;
+	-webkit-animation-delay:0, 1000ms;
+	-webkit-animation-iteration-count:1, infinite;
+	-webkit-animation-fill-mode:forwards, none;
+}
+
+@-webkit-keyframes myfirst {
+  from {top:-300px;}
+  to {top:100px;}
+}
+ 
+/*rotate-back*/
+@-webkit-keyframes rotate-back {
+ from {
+   -webkit-transform: rotate(0deg);
+   transform: rotate(0deg);
+ }
+ to {
+   -webkit-transform: rotate(-360deg);
+   transform: rotate(-360deg);
+ }
+}
+
+</style>
+</head>
+
+<body> 
+<img src="images/s_star.png" alt="" class="s_star"> 
+</body>
+</html>

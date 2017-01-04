@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<title></title>
+<style>
+.list{
+  width:100%;
+}
+.list th,
+.list td{
+	height:50px;
+	border:1px solid #ddd;
+	text-align:center;
+}
+</style>
+</head>
+<body>  
+<div class="list" id="list">
+	<!--<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>代码</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>齐鲁证券</td>
+      <td>001</td>
+      <td><a href="#">修改</a></td>
+    </tr>
+  </tbody>
+</table>-->
+</div>
+</body>
+</html>
+<script type=text/javascript>
+var data = {
+			typeId:"dataId",
+			title:[ {num: "序号", name: "名称", code: "代码", doing: "操作"} ],
+			company:{
+					"01": {name: "齐鲁证券", code: "QLZQ0001", open: true},
+					"02": {name: "中信证券", code: "ZSZQ002", open: false}
+			}
+		}
+;(function($){
+		var Enterprise = function(){
+					this.json = data;
+					this.list = $("#list");
+					
+					this.htmlAppend();
+					this.localStorage();
+	    	}
+		Enterprise.prototype = {
+					//判断操作栏显示的内容
+					htmlBtn:function(open){
+						var btn="";
+						if(open){
+							btn = '<a href="#">修改</a>'
+						}else{
+							btn = '<a href="#">关闭</a>'
+						}
+						return btn;
+					},
+					//创建列表
+					htmlList:function(){
+							var tableHtml = "",
+									theadHtml = "",
+							    tbodyHtml = "",
+									tfootHtml = "";
+							 
+							var company = this.json.company;
+							var title = this.json.title;
+							
+							theadHtml = '<table width="100%" border="0" cellspacing="0" cellpadding="0"><thead>'
+														+'<tr>'
+															+'<th>'+ title[0].num +'</th>'
+															+'<th>'+ title[0].name +'</th>'
+															+'<th>'+ title[0].code +'</th>'
+															+'<th>'+ title[0].doing +'</th>'
+														+'</tr>'
+												 +'</thead>'
+												 +'<tbody>';
+												 
+							 //循环数据
+							 for(key in company){
+								 tbodyHtml +='<tr>'
+								 								+'<td>'+key+'</td>'
+																+'<td>'+company[key].name+'</td>'
+																+'<td>'+company[key].code+'</td>'
+																+'<td>'+this.htmlBtn(company[key].open)+'</td>'
+															+'</tr>'
+							 }			 
+												 
+							 tfootHtml='</tbody></table>'
+							
+							tableHtml = theadHtml + tbodyHtml + tfootHtml;
+							return tableHtml;
+					},
+					//添加DOM到页面
+					htmlAppend:function(){
+						var _this = this;
+						_this.list.html(_this.htmlList())
+					}
+			 }
+			 
+			 window.Enterprise = Enterprise;
+
+})(jQuery)		
+
+var enterprise = new Enterprise();
+
+</script>
+
+
+

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+/*组件1-changeColor */
+.default-border{
+  border:1px solid #000;
+}
+/*组件2-tabs */
+.tabs li{
+  float:left;
+	width:50px;
+	height:30px;
+	border:1px solid #f1f1f1;
+	text-align:center;
+}
+.tabs li.active{
+  background:#00f;
+	color:#fff;
+}
+.tabs-content{
+  clear:both;
+	padding:10px;
+	border:1px solid #eee;
+}
+.tabs-content > div{
+  display:none
+}
+</style>
+<script type="text/javascript">
+$(function () { 
+   
+	 //调用-组件1-changeColor 
+   $("#t1").changeColor({color:"red"});
+   $("#t2").changeColor({color:"black"});
+	 
+	 //调用-组件2-tabs 
+   $("#tabs").tabs({contentBox:"tabsContent"});
+   $("#tabs2").tabs({contentBox:"tabsContent2"});
+}); 
+
+//组件1-changeColor 
+;(function($){
+	//$.fn 即 $.prototype  即对象.prototype 
+	$.fn.changeColor  = function(options){
+		var _this = this;
+		var defaults = {color: "blue"};
+		
+		//融合配置项将options参数赋值与defaults，统一融合到变量opts
+		var opts = $.extend({}, defaults, options);
+		
+		//缓存this对象，快速复用
+		var $e = $(this); 
+		
+		_this.init = function(){
+				$e.addClass("default-border");
+				$e.css("background",opts.color);
+		}
+		
+		//自动执行初始化函数  
+		_this.init();
+		
+		//返回函数对象，提供后面的链式操作 
+    //return this;
+	}
+})(jQuery)
+
+//组件2-tabs
+;(function($){
+	$.fn.tabs  = function(options){
+		var _this = this;
+		var defaults = {contentBox: "tabsContent"};
+		
+		var opts = $.extend({}, defaults, options);
+		
+		var $e = $(this);
+		var $li = $("ul li", $e);
+		var $box = $("#" + opts.contentBox)
+		
+		
+		//初始化
+		_this.init = function(){
+				$box.children("div").eq(0).show();
+		}
+		
+		_this.init();
+		
+		$li.each(function(index){
+       $(this).click(function(){
+					$(this).addClass("active").siblings().removeClass("active");
+					$box.children("div").hide();
+				  $box.children("div").eq(index).show();
+			 })
+    });
+	}
+})(jQuery)
+
+</script>
+</head>
+<body>  
+	<h3>组件1-changeColor</h3>
+  <!--组件1-changeColor-->
+	<div id="t1">文本</div>
+  <div id="t2">背景</div>
+  <!--//组件1-->
+  
+  <p style="padding:30px 0"></p>
+  <!--组件2-tabs-->
+	<h3>组件2-tabs</h3>
+  <div class="tabs" id="tabs">
+  	<ul>
+    	<li class="active">1</li>
+    	<li>2</li>
+    	<li>3</li>
+    </ul>
+  </div>
+  <div class="tabs-content" id="tabsContent">
+  	<div>a</div>
+  	<div>b</div>
+  	<div>c</div>
+  </div>
+  
+  <div class="tabs" id="tabs2" style="margin-top:30px">
+  	<ul>
+    	<li class="active">11</li>
+    	<li>12</li>
+    	<li>13</li>
+    	<li>14</li>
+    	<li>15</li>
+    </ul>
+  </div>
+  <div class="tabs-content" id="tabsContent2">
+  	<div>a1</div>
+  	<div>b1</div>
+  	<div>c1</div>
+  	<div>d1</div>
+  	<div>e1</div>
+  </div>
+  <!--//组件2-tabs-->
+	<h3>组件3-tabs2面向对象</h3>
+  <!--组件3-tabs3-->
+  <div id="tabs3">
+  	<button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <div>a</div>
+    <div style="display:none">b</div>
+    <div style="display:none">c</div>
+  </div>
+  <!--//组件3-tabs3-->
+</body>
+</html>
+<script>
+//组件3-tabs3--对象和原型
+var SwitchTabs = function (){
+		var _this  = this;
+		this.tab = $("#tabs3");
+		this.btn = this.tab.find("button");
+		this.box = this.tab.find("div");
+		
+		//遍历,传递索引值到cclick
+		this.btn.each(function(index){
+			$(this).click(function(){
+				_this.cclick(index);	
+			})
+		})
+}
+SwitchTabs.prototype.cclick = function(idx){
+		var _this  = this;
+		this.box.hide().eq(idx).show()
+}
+var stabs = new SwitchTabs();
+</script>

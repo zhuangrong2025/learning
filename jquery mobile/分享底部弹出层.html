@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>test</title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script> 
+<script>
+$(function(){
+	/*解决移动端active伪类效果*/
+	document.body.addEventListener('touchstart', function(){});
+	
+	//弹出分享层
+	$("#btn-share").on("click",function(){
+		if($(".sharebg").length>0){  //判断遮罩层sharebg对象是否存在
+			$(".sharebg").addClass("sharebg-active");
+		}else{
+			$("body").append("<div class='sharebg'></div>");
+			$(".sharebg").addClass("sharebg-active");
+		}
+		$(".share-popup").addClass("share-popup-active");	
+	})
+	
+	$("body").on("click",".sharebg,#btn-cancel",function(){
+			 $(".share-popup").removeClass("share-popup-active");
+			 $(".sharebg").removeClass("sharebg-active");	
+			 setTimeout(function(){
+				 $(".sharebg").remove();	
+			 },350)
+
+	})
+
+})
+ 
+</script>
+<style>
+html{
+  font-size:16px;
+}
+.btn-share{
+	display:block;
+  max-width:200px;
+	height:50px;
+	margin:100px auto;
+  text-align:center;
+	border:1px solid #ddd;
+	padding:10px;
+	text-decoration:none;
+}
+.sharebg{
+  position:fixed;
+	top:0;
+	z-index:99;
+	height:100%;
+	width:100%;
+	background:#000;
+	opacity:0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.sharebg-active{
+	opacity:.6;
+}
+.share-popup{
+  background:#fff;
+	border-top:1px solid #ccc;
+	position:fixed;
+	bottom:0;
+	left:0;
+	-webkit-transform:translate3d(0,100%,0); /*100%是y方向向下已偏移100%超出屏幕*/
+	transform:translate3d(0,100%,0);
+	width:100%;
+	height:200px;
+	z-index:99999;
+	-webkit-transition: -webkit-transform 300ms;
+	transition: transform 300ms ;
+}
+.share-popup-active{
+	-webkit-transform:translate3d(0,0,0); 
+	transform:translate3d(0,0,0);
+}
+</style>
+</head>
+<body >
+<a id="btn-share" class="btn-share">点击分享到</a>
+<div class="share-popup">
+	分享到。。。
+  <button id="btn-cancel">取消</button>
+</div>
+
+
+</body>
+</html>

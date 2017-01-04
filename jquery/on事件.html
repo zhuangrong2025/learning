@@ -1,0 +1,57 @@
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<script src="../jquery-1.11.1.min.js"></script> 
+<style>
+*{
+	margin:0;
+	padding:0;	
+}
+p{
+	margin:10px 0	
+}
+.sharebg{
+  position:fixed;
+	top:0;
+	height:100%;
+	width:100%;
+	background:rgba(0,0,0,.6);
+	z-index:99;
+}
+
+</style>
+</head>
+<body>
+<button id="btn">添加新的p元素</button>
+<div id="tt">
+  <p>第一个p元素</p>
+  <p>第二个p元素</p>
+  <p>第三个p元素</p>
+  <p>第四个p元素</p>
+  <p>第五个p元素</p>
+</div>
+
+<button id="btn-mask">添加遮罩层</button>
+
+<script>
+$(function(){
+	$("#btn").on("click",function(){
+		$("#tt").append("<p>这是一个新的p元素</p>");
+	});
+	$("#tt").on("click","p",function(){  //对新增对象的获取，必须把on事件放在其父级上，对象放在click后面
+			alert($(this).text());  //只弹出是新增对象的
+	})
+	
+	//弹出遮罩层
+	$("#btn-mask").on("click",function(){
+		$("body").append("<div class='sharebg'></div>");
+	});
+	$("body").on("click",".sharebg",function(){
+		 $(this).hide();
+	});
+})
+</script>
+ 
+</body>
+</html>

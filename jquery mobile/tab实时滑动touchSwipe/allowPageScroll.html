@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="../../newCss.css">
+<style>
+.box{ width:100%; height:100%;  background:#eee}
+</style>
+<script src="../../jquery-1.11.1.min.js"></script>
+<script src="jquery.touchSwipe.min.js"></script>
+  <script id='code_1'>
+				$(function() {			
+					$("#test4").swipe( { swipeStatus:swipe2, allowPageScroll:"vertical"} );
+
+					function swipe2(event, phase, direction, distance) {
+						/*$(this).text( phase +" you have swiped " + distance + "px in direction:" + direction );*/
+					}
+
+				});
+			</script> 
+      
+</head>
+<body>
+  <div class="box" id="test4" >Swipe me
+	<p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动11111</p>
+	</div>
+</body>
+</html>

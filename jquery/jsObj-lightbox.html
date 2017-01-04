@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<title></title>
+<style>
+img{
+ background:#eee; 
+}
+.box-mask{
+  position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:rgba(0,0,0,0.5)
+}
+.pic-box{
+  border:3px solid #fff;
+	
+}
+.pic-box span{
+  display:block;
+	background:#333;
+	color:#fff;
+}
+.pic-win{
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:20px;
+	height:20px;
+	margin:-10px 0 0 -10px;
+  background:#fff;
+	border-radius:10px;
+	z-index:99999;
+}
+.btn-next,
+.btn-prev{
+	position:absolute;
+	top:50px;
+	border:none;
+  width:50px;
+	height:50px;
+	background:#f00;
+}
+.btn-prev{
+  left:10px;
+}
+.btn-next{
+  right:10px;
+}
+</style>
+</head>
+<body>  
+<div class="picbox">
+	<h3>组一：</h3>
+  <img src="light01.png" width="100" height="100" data-role="js-lightbox" data-group="group-1" data-id="p1" data-source="light01.png" data-caption="标题1-1">
+  <img src="light02.png" width="100" height="100" data-role="js-lightbox" data-group="group-1" data-id="p2" data-source="light02.png" data-caption="标题1-2">
+  <img src="light03.png" width="100" height="100" data-role="js-lightbox" data-group="group-1" data-id="p3" data-source="light03.png" data-caption="标题1-3">
+	<h3>组二：</h3>
+  <img src="light03.png" width="100" height="100" data-role="js-lightbox" data-group="group-2" data-id="p1" data-source="light03.png" data-caption="标题2">
+  <img src="light02.png" width="100" height="100" data-role="js-lightbox" data-group="group-2" data-id="p2" data-source="light02.png" data-caption="标题2">
+</div>
+
+</body>
+</html>
+<script type=text/javascript>
+/*********lightbox组件**********/
+;(function($){
+	var Lightbox = function(config){
+			this.config = {
+					role:"js-lightbox"
+				};
+			//融合配置项
+			$.extend(this.config,config);
+			this.bodyNode = $("body");
+			this.boxMask = $("<div class='box-mask'>");
+			this.groupName = null;
+			this.groupData = [];
+			
+			this.eventBind();
+	}
+	Lightbox.prototype = {
+		
+		//绑定点击事件
+		eventBind:function(){
+			var _this = this;
+			
+			//事件委托到body，获取当前点击的对象，包括获取动态新生成的对象
+			$(document).delegate("*[data-role = 'js-lightbox']","click",function(e){
+			
+				e.stopPropagation();
+				var currentGroup = $(this).attr("data-group");
+				
+				//只获取一次的判断，如果已经是等于了，就不执行getGroup方法
+				if(currentGroup !=_this.groupName){
+					  _this.groupName = currentGroup;
+						_this.getGroup();
+				}
+				//弹窗
+				_this.createbox();
+				
+				//初始化-并传递当前点击对象
+				_this.initPopup($(this));
+				
+			}) 
+			
+		},
+		
+		//初始化
+		initPopup:function(currentObj){
+				var _this = this;
+				var sourceSrc = currentObj.attr("data-source");
+				var sourceId = currentObj.attr("data-id");
+				
+				_this.showMaskAndPicbox(sourceSrc,sourceId);
+				
+				
+		},
+		
+		showMaskAndPicbox:function(sourceSrc,sourceId){
+				var _this = this;
+				var picWin = this.boxMask.find(".pic-win"),
+						picBox = picWin.find(".pic-box"),
+						btnPrev = picWin.find(".btn-prev"),
+						btnNext = picWin.find(".btn-next"),
+						picImg = picBox.find("img");
+						
+						
+				var winWidth = $(window).width()/2,
+						winHeight = $(window).height()/2;
+				
+				picWin.animate({
+					 "width": winWidth + "px",
+					 "height": winHeight + "px", 
+					 "margin-left": - (winWidth/2) + "px",
+					 "margin-top": -(winHeight/2) + "px"
+				})
+				
+				picImg.attr("src",sourceSrc);
+				
+				//获取索引
+				_this.index = _this.getIndexOf(sourceId)
+				
+				//上一张-传sourceId
+				btnPrev.click(function(e){
+					e.stopPropagation();
+					_this.prev(picImg);
+				})
+				
+				//下一张-传sourceId
+				btnNext.click(function(e){
+					e.stopPropagation();
+					_this.next(picImg);
+				})
+				
+				
+				
+				
+					
+		},
+		
+		//fn获取索引
+		getIndexOf:function(sourceId){
+			var index = 0;
+			$(this.groupData).each(function(i) {
+        index = i;
+				if(this.id === sourceId){
+					return false;
+				}
+      });
+			
+			return index;	
+		},
+		
+		//上一张方法
+		prev:function(currentImg){
+				var _this = this;
+				var index = _this.index--;  //每次点击先减1，在赋值到index
+				if(index > 0){
+						index = index-1
+						$(currentImg).attr("src",this.groupData[index].src);
+				}else{
+					 _this.index = 0;
+				}
+		},
+		
+		//下一张方法
+		next:function(currentImg){
+				var _this = this;
+				var index = _this.index++; //每次点击先加1，在赋值到index
+				if(index < this.groupData.length-1){
+						index = index + 1
+						$(currentImg).attr("src",this.groupData[index].src);
+				}else{
+					_this.index = this.groupData.length-1;	
+				}
+		},
+		//获取数据
+		getGroup:function(){
+			var _this = this;
+			var groupList = $('[data-group='+ this.groupName +']')
+			
+			_this.groupData.length = 0; //清空数组
+			
+			groupList.each(function(){
+					_this.groupData.push({
+							src:$(this).attr("data-source"),
+							caption:$(this).attr("data-caption"),
+							id:$(this).attr("data-id")
+						})
+			})
+			
+		},
+		//创建lightbox
+		createbox:function(){
+			var _this = this;
+			
+			var boxHtml = '<div class="pic-win">'
+											+'<button class="btn-prev"></button>'
+											+'<div class="pic-box">'
+												+'<img src="light01.png">'
+												+'<span>标题</span>'
+											+'</div>'
+											+'<button class="btn-next"></button>'
+										+'</div>'
+										
+			 this.bodyNode.append(this.boxMask);
+			 this.boxMask.append(boxHtml);
+			 
+			 this.boxMask.click(function(){
+					_this.maskClose();	
+				})
+			 
+		},
+		
+		//关闭
+		maskClose:function(){
+			this.boxMask.empty().remove();  //需要把mask的元素清空，因为元素不是创建出来的，不清空会累加进去
+		}
+		
+	}
+	window.Lightbox = Lightbox;
+	
+})(jQuery)
+/*********lightbox END**********/
+
+//调用lightbox组件
+var b = new Lightbox({
+					role:"js-lightbox"		
+				});
+</script>
+
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.nav {
+	width: 32px;
+	height: 32px;
+	background: url(img/nav.png) no-repeat center center;
+	background-size: 100%;
+	display: block;
+	text-indent: -999px;
+}
+.login_mask{
+    position:fixed;
+    left: 0;
+    top: 0;
+		bottom:0;
+		right:0;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+    z-index: 9989;
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    pointer-events: none;
+    background-color: rgba(0,0,0,0.8);
+}
+.login_mask.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.login_panel {
+    width: 100px;
+    position: fixed;
+    z-index: 9990;
+		top:0;
+		bottom:0;
+    left: 0;
+    -webkit-transform: translateX(-100%); /*默认左移到边框外*/
+    transform: translateX(-100%);
+    -webkit-transition: -webkit-transform .5s ease;
+    transition: transform .5s ease;
+    padding: 0 .3rem;
+    box-sizing: border-box;
+    background: #fff;
+}
+.login_panel.show {
+    -webkit-transform: none;
+    transform: none;
+}
+
+</style>
+<script src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(document).on("click",function(e){
+			var id=$(e.target).attr("id");
+			if(id==="nav"){
+				$("#mask").addClass("show");
+				$("#login_panel").addClass("show");
+			}
+			if(id==="mask"){//点击遮罩层隐藏遮罩层
+				$("#mask").removeClass("show");
+				$("#login_panel").removeClass("show");
+			}
+		})
+});
+</script>
+</head>
+<body>
+<div class="login_mask" id="mask"></div>
+<span class="nav" id="nav">导航</span><label>点击图标弹出遮罩层</label>
+<div class="login_panel" id="login_panel">
+	<a href="#">菜单</a>
+  <div style="cursor:pointer;position:absolute; bottom:10px;">
+    <span id="close">关闭</span>
+  </div>
+</div>
+</body>
+</html>

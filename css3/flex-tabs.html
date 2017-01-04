@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+/*tabs1*/
+.flex-tab ul{
+	display: -webkit-box; 
+	display: -webkit-flex;
+	display: flex;
+}
+.flex-tab li{
+	-webkit-box-flex:1;
+	-webkit-flex:1;
+  flex:1;
+	width:0%;/*必须有*/
+	height:30px;
+	text-align:center;
+	border:1px solid #eee;
+}
+.flex-tab li.curr{
+	background-color: #eee;
+	color: #00f;
+}
+div[class*="tab-box"] > div:not(:first-child){
+	display:none
+}
+</style>
+<script>
+$(function(){
+	$.TabChange("tabs",1)
+	$.TabChange("tabs2",2)
+})
+/*tabs切换组件*/
+$.TabChange = function(obj,num){
+	$("li","#" + obj).each(function(index){
+			$(this).click(function(i){
+			 	$("div.tab-box" + num + " > div").eq(index).show().siblings().hide();
+				$(this).addClass("curr").siblings().removeClass("curr");
+			})													
+	})
+}
+</script>
+</head>
+<body >
+<!--tabs1-->
+<div class="flex-tab" id="tabs">
+	<ul>
+		<li class="curr">文本</li>
+		<li>文本</li>
+		<li>文本</li>
+	</ul>
+</div>
+<div class="tab-box1">
+	<div>内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+</div>
+
+<!--tabs2-->
+<div class="flex-tab" id="tabs2">
+	<ul>
+		<li class="curr">文本</li>
+		<li>文本</li>
+		<li>文本</li>
+	</ul>
+</div>
+<div class="tab-box2">
+	<div>内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+</div>
+</body>
+</html>

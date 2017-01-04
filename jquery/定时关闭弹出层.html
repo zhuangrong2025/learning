@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+body{
+	height:100%;
+	background:url(http://img.hb.aicdn.com/cebb64af38259b8e3caec99fd4bb6a7174afb02d3c59c-bkA6oP) no-repeat center 50px;
+	background-size:cover;
+}
+.popup{
+	position:absolute;
+	color:#fff;
+	border-radius:3px;
+	padding:10px 20px;
+	white-space:nowrap;
+	background:-webkit-linear-gradient(top,rgba(23,23,25,0.5) 0,rgba(23,23,25,0.7) 45%);
+	box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+.popup-center{
+	top:50%;
+	left:50%;
+	-webkit-transform:translate3d(-50%,-50%,0);  /*与top:50%结合，让popup居中*/
+	transform:translate3d(-50%,-50%,0);
+}
+.popup-bottom{
+	bottom:10px;
+	left:50%;
+	-webkit-transform:translate3d(0,0,0);  
+	transform:translate3d(0,0,0);
+}
+.tips-ani{
+	-webkit-animation:tips-ani 0.2s ease-out forwards;
+}
+@-webkit-keyframes tips-ani {
+		0% {-webkit-transform:translate3d(-50%,10px,0);}
+		100% { -webkit-transform:translate3d(-50%,-50px,0);}
+}  
+
+</style>
+<script src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+		//居中弹出，定时关闭
+    $("#btn-center").on("click",function(){
+			$("#popup-center").show();
+			setTimeout(closePop, 1200);
+		})
+		
+		function closePop(){
+				$("#popup-center").fadeOut();
+		}
+		
+		//底部弹出，定时关闭
+    $("#btn-bottom").on("click",function(){
+			$("#popup-bottom").show();
+			setTimeout(closePopBottom, 1200);
+		})
+		
+		function closePopBottom(){
+				$("#popup-bottom").fadeOut();
+		}
+});
+</script>
+</head>
+<body>
+	<button class="pop-btn" id="btn-center">居中弹出，定时关闭</button>
+  <button class="pop-btn" id="btn-bottom">底部弹出，定时关闭</button>
+  <div class="popup popup-center" id="popup-center" style="display:none">未开通，敬请期待</div>
+  
+  <div class="popup popup-bottom tips-ani" id="popup-bottom" style="display:none">底部弹出消息提示</div>
+</body>
+</html>

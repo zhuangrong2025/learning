@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="../../newCss.css">
+<style>
+body{
+	height:100%;
+}
+.container{
+	overflow:hidden;
+	width: 100%;
+	height: 100%;
+	background:#333 url(pull-down.png) no-repeat center 10px;
+}
+.wraper{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	-webkittransform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+.wraper div{
+	width:100%;
+	height:100%;
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+}
+.wraper div.t1{
+	width:100%;
+	background:#eee;
+}
+</style>
+<script src="../../jquery-1.11.1.min.js"></script>
+<script src="jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+$(function(){
+		boxWrap= $(".wraper");
+		boxWrap.swipe( { swipeStatus:swipe1,allowPageScroll:"none", threshold: 135,} );
+});
+function swipe1(event, phase, direction, distance) {
+		if (phase == "move" && direction == "down") {
+				var duration = 0;
+				pullDown(distance,duration)
+			
+		}else if (phase == "cancel") {
+				pullDown(0,300)
+		} else if (phase == "end") {
+				if (direction == "down") {
+							pullDown(0,300);
+							/*location.href="http://www.baidu.com" */
+				}
+		}
+		
+}
+function pullDown(distance, duration){
+			boxWrap.css("transition-duration", (duration / 1000).toFixed(1) + "s"); 
+			boxWrap.css({"transform":"translate3d(0,"+ distance+"px,0)"});
+}
+
+</script>
+</head>
+<body>
+<div class="container">
+	<div class="wraper">
+    <div class="t1">page1，下滑</div>
+    <article>
+    	<p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p>
+    	<p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p>
+    </article>
+  </div>
+</div>
+</body>
+</html>

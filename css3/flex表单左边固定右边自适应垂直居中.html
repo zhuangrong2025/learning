@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+#address-widget-edit {
+	overflow: visible;
+	color: #404142;
+	font-size: 16px;
+}
+#address-widget-edit .addr-group {
+	background-color: #fff;
+}
+#address-widget-edit .addr-group li {
+	border-bottom: 1px solid #dbdcde;
+	display: -webkit-flex;
+	display: flex;
+	height: 55px;
+	display: -webkit-box;
+	position: relative;
+}
+#address-widget-edit .addr-group li .lname {
+	-webkit-box-flex: 0;
+	-webkit-flex: 0;
+	flex: 0;
+	display: block;
+	width: 60px;
+	display: -webkit-flex;
+	justify-content: center;
+  flex-direction: column;
+}
+#address-widget-edit .addr-group li input[type=text],#address-widget-edit .addr-group li div {
+	-webkit-box-flex: 9;
+	-webkit-flex: 9;
+	flex: 9;
+	display: block;
+	height: 100%;
+	border: 0;
+	border-radius: 0;
+	color: #404142;
+	font-size: 16px;
+	-webkit-appearance: none;
+}
+#address-widget-edit .addr-group li div {
+	height:100%;
+	display: -webkit-flex;
+	justify-content: center;
+  flex-direction: column;
+}
+</style>
+</head>
+<body >
+<div id="address-widget-edit" class="address-widget-edit">
+  <ul class="addr-group">
+    <li class="noborder">
+      <label class="lname">联系人</label>
+      <input data-node="userName" type="text" value="" placeholder="您的姓名">
+    </li>
+    <li>
+      <label class="lname">门牌号</label>
+      <input data-node="address" value="" type="text" placeholder="请尽量详细">
+    </li>
+    <li>
+      <label class="lname">电话</label>
+      <input data-node="telephone" type="text" placeholder="电话" value="">
+    </li>
+    <li>
+      <label class="lname">地址</label>
+      <div>福建省福州市鳌兴路水岸华庭283号</div>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

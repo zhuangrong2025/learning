@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+body{
+	background:#D0D0D0;	
+}
+input{
+	display:none
+}
+section {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	margin-bottom: 2em;
+	padding: 0;
+}
+section article {
+	width: 20em;
+}
+.chart .growing-bar{
+	background:#f0f;
+	color:#fff;
+	text-align:center;
+	padding:1em;
+	margin:0 auto 2em;;	
+}
+.actions {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	margin-bottom: 0;
+	padding-bottom: 2em;
+	border-bottom: 1px dotted rgba(68, 68, 68, 0.4);
+}
+label {
+	box-sizing: border-box;
+	padding: 1em;
+	margin: 0 .2em;
+	cursor: pointer;
+	-webkit-transition: all .15s ease-in-out;
+	transition: all .15s ease-in-out;
+	color: #0a4069;
+	border: 1px solid rgba(254, 254, 254, 0.6);
+	border-radius: 0;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	flex: 1;
+	text-align:center;
+}
+input[id='red']:checked ~ .actions label[for='red'],
+input[id='cyan']:checked ~ .actions label[for='cyan'],
+input[id='lime']:checked ~ .actions label[for='lime'] {
+	color: #76c900;
+	border: 1px solid #031523;
+	background-color: #0a4069;
+}
+input[id='red']:checked ~ .chart .growing-bar{
+	background:red;	
+}
+input[id='cyan']:checked ~ .chart .growing-bar{
+	background:cyan;	
+}
+input[id='lime']:checked ~ .chart .growing-bar{
+	background:lime;	
+}
+</style>
+</head>
+<body style="padding:30px 0 0;background:#eee">
+	<section>
+  	<article>
+      <input type="radio" name="switch-color" id="red" checked="">
+      <input type="radio" name="switch-color" id="cyan">
+      <input type="radio" name="switch-color" id="lime">
+      <div class="chart">
+      	<div class="growing-bar">切换颜色</div>
+      </div>
+      <nav class="actions">
+          <label for="red">Red</label>
+          <label for="cyan">Cyan</label>
+          <label for="lime">Lime</label>
+      </nav>
+    </article>
+  </section>
+</body>
+</html>

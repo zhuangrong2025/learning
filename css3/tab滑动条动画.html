@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script type="text/javascript" src="../jquery-1.11.1.min.js"></script>
+<style>
+ul,li{padding:0; margin:0;}
+.tabs{
+	height:30px;
+	position:relative;	
+}
+.tabs li{
+	text-align:center;
+	height:30px;
+	line-height:30px;
+	font-size:16px;
+	padding:0 10px;
+	background:#eee;
+	float:left;	
+	width:50%;
+	/*文字溢出*/
+	overflow:hidden;
+	text-overflow:ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp:1;
+	-webkit-box-orient:vertical;
+	
+}
+.tabs li.active{
+	background:#ccc;
+}
+.slidebar{
+	position:absolute;
+	top:30px;
+	left:0;
+	height:2px;
+	background:#f60;
+	width:50%;
+	transition:left 0.5s;
+	-webkit-transition:left 0.5s;	
+}
+</style>
+<script>
+$(function(){
+	  $(".tabs li").on("click",function(){
+			var linum=$(this).index()
+			if(linum==0){
+				$(".slidebar").css("left","0")
+			}
+			if(linum==1){
+				$(".slidebar").css("left","50%")
+			}
+			$(".tabs li").removeClass("active");
+			$(this).addClass("active")
+		})	
+}) 
+</script>
+</head>
+<body>
+<div class="tabs">
+	<ul>
+  	<li class="active">数据数据数据数据</li>
+  	<li>环境环境环境环境</li>
+  </ul>
+  <div class="slidebar"></div>
+</div>
+</body>
+</html>

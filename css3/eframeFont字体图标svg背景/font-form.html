@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>新意证券综合管理平台</title>
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/eframe.css">
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+$(function(){
+});
+ 
+</script>
+<style>
+i,
+button,
+input[type=checkbox],
+input[type=radio]{
+  font-family: 'eframe' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+	
+}
+input[type=checkbox],
+input[type=radio]{
+ 	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	vertical-align: middle;
+	outline: 0;
+	-webkit-appearance:none;
+}
+button:hover:before,
+.icon-caret-down:before {
+  content: "\f70d";
+}
+.icon-caret-down:checked:before {
+  content: "\f0d8";
+	color:#f00;
+}
+.icon-caret-up:before {
+  content: "\f0d8";
+	margin-right:5px;
+	color:#ff0;
+}
+
+/*输入框*/
+.btn-data{
+	display:inline-block;
+	position:relative; 
+	color:#00f; 
+}
+.btn-data:before{
+	position:absolute;
+	top:-12px;
+	left:-20px;
+	margin-right:-15px;
+	cursor:pointer;
+}
+/*下拉框外包div*/
+.xy-select{
+	-webkit-appearance:none;
+	   -moz-appearance: none;
+          appearance: none;	
+  width:192px;
+	height:26px;
+	line-height:26px;
+	border:1px solid #CDCED5;
+	padding:0 0 0 4px;
+	border-radius: 2px;
+	background-image: url(../images/combo.png);
+	background-repeat: no-repeat;
+	background-position: right 0;
+}
+.xy-select::-ms-expand{ 
+  display:none
+}
+
+/*下拉框*/
+.select-wrapper {
+  position: relative;
+  width: 200px;
+	height:26px;
+  font-family: 'eframe' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+	
+	border:1px solid #000;
+}
+.select-wrapper:after {
+  content: "\f0d8";
+  content: ""\9;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  pointer-events: none;
+}
+.select-wrapper select {
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  text-indent: 0.01px;
+  text-overflow: "";
+	width:150px;
+  height: 48px;
+  display: inline-block;
+  -webkit-mask: url(images/heart.svg) no-repeat right 50%;
+  -webkit-mask-size:36px 36px;
+	background-color:#f30;
+	color:#000;
+}
+.select-wrapper select::-ms-expand {
+  display: none;
+}
+
+/*背景图用svg矢量*/
+.img-container {
+    width: 200px;
+}
+
+img.logo {
+	background:#00f;
+  width:100%;
+	height:100px;
+}
+.bg-svg{
+	fill: #000;
+  width:100px;
+	height:100px;
+	border:1px solid #000;
+	background-image:url(images/arrow.svg);
+	background-repeat:no-repeat;
+	background-position:left center;
+	background-color:none;
+	/*使用滤镜*/
+	-webkit-filter:grayscale(1);
+	 -webkit-filter:sepia(1);
+	  -webkit-filter:saturate(3);
+/*		  -webkit-filter:blur(3px);
+*/}
+
+/*css3 mask属性 遮罩*/
+.wrap {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+}
+ .icon {
+	width:150px;
+  height: 48px;
+  display: inline-block;
+	border:1px solid #000;
+  -webkit-mask: url(images/heart.svg) no-repeat 50% 50%;
+  mask: url(images/heart.svg) no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size:contain;
+	background-color:#00f;
+}
+.icon-red {border:1px solid #00f; background-color: orange; }
+
+/*filter来填充颜色*/
+.wrap2{
+    position: absolute;
+    top: 20%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 50%;
+    text-align: center;
+}
+.icon2{ 
+  width: 148px;
+  height: 48px;
+  display: inline-block;
+  background: url(images/heart.svg) no-repeat right 50%; 
+  background-size:contain;
+	background-color:transparent; /*颜色为透明，这样不受filter的 brightness影响*/
+	color:#000;/*设置了颜色就不受滤镜影响了*/
+	border:1px solid #000;
+}
+	
+.icon-orange2 { 
+  -webkit-filter: hue-rotate(40deg) saturate(0.5) brightness(390%) saturate(4); 
+  filter: hue-rotate(40deg) saturate(0.5) brightness(390%) saturate(4); 
+}
+.icon-yellow2{
+  -webkit-filter: grayscale(100%) brightness(5) brightness(.9); 
+  filter: hue-rotate(70deg) saturate(100); /*纯黄*/
+}
+/*下拉框背景图居右*/
+.icon-blue2 {
+	height:25px; 
+  -webkit-filter: hue-rotate(240deg) saturate(3) brightness(300%); 
+  background-size:13px 13px;
+	color:#000;
+}
+.sel-svg{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+</style>
+</head>
+<body style="padding:100px;">
+<!--多选框checkbox-->
+<p style="margin-top:20px">
+<label><input type="checkbox"  class="icon-caret-down"  style="font-size:18px;color:#00f;">多选框</label>
+</p>
+
+<!--单选框radio-->
+<p style="margin-top:20px">
+<label><input type="radio" name="radio" class="icon-caret-down"  style="font-size:18px;color:#00f;">单选框</label>
+</p>
+
+<!--输入框 input-->
+<p style="margin-top:20px">
+
+<input type="text"  class="xy-ipt"   placeholder="日期选择框"><i class="icon-caret-down btn-data" style="font-size:20px;color:#f60;"></i>
+
+</p>
+
+<!--按钮button-->
+<p style="margin-top:20px">
+<button class=" btn-ok icon-caret-up">按钮</button>
+</p>
+
+<!--select-->
+<p style="margin-top:20px">
+<h3>select没有before和after需要加上外框div，或<b style="color:#00f">直接背景图灰色保持通用</b>，ie8,ie9，需要去掉字体图标</h3>
+<div class="select-wrapper">
+  <select>
+    <option value="1" selected>下拉框</option>
+    <option value="2">option 2</option>
+    <option value="3">option 3</option>
+  </select>
+</div>
+</p>
+<p style="clear:both;height:130px"></p>
+
+<!--背景图用svg矢量-->
+<p style="height:30px">img class="logo" src="http://toobulo.com/img/logo-icon.svg" </p>
+<div class = 'img-container'  style="margin-top:20px">
+    <img class="logo" src="http://toobulo.com/img/logo-icon.svg" />
+</div>
+
+<!--css3 mask属性 遮罩-->
+<div class="wrap">
+    <div class="icon icon-red">mask</div>
+    <div class="icon icon-orange"></div>
+    <div class="icon icon-yellow"></div>
+</div>
+<p style="height:30px"></p>
+<!--filter来填充颜色-->
+<div class="wrap2">
+    <div class="icon2 icon-orange2">css3 filter</div>
+    <div class="icon2 icon-yellow2">2</div>
+  </div>
+  <select class="icon2 icon-blue2 sel-svg">
+    <option value="1">下拉框</option>
+    <option value="2">option 2</option>
+    <option value="3">option 3</option>
+  </select>
+  <div>备注：修改svg的背景图标颜色，可以给出几个预选方案，已经设置好filter的 hue-rotate(40deg) saturate(0.5) brightness(390%)</div>
+
+</body>
+</html>

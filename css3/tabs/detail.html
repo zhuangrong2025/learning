@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>dc</title>
+<link rel="stylesheet" href="css/doctor.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+	$.TabChange("profile",1)
+})
+/*tabs切换*/
+$.TabChange = function(obj,num){
+	$("li","#" + obj).each(function(index){
+			$(this).click(function(i){
+			 	$("div.tab_box" + num + " > div").eq(index).show().siblings().hide();
+				$(this).addClass("curr").siblings().removeClass("curr");
+			})													
+	})
+}
+
+</script>
+<style>
+
+</style>
+</head>
+<body>
+<!--头部-->
+<div class="eye-header">
+	<a href="tabs.html" class="eye-back"></a>
+	<div class="nav-title">眼科医生信息</div>
+</div>
+<!--//头部-->
+<div class="eye-container">
+  <!--医生简介-->
+  <div class="doctor-list list-nolink">
+      <ul>
+        <li>
+          <div class="doctor-pic" style="background-image:url(images/doctor.png)"></div>
+          <div class="doctor-info">
+            <dt><span>孙旭光</span><label>主任医师</label></dt>
+            <dd>北京同仁医院眼科</dd>
+            <dd>擅长：干眼，角膜病，葡萄膜炎</dd>
+          </div>
+        </li>
+      </ul>
+  </div>
+  <!--//医生简介-->
+  <!--医生详情-->
+  <div class="profile">
+    <ul id="profile">
+      <li>社会任职</li>
+      <li>执业经历</li>
+      <li class="curr">门诊时间</li>
+    </ul>
+  </div>
+  <div class="tab_box1 profile-panel">
+    <div  style="display:none">
+      中华医学会眼科学分会角膜学组副组长，国家医药监督管理局新药审评委员会专家组成员，中华眼科学分会专科会员，日本眼感染学会会员，《国际眼科杂志》副主编，《中华眼科杂志》《眼科研究》、《眼科》、《眼视光学》、《眼科新进展》、《国外医学眼科学分册》及《首都医科大学学报》编委。
+    </div>
+    <div style="display:none">
+      1978年南京医学院（现南京医科大学）医疗系；1982年获学士
+学位，至北京401医院眼科从事眼科临床工作；1986年考取解放军总医院眼科硕士研究生，导师为宋琛教授，研究方向为角膜碱烧伤；1989年毕业获得眼科硕士学位，至北京军区总医院眼科，从事眼科主治医师的临床工作。1991年考取北京医科大学（现北京大学医学部）基础医学院眼生化研究室博士生，在张昌颖教授指导下从事免疫性葡萄膜炎的眼生化基础研究；1994年获医学博士学位，至北京市眼科研究所眼微生物室，进行眼科博士后研究工作，导师为张士元教授；1997年博士后出站，至北京同仁医院北京市眼科研究所工作；1995年在美国新英格兰视光学院进行眼视光学短期培训；1999年在日本顺天堂大学眼科进行短期进修。发表论文三十余篇（第一作者），SCI收录6篇,国外发表4篇。
+    </div>
+    <div>
+    		<div class="eye-table">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          	<thead>
+                <th width="23%"></th>
+                <th width="11%">一</th>
+                <th width="11%">二</th>
+                <th width="11%">三</th>
+                <th width="11%">四</th>
+                <th width="11%">五</th>
+                <th width="11%">六</th>
+                <th width="11%">七</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>上午</td>
+                <td><i class="eye-star"></i></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>下午</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><i class="eye-star"></i></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>夜晚</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><i class="eye-star"></i></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+  <!--//医生详情-->
+</div>
+
+</body>
+</html>

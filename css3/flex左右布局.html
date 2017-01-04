@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+
+.wbox {
+  display: -webkit-flex!important;
+  display: -webkit-box;
+	padding:10px;
+}
+.wbox li{ background:#eee;}
+.wbox li:first-child{ background:#ccc;}
+
+.wbox-flex {
+  -webkit-flex: 1!important;
+  -webkit-box-flex: 1;
+}
+.wbox2{
+  display: -webkit-flex!important;
+  display: -webkit-box;
+}
+.box1{
+  -webkit-flex: 1!important;
+	background:#eee;
+}
+.box2{
+  -webkit-flex: 2!important;
+	background:#ccc;
+}
+</style>
+</head>
+<body >
+  <ul class="wbox">
+    <li class="wbox-flex"><p>1</p><p>1</p><p>1</p><p>1</p></li>
+    <li class="wbox-flex">
+      2
+    </li>
+  </ul>
+  <div style="background:#eee">aa</div>
+  <p>1比2分配</p>
+  <div class="wbox2">
+  	<div class="box1">box1</div>
+  	<div class="box2">box2</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+.tool{
+  border:1px solid #eee;
+	padding:10px;
+	height:100px;
+}
+</style>
+<script type="text/javascript">
+;(function($){
+	//定义组件的方法
+	var methods = {
+				init:function(){
+						//允许绑定事件命名空间 resize事件
+						return this.each(function () {
+                $(window).bind('resize.tooltip', methods.reposition);
+            });
+				},
+				hide:function(){
+						alert(1);
+				},
+				reposition:function(){
+						console.log("resize")
+				},
+				changeColor:function(color){ //也可以传参数
+						$(this).css("color",color);
+				},
+				destroy:function() { //销毁事件
+            return this.each(function () {
+                $(window).unbind('.tooltip');
+            })
+        }
+				
+		  }
+	/*通过传递该方法的字符串名称给插件以调用它们*/
+	$.fn.tooltip  = function(method){
+		
+				// 方法调用-初始化
+        if (methods[method]) {
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        } else if (typeof method === 'object' || !method) {
+            return methods.init.apply(this, arguments);
+        } else {
+            $.error('Method' + method + 'does not exist on jQuery.tooltip');
+        }
+	}
+})(jQuery)
+
+$(function(){
+	//组件方法的调用
+	$("#tool").tooltip()
+	$("#tool").tooltip('changeColor',"#00f")
+})
+
+</script>
+</head>
+<body>  
+	<div id="tool" class="tool">tool</div>
+</body>
+</html>

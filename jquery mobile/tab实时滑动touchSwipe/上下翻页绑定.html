@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="../../newCss.css">
+<style>
+body,html{
+	overflow:hidden;	
+}
+
+</style>
+<script src="../../jquery-1.11.1.min.js"></script>
+<script src="jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("body").swipe( { swipeLeft:swipe1, swipeRight:swipe2, threshold: 35} );
+	function swipe1(event, direction, distance, duration) {
+		/*左滑动下一页*/
+		window.location="http://www.baidu.com"
+		console.log("下一页");
+	}
+	function swipe2(event, direction, distance, duration) {
+		/*右滑动上一页*/
+		window.location="http://www.qq.com"
+		console.log("上一页");
+	}
+});
+
+</script>
+</head>
+<body style="height:100%;background:#eee;font-size:32px;">
+手势翻页，
+jquery.touchSwipe.js
+
+<h3>左滑动 下一页</h3>
+<h3>右滑动 上一页</h3>
+</body>
+</html>

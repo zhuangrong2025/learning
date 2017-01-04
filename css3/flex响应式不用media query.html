@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+html{
+	font-size:20px	
+}
+img{
+	border:0;	
+}
+article:nth-of-type(2) {
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;/*换行*/
+}
+
+article p {
+  margin: 0.5rem;
+	/*我把它们设置成固定的 flex-basis （伸缩基准）值，因此它们可以根据页面宽度的增大减小，
+	动态改变每行的图片数量（看图3 —— 又一次无需 media queries），每一项内容都会保持水平居中，
+	空间小时会垂直一列*/ 
+  -webkit-flex: 1 10rem;  /*10rem 是flex-basis*/
+	background:#ccc;
+	padding:1em;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+	height:300px;
+	align-content:stretch;
+	justify-content: flex-srart;
+	align-items:flex-srart;
+}
+.flex-item{
+	-webkit-flex-grow:0;/*如果值为1，是铺满*/
+	-webkit-flex-shrink:0;
+	-webkit-flex-basis:10rem;  /*简写 -webkit-flex:1 0 15rem*/
+  background: tomato;
+  padding: 0 3em;
+  margin: 10px 10px 0;
+  line-height: 50px;
+  color: white;
+  font-size: 100%;
+  text-align: center;
+}
+.ls-exception-wrapper{
+	display: -webkit-flex;
+	display: -webkit-box; /*不能平均分配*/
+  -webkit-flex-flow: row wrap;
+	justify-content: flex-srart;
+	align-items:flex-srart;
+}
+.ls-exception-wrapper > div{
+	-webkit-flex-grow:0;/*如果值为1，是铺满*/
+	-webkit-flex-shrink:0;
+	-webkit-flex-basis:10rem;  /*简写 -webkit-flex:1 0 15rem*/
+	background:#ccc;
+	margin:0 10px;
+	width:200px;
+}
+</style>
+</head>
+<body >
+<h5>水平撑满</h5>
+ <section>
+  <nav></nav>
+  <article></article>
+  <article>
+  	<p>1阿斯顿发生的发</p>
+  	<p>2</p>
+  	<p>3</p>
+  	<p>4</p>
+  	<p>5</p>
+  	<p>6</p>
+  	<p>7</p>
+  	<p>8</p>
+  	<p>9</p>
+  </article>
+</section>
+<h5>水平不满，垂直撑满，水平居中；height=300</h5>
+<ul class="flex-container" style="background:#eee">
+  <li class="flex-item">1</li>
+  <li class="flex-item">2</li>
+  <li class="flex-item">3</li>
+  <li class="flex-item">4</li>
+  <li class="flex-item">5</li>
+  <li class="flex-item">6</li>
+  <li class="flex-item">7</li>
+  <li class="flex-item">8</li>
+  <li class="flex-item">9</li>
+  <li class="flex-item">10</li>
+</ul>
+<div class="" style="height:50px"></div>
+<div class="ls-exception-wrapper">
+  <div class="ls-exception-box">
+    <div class="ls-exp-title">营业部服务器营业部服务器</div>
+  </div>
+  <div class="ls-exception-box">
+    <div class="ls-exp-title">器营业部服务器营业部服务器营业部服务器营业部服务器营业部服务器营业部服务器</div>
+  </div>
+  <div class="ls-exception-box">
+    <div class="ls-exp-title">器营业部服务器营业部服务器营业部服务器营业部服务器营业部服务器营业部服务器</div>
+  </div>
+  <div class="ls-exception-box">
+    <div class="ls-exp-title">器营业部服务器营业部服务器营业部服务器营业部服务器营业部服务器营业部服务器</div>
+  </div>
+  <div class="ls-exception-box">
+    <div class="ls-exp-title">器营业部服务器营业部服务器营业部服务器营业部服务器营业部服务器营业部服务器</div>
+  </div>
+</div>
+直接用 li style="float:left"也是一个顺延的，做法
+
+<a href="#" id="pagePrev">上一页</a>
+<a href="#" id="pageNext">下一页</a>
+</body>
+
+</html>

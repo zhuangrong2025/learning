@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.box{
+	width:96px;
+	height:96px;
+	-webkit-transition:background 1s;
+	-webkit-box-reflect: below -16px -webkit-gradient(
+		linear, left top, left bottom,
+		from(transparent),
+		color-stop(91%, rgba(255, 255, 255, .1)),
+		color-stop(91.01%, transparent),
+		to(transparent)
+	);
+}
+
+.box:hover{
+	-webkit-animation: bounce .3s 6 alternate ease-out;
+}
+
+@-webkit-keyframes bounce{
+		0%{-webkit-transform:translateY(0)}
+	100%{-webkit-transform:translateY(-20px)}
+}
+.box2{
+	margin-top:100px;
+	width:100px;
+	height:30px;
+	background:#eee;
+	-webkit-transition:width 1s;
+}
+.box2:hover{
+	-webkit-animation: widthchange 1s linear;
+}
+@-webkit-keyframes widthchange{
+		 0%{width:50px}
+		30%{width:350px}
+		60%{width:150px}
+		80%{width:200px}
+ 	 100%{width:50px;}
+}
+
+</style>
+</head>
+<body style="padding:100px;background:#212121">
+	<div class="box">
+  		<img src="icon-idisk.png">
+  </div>
+  <div class="box2"></div>
+</body>
+</html>

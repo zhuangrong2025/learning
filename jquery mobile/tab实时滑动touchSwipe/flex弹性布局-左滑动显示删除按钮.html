@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="../../newCss.css">
+<style>
+body{
+}
+.container{
+	overflow:hidden;
+	width: 100%;
+	height: 100%;
+	background:#eee;
+}
+.wraper{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkittransform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+.wraper div{
+	width:100%;
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	padding:35px 0;
+}
+.wraper div.t1{
+	width:100%;
+	-webkit-flex-shrink: 0;
+	flex-shrink: 0;
+	background:#eee;
+}
+.wraper div.t2{
+	width:80px; /*超出20%，可用于删除按钮宽度*/
+	-webkit-flex-shrink: 0;
+	flex-shrink: 0;
+	background:#f00;
+	color:#fff;
+}
+</style>
+<script src="../../jquery-1.11.1.min.js"></script>
+<script src="jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+var swipeOptions = {
+		triggerOnTouchEnd: true,
+		swipeStatus: swipeDel,
+		allowPageScroll: "vertical",
+		threshold: 25
+};
+var boxWrap;
+var boxWidth;
+var curr=0;
+
+$(function(){
+		boxWrap= $(".wraper");
+		boxWrap.swipe(swipeOptions);
+});
+function swipeDel(event, phase, direction, distance) {
+		if (phase == "move" && (direction == "left" || direction == "right")) {
+				var duration = 0;
+				if (direction == "left") {
+							swipeBox(distance, duration);
+				} else if (direction == "right") {
+						if(curr==1){
+								curr=0;
+								swipeBox(80, duration);
+						}
+				}
+		} else if (phase == "cancel") {
+			 		swipeBox(80*curr, 300)	//滑动距离小于threshold时执行
+			 
+		} else if (phase == "end") {
+				if (direction == "right") {
+								swipeBox(0, 300)	
+				} else if (direction == "left") {
+							swipeBox(80, 300);
+							curr =1;
+				}
+		}
+}
+function swipeBox(distance, duration) {
+	var moveDis=Math.abs(distance).toString();
+	//移动的速率，可以平滑滑动
+	boxWrap.css("transition-duration", (duration / 1000).toFixed(1) + "s"); 
+	var value = (distance < 0 ? "" : "-") + moveDis;
+	if(curr==0){
+		boxWrap.css("transform", "translate3d(" + value + "px,0,0)");
+	}
+	if(moveDis > 80){
+			boxWrap.css("transform", "translate3d(-80px,0,0)");
+	}
+	
+	
+}
+
+</script>
+</head>
+<body >
+<div class="container">
+	<div class="wraper">
+    <div class="t1">向左滑动删除</div>
+    <div class="t2">删除</div>
+  </div>
+</div>
+</body>
+</html>

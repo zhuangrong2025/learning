@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<script>
+$(function(){
+	 
+	 var startLoading = setInterval(loading, 500);
+	 function loading(){
+			 $(".logo-gray").animate({height: '-=50px'}, 'fast', function(){
+						if($(".logo-gray").height() == 0){
+								$(".logo-gray").height("220")
+							}
+			 });
+		}
+		
+		//结束动画
+		$(".loading-wraper").on("click",function(){
+			   loadingOver()
+		})
+		
+		//页面加载完成后调用此函数，结束动画
+		function loadingOver(){
+				 $(".loading-wraper").hide();	
+				 clearInterval(startLoading);
+		}
+		
+})
+</script>
+<style>
+.loading-wraper{
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	display: -webkit-box;
+	-webkit-box-pack: center; 
+	-webkit-box-align: center;
+	background:#eee;
+}
+.logo-gray,
+.logo-color{
+  width:270px;
+	height:220px;
+	background-repeat:no-repeat;
+	background-position:left top;
+	background-size:100%;
+}
+.logo-color{
+	position:relative;
+	background-image:url(logo02.png);
+}
+.logo-gray{
+	position:absolute;
+	top:0;
+	left:0;
+	background-image:url(logo01.png);
+	height:220px;
+}
+</style>
+</head>
+<body>
+<div class="loading-wraper">
+	<div class="logo-color">
+  	<div class="logo-gray"></div>
+  </div>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+body{width:100%;}
+*{padding:0; margin:0;font-size:12px;}
+body{padding:10px;}
+.box-out{
+  display: block;
+	width:100px;
+}
+.box{
+  background-color: #fff;
+  color: #333;
+  border-radius: 3px;
+  font-size: 18px;
+	border:10px solid #000;
+	width:100%; 
+	text-decoration:none;
+	height:100px;
+	min-width:100%; /*如果有border着，width会多出2个px*/
+	-webkit-box-sizing: border-box !important;
+		box-sizing: border-box !important;
+}
+/*表格*/
+.xy-table-panel {
+	background-color: #fff;
+	overflow-x: hidden;
+	overflow-y: hidden
+}
+.xy-table-panel div {
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.xy-table-panel .black-seperate-line-icon {
+	border-right: 1px solid #ccc;
+	display: inline-block;
+	height: 12px;
+	margin-left: 5px;
+	margin-right: 5px;
+	vertical-align: middle
+}
+.xy-table-panel .xy-table-box .text{
+	vertical-align: middle
+}
+
+.xy-table-panel span.text-overflow,.xy-table-panel p.text-overflow {
+	display: inline-block;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+	white-space: nowrap
+}
+
+.xy-table-panel p.text-overflow {
+	display: block;
+	margin-bottom: 0
+}
+
+.xy-table-fixed-body i ~ .text-overflow {
+	max-width: 78%
+}
+
+.xy-table-fixed-body .text-overflow.m-width {
+	max-width: 78%
+}
+
+.xy-table-panel .text-overflow.restart {
+	color: #aaa
+}
+
+.xy-table-panel .text-overflow.succeed {
+	color: #06c290
+}
+
+.xy-table-panel .text-overflow.error {
+	color: #e1504a
+}
+
+.xy-table-panel .text-overflow.warning {
+	color: #ed711f
+}
+
+.xy-table-panel .xy-table-box .gray-text {
+	color: #73777b
+}
+
+.xy-table-panel .xy-table-box {
+	border-collapse: collapse;
+	border-spacing: 0;
+	table-layout: fixed;
+	width: 100%;
+	position: relative
+}
+
+.xy-table-panel .xy-table-fixed-head {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 30px;
+	margin-right: 0;
+	width: 100%;
+	background-color: #F3F9FC;
+	border-bottom: 1px solid #D7DBE3;
+	border-top: 1px solid #D7DBE3;
+}
+
+.xy-table-panel .xy-table-fixed-head tr {
+	background-color: #F3F9FC;
+}
+
+.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn {
+	cursor: pointer;
+	display: block;
+	position: relative
+}
+
+.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn span {
+	max-width: 88%
+}
+
+.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn:hover {
+	color: #107bcb
+}
+.sort-icon {
+	width: 5px;
+	height: 11px;
+	background-image: url(assets/images/main.png);
+	background-position: 0 -88px
+}
+.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn:hover .sort-icon {
+	background-image: url(assets/images/main.png);
+	background-position: 0 -101px
+}
+.down-sort-icon {
+	width: 8px;
+	height: 11px;
+	background-image: url(assets/images/main.png);
+	background-position: -7px -88px
+}
+.up-sort-icon {
+	width: 8px;
+	height: 11px;
+	background-image: url(assets/images/main.png);
+	background-position: -7px -101px
+}
+.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn i.down-sort-icon,.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn i.up-sort-icon {
+	display: none
+}
+
+.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn.current i.down-sort-icon,.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn.current i.up-sort-icon,.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn i.sort-icon,.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn i.filtrate-icon {
+	display: inline-block;
+	position: absolute;
+	top: 11px;
+	
+}
+
+.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn.current span {
+		font-weight:bold;
+}
+
+.xy-table-panel .xy-table-fixed-head .xy-th-sort-btn span {
+	vertical-align: middle;
+	margin-right: 5px
+}
+
+.xy-table-panel .xy-table-fixed-head .resize-line-icon {
+	border-right: 1px solid #D7DBE3;
+	position: absolute;
+	right: 0;
+	height: 20px;
+	top: 5px;
+	cursor: e-resize;
+	padding: 0 10px
+}
+.xy-table-panel .xy-table-fixed-head .resize-line-icon[data-role=none] {
+	cursor: default;
+}
+
+.xy-table-panel .xy-table-fixed-body {
+	overflow-y: auto;
+	border-bottom: 1px solid #D7DBE3
+}
+
+.xy-table-panel .xy-table-box tr {
+	outline: 0 none
+}
+
+.xy-table-panel .xy-table-box th > div,.xy-table-panel .xy-table-box td > div {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+	box-sizing: border-box
+}
+
+.xy-table-panel .xy-table-box th > div {
+	height: 30px;
+	position: relative
+}
+
+.xy-table-panel .tc-table .tc-icon-bubble {
+	padding-left: 0;
+	padding-right: 0
+}
+
+.xy-table-panel .xy-table-box th,.xy-table-panel .xy-table-box td {
+	text-align: left;
+	vertical-align: middle;
+	padding: 0;
+	font-size: 0
+}
+
+.xy-table-panel .xy-table-box th {
+	position: relative;
+	font-weight:normal;
+	color:#333;
+}
+
+.xy-table-panel .xy-table-box td {
+	border-bottom: 1px solid #e5ebee;
+	color: #454a51;
+	font-size: 0;
+	line-height: 19px;
+	padding-bottom: 6px;
+	padding-top: 6px;
+	text-align: left;
+	vertical-align: middle;
+	height: 42px
+}
+
+.xy-table-rowhover tr:hover,.xy-table-rowhover .tr-hover {
+	background: none repeat scroll 0 0 #F5F8FF
+}
+
+.xy-table-rowhover tr .hover-icon {
+	display: none
+}
+
+.xy-table-rowhover tr:hover .hover-icon {
+	display: inline-block
+}
+
+.xy-table-rowhover tr.current,.xy-table-rowhover tr:focus {
+	background: none repeat scroll 0 0 #F5F8FF
+}
+
+.xy-table-rowhover tr.disable {
+	background: none repeat scroll 0 0 #fff
+}
+
+.xy-table-rowhover tr.disable td,.xy-table-rowhover tr.disable td a {
+	color: #aaa;
+	cursor: default
+}
+.xy-table-panel td.xy-news-tips-box {
+	background: none repeat scroll 0 0 #fffcee;
+	line-height: 0;
+	text-align: center
+}
+
+.xy-table-panel .xy-filtrate-btn {
+	cursor: pointer;
+	position: relative
+}
+
+.xy-table-panel .xy-filtrate-btn .filtrate-icon {
+	position: absolute;
+	top: 5px
+}
+
+.xy-table-panel .xy-filtrate-btn span {
+	max-width: 88%;
+	margin-right: 5px;
+	vertical-align: middle
+}
+
+.xy-table-panel .xy-filtrate-btn:hover {
+	color: #107bcb
+}
+
+.xy-table-panel .xy-filtrate-btn:hover .filtrate-icon,.xy-table-panel .xy-filtrate-btn.current .filtrate-icon { /*过滤图标*/
+	background-position: -391px -18px
+}
+
+.xy-table-panel {
+	position: relative
+}
+
+.xy-table-panel .fixed-column {
+	position: absolute;
+	background: #fff;
+	z-index: 3
+}
+
+.fixed-column-shadow:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -3px;
+	height: 100%;
+	width: 3px;
+	background-image: linear-gradient(to left,rgba(100,100,100,.2),rgba(255,255,255,0));
+	background:url(assets/images/fixed-column-shadow.png) repeat-y left top\9;
+	width: 5px\9;
+	left: -5px\9;
+}
+
+/*-------翻页--------*/
+.xy-page {
+	font-size: 12px;
+	line-height: 28px;
+	height: 28px;
+	color: #333;
+	margin: 20px;
+	font-size: 0;
+	position: relative;
+	background: #fff
+}
+
+.xy-page:after {
+	display: table;
+	clear: both;
+	content: ''
+}
+
+.xy-page-state {
+	float: left;
+	color: #aaa
+}
+
+.xy-page-state strong {
+	font-weight: bold
+}
+
+.xy-page-operate {
+	float: right
+}
+
+.xy-page .xy-page-text {
+	font-size: 12px;
+	margin-right: 10px
+}
+
+.xy-page .indent {
+	padding: 0 10px;
+	display: inline-block;
+	color: #333;
+	font-size: 12px;
+	line-height: 25px;
+	border: 1px solid #000;
+	height: 25px
+}
+
+.xy-page .xy-page-first,.xy-page .xy-page-last,.xy-page .xy-page-pre,.xy-page .xy-page-next,.xy-page .xy-page-num {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	width: 100px;
+	height: 28px;
+	margin-left: -1px;
+	vertical-align: top;
+	border:1px solid transparent;
+	border-color:#D7DBE3;
+	outline: none;
+	background: url(assets/images/page/page.png) no-repeat 0 -25px;
+}
+
+.xy-page .xy-page-first {
+	background-position: 0 -100px;
+	margin-left: 10px
+}
+
+.xy-page .xy-page-last {
+	background-position: -30px -100px
+}
+
+.xy-page .xy-page-next {
+	background-position: -30px -25px
+}
+
+.xy-page .xy-page-first:hover,.xy-page .xy-page-first:focus {
+	z-index: 3;
+	border-color: #107BCB;
+	background-position: 0 -121px
+}
+
+.xy-page .xy-page-last:hover,.xy-page .xy-page-last:focus {
+	z-index: 3;
+	border-color: #107BCB;
+	background-position: -30px -121px
+}
+
+.xy-page .xy-page-pre:hover,.xy-page .xy-page-pre:focus {
+	z-index: 3;
+	border-color: #107BCB;
+	background-position: 0 -50px
+}
+
+.xy-page .xy-page-next:hover,.xy-page .xy-page-next:focus {
+	z-index: 3;
+	border-color: #107BCB;
+	background-position: -30px -50px
+}
+
+.xy-page .xy-page-first.disable,.xy-page .xy-page-first.disable:hover,.xy-page .xy-page-first.disable:focus {
+	z-index: 2;
+	cursor: default;
+	border-color: #D7DBE3;
+	background-color: #f3f3f3;
+	background-position: 0 -75px
+}
+
+.xy-page .xy-page-last.disable,.xy-page .xy-page-last.disable:hover,.xy-page .xy-page-last.disable:focus {
+	z-index: 2;
+	cursor: default;
+	border-color: #D7DBE3;
+	background-color: #f3f3f3;
+	background-position: -30px -75px;
+}
+.xy-page .xy-page-pre.disable,.xy-page .xy-page-pre.disable:hover,.xy-page .xy-page-pre.disable:focus {
+	z-index: 2;
+	cursor: default;
+	border-color: #D7DBE3;
+	background-color: #f3f3f3;
+	background-position: 0 0
+}
+
+.xy-page .xy-page-next.disable,.xy-page .xy-page-next.disable:hover,.xy-page .xy-page-next.disable:focus {
+	z-index: 2;
+	cursor: default;
+	border-color: #D7DBE3;
+	background-color: #f3f3f3;
+	background-position: -30px 0
+}
+
+.xy-page .xy-page-num {
+	font-size: 12px;
+	color: #333;
+	width: 100%;
+	padding: 0 10px;
+	background: none;
+	position: relative;
+/*	border-left: none;
+	border-right: none;
+*/	margin-left: 0;
+	text-decoration: initial;
+	background:#0ff;
+	-webkit-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}
+
+.xy-page .xy-page-select {
+	display: inline-block;
+	position: relative;
+	height: 28px;
+	vertical-align: top;
+	margin-left: -1px;
+}
+
+.xy-page .xy-page-select .xy-page-select-option {
+	display: none
+}
+
+.xy-page .xy-page-selected .xy-page-select-option {
+	display: block
+}
+
+.xy-page .xy-page-selected .indent {
+	border-color: #D7DBE3;
+	border-top-color: #fff
+}
+
+.xy-page .ico-arrow {
+	margin-left: 5px;
+	vertical-align: middle;
+	display: -moz-inline-stack;
+	display: inline-block;
+	background-repeat: no-repeat;
+	text-indent: -999em;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	border-width: 4px;
+	border-color: #555 transparent transparent;
+	border-style: solid dashed dashed
+}
+
+.xy-page .xy-page-selected .ico-arrow {
+	border-color: transparent transparent #404a48;
+	border-style: dashed dashed solid;
+	margin-top: -8px
+}
+.xy-page-last{
+  border-top-right-radius:3px;
+  border-bottom-right-radius:3px;
+}
+.xy-page-first{
+  border-top-left-radius:3px;
+  border-bottom-left-radius:3px;
+}
+.xy-page-operate a{
+	-webkit-transition:border-color  ease-in-out  .15s;
+	        transition:border-color  ease-in-out  .15s;
+}
+
+.xy-page-select-option {
+    font-size: 12px;
+    line-height: 26px;
+    position: absolute;
+    top: 32px;
+    left: 0;
+    display: block;
+		background:#ff0;
+		border:1px solid #000;
+		-webkit-box-sizing: border-box !important;
+		box-sizing: border-box !important;
+}
+.xy-page-select-option li {
+    display: block;
+    overflow: hidden;
+    padding: 0 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: #404a58;
+		-webkit-box-sizing: border-box !important;
+		box-sizing: border-box !important;
+}
+.xy-page-select-option li:hover {
+	background: #f2f2f2
+}
+
+.xy-page .xy-page-select .xy-page-select-option {
+    top: auto;
+    bottom: 26px;
+    left: 0;
+    /*min-width: 100%; *//*在ie8下不能加上这个，会多出2个像素*/ 
+		width:100%;
+    max-height: 150px;
+    overflow: auto;
+}
+.xy-page .xy-page-selected .xy-page-select-option {
+    border-bottom: none;
+}
+</style>
+</head>
+<body>
+<h3>ie8下box-sizing:border-box在max-width下无效,在照样会多出2个边框的像素</h3>
+<div class="box-out">
+	<div class="box" style="background-color:#0ff"></div>
+  <div class="box" style="background-color:#0ff;margin-top:1px; border:none;"></div>
+</div>  
+  <div class="xy-page" style="background:#fff">
+    <div class="xy-page-select xy-page-selected"  style="width:;">        
+      <a class="xy-page-num" href="javascript:;">asdfsadf2</a>        
+      <ul class="xy-page-select-option ">            
+      撒旦      
+      </ul>   
+    </div>
+  </div>
+  <div class="xy-page" style="background:#fff;margin-top:">
+    <div class="xy-page-select xy-page-selected" data-page-select="" style="width:100px">        
+      <a class="xy-page-num" href="javascript:;" style="border:none">12</a>        
+      <ul class="xy-page-select-option ">            
+       sdfasdf     
+      </ul>   
+    </div>
+  </div>
+</body>
+</html>

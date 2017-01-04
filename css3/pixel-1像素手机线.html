@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+*{
+		-webkit-box-sizing: border-box;
+			 -moz-box-sizing: border-box;
+						box-sizing: border-box;
+}
+.rectangle{
+		width:230px;
+		height:230px;
+		background:url(rect1.png) no-repeat left top,
+		url(rect2.png) no-repeat right top,
+		url(rect3.png) no-repeat left bottom,
+		url(rect4.png) no-repeat left top;
+		background-size:contain;
+}
+.list{
+		background:url(rect1.png) no-repeat left top,
+		url(rect2.png) no-repeat right top,
+		url(rect3.png) no-repeat left bottom,
+		url(rect4.png) no-repeat left top;
+		background-size:contain;
+}
+
+.list li{
+	padding:5px 0 5px 10px;
+		
+}
+.pixelRect{
+		background:url(rect1.png) no-repeat left top,
+							 url(rect2.png) no-repeat right top,
+							 url(rect3.png) no-repeat left bottom,
+							 url(rect4.png) no-repeat left top;
+		background-size:contain;
+	
+}
+.pixel,.pixel li{
+		background:url(rect3.png) no-repeat left bottom;
+		background-size:contain;
+}
+.info{
+	height:100px;
+	padding:10px;	
+}
+</style>
+</head>
+<body style="padding:20px;">
+<div class="rectangle">
+	
+</div>
+<h1>手机端1px高清边框</h1>
+<p>&nbsp;</p>
+  <ul class=" pixel">
+  	<li>列表1</li>
+  	<li>列表2</li>
+  	<li>列表3</li>
+  	<li>列表34</li>
+  	<li>列表5</li>
+  </ul>
+  
+  <p>&nbsp;</p>
+  通用边框
+  <div class="info pixelRect">田田田</div>
+
+</body>
+
+</html>

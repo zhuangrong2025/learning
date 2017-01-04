@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<title></title>
+<style>
+</style>
+<script type=text/javascript>
+$(function(){
+		//事件委托 jquery1.7 用on代替delegate-- $( selector ).on( events, [children-selector], data, handler );
+		$(".box").on("click",".on",function(){
+				alert("on")
+		})
+		
+		//接触绑定
+		$(".off").click(function(){
+				$(".box").off("click");
+		})
+		
+		//多个事件绑定同一个函数
+		$("#exp1 span").on("mouseover click",function(){
+				alert("1")
+		})
+		
+		//多个事件绑定不同函数
+		$("#exp2 p").on({
+				click:function(){
+					$(this).css("color","red")
+				},
+				mouseover:function(){
+					$(this).css("color","blue")	
+				},
+				mouseout:function(){
+					$(this).css("color","gray")
+				}
+			})
+		
+		//自定义绑定事件
+		$("#exp3 p").on("myOwnEvent",function(){
+			alert("按钮后的<p>已自定义了一个事件,事件名为myOwnEvent")
+		})
+		$("#exp3 button").click(function(){
+				$("#exp3 p").trigger("myOwnEvent")  //触发绑定事件
+		})
+		
+		//传递数据到函数
+		function handleName(event){
+				alert(event.data.msg)
+		}
+		$("#exp5 p").on("click",{msg:"You just clicked me!"},handleName)
+})
+</script>
+<style>
+p{right:clear}
+.box{
+  width:300px;
+	height:300px;
+	background:#eee;
+}
+</style>
+</head>
+<body style="padding:100px"> 
+<h3>一、事件代理绑定到子元素</h3>
+<div class="box">
+  <button class="on">代理绑定on</button>
+</div> 
+<button class="off">解绑off</button>
+
+<h3>二、鼠标滑过滑出都绑定一个事件</h3>
+<div id="exp1">
+	<span>鼠标滑过、点击弹出</span>
+</div>
+<p></p><p></p>
+
+<h3>三、多个事件绑定不同函数</h3>
+<div id="exp2">
+	<p>用鼠标滑进、滑出、点击、</p>
+</div>
+<p></p><p></p>
+
+<h3>四、多个事件绑定不同函数</h3>
+<div id="exp3">
+	<button>点击按钮触发一个自定义事件</button>
+	<p>这里文字没有click事件，有上面的按钮触发</p>
+</div>
+<p></p><p></p>
+
+<h3>五、传递数据到函数</h3>
+<div id="exp5">
+	<p>点击，传递数据到函数 $(element).on(event, obj,<b>data</b>,handleName)</p>
+  <p>
+  	function handleName(event){
+				alert(event.data.msg)
+		}
+  </p>
+</div>
+<p></p><p></p>
+
+
+</body>
+</html>
+
+
+

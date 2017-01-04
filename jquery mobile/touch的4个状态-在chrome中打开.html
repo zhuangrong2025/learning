@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.spirit {              /* 方块的class名称*/
+	 position: absolute;
+	 width: 150px;
+	 height: 150px;
+	 background-color: red;
+}
+</style>
+<script src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	/*document.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    var touch = e.touches[0];
+    console.log(touch.pageX + " - " + touch.pageY);
+	}, false);*/
+	
+// define global variable
+ 
+var spirit, startX, startY;
+    // touch start listener
+ 
+function touchStart(event) {
+         event.preventDefault();
+         if (spirit ||! event.touches.length) return;
+         var touch = event.touches[0];
+         startX = touch.pageX;
+         startY = touch.pageY;
+         spirit = document.createElement("div");
+         spirit.className = "spirit";
+         spirit.style.left = startX;
+         spirit.style.top = startY;
+         document.getElementById("canvas").appendChild(spirit);
+}
+ 
+// add touch start listener
+document.addEventListener("touchstart", touchStart, false);	
+
+
+function touchMove(event) {
+         event.preventDefault();
+         if (!spirit || !event.touches.length) return;
+         var touch = event.touches[0],
+              x = touch.pageX - startX,
+              y = touch.pageY - startY;
+         spirit.style.webkitTransform = 'translate(' + x + 'px, ' + y + 'px)';     
+}
+document.addEventListener("touchmove", touchMove, false);
+
+
+function touchEnd(event) {
+         if(!spirit) return;
+         document.getElementById("canvas").removeChild(spirit);
+         spirit = null;
+}
+ 
+document.addEventListener("touchend", touchEnd, false);
+</script>
+</head>
+
+<body style="height: 100%;margin:0;padding:0">
+ 
+<div id="canvas"  style="position: relative;width:100%;height: 100%;">111</div>
+ 
+</body>
+</html>

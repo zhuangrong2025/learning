@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+#erjidiv{
+	background:#f00;
+	width:100px;
+	height:100px;
+	text-align:center;
+}
+.fangda {
+	-webkit-animation-name: fangda;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-play-state:paused; /*默认先暂停*/
+}
+@-webkit-keyframes fangda {
+  0% {-webkit-transform:scale(1,1)}
+ 50% {-webkit-transform:scale(1.2,1.2); }
+100% {-webkit-transform:scale(1,1); }
+}
+
+</style> 
+<script type="text/javascript">
+$(function(){
+		/*启动*/
+    $("#erjidiv").on("click",function(){
+			$("#erjidiv").css("-webkit-animation-play-state","running");
+		})
+		
+		/*暂停*/
+    $("#pause").on("click",function(){
+			$("#erjidiv").css("-webkit-animation-play-state","paused");
+		})
+});
+</script>
+</head>
+<body>
+<div id="erjidiv" class="fangda">点我动画</div><button id="pause">点我暂停动画</button>
+</body>
+</html>

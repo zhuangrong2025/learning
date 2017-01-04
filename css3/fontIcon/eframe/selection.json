@@ -1,0 +1,99 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M585.143 402.286q0 14.857-10.857 25.714l-256 256q-10.857 10.857-25.714 10.857t-25.714-10.857l-256-256q-10.857-10.857-10.857-25.714t10.857-25.714 25.714-10.857h512q14.857 0 25.714 10.857t10.857 25.714z"
+        ],
+        "width": 585.1440315246582,
+        "attrs": [],
+        "isMulticolor": false,
+        "tags": [
+          "caret-down"
+        ],
+        "defaultCode": 61655,
+        "grid": 14
+      },
+      "attrs": [],
+      "properties": {
+        "id": 190,
+        "order": 10,
+        "name": "caret-down",
+        "prevSize": 28,
+        "code": 63245
+      },
+      "setIdx": 1,
+      "setId": 1,
+      "iconIdx": 190
+    },
+    {
+      "icon": {
+        "paths": [
+          "M585.143 694.857q0 14.857-10.857 25.714t-25.714 10.857h-512q-14.857 0-25.714-10.857t-10.857-25.714 10.857-25.714l256-256q10.857-10.857 25.714-10.857t25.714 10.857l256 256q10.857 10.857 10.857 25.714z"
+        ],
+        "width": 585.1440086364746,
+        "attrs": [],
+        "isMulticolor": false,
+        "tags": [
+          "caret-up"
+        ],
+        "defaultCode": 61656,
+        "grid": 14
+      },
+      "attrs": [],
+      "properties": {
+        "id": 191,
+        "order": 11,
+        "name": "caret-up",
+        "prevSize": 28,
+        "code": 61656
+      },
+      "setIdx": 1,
+      "setId": 1,
+      "iconIdx": 191
+    }
+  ],
+  "height": 1024,
+  "metadata": {
+    "name": "eframe"
+  },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": false,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "eframe",
+        "majorVersion": 1,
+        "minorVersion": 0
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false,
+      "showSelector": true,
+      "selector": "i",
+      "showMetrics": true,
+      "showMetadata": true,
+      "showVersion": true,
+      "resetPoint": 59648
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 4473924,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 100,
+    "showCodes": true,
+    "gridSize": 16,
+    "showLiga": false
+  }
+}

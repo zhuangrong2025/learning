@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+html {font-size: 62.5%;/*10 ÷ 16 × 100% = 62.5% 所以浏览器默认为16px*/; margin:0; padding:0;}
+body {font-size: 2rem;/*1.4 × 10px = 14px */}
+.list-inline li{display:inline-block; margin:0 5px; background:#eee; padding:10px; width:30%; font-size:1.4rem}
+
+@media screen and (min-width:480px){
+	html {font-size: 100%;/*10 ÷ 16 × 100% = 62.5%*/}
+}
+.suning li{
+	float:left;
+	width:20%;
+	font-size:1.1rem;
+	background:#eee;
+	text-align:center;	
+	padding:0 .5rem;
+	margin-bottom:.3rem;
+}
+.suning li img{
+	width:3.2rem;
+	height:3.2rem;
+	max-width: 100%;
+	display:block;
+	margin:0 auto;
+	margin-bottom:.3rem;
+}
+
+</style>
+</head>
+<body >
+  <p>&nbsp;&nbsp;&nbsp;字体</p>
+  <span style="font-size:2rem">rem字体</span>
+  <ul class="list-inline">
+    <li>字体</li>
+    <li>响应</li>
+  </ul>
+  
+  <div style="margin:10px 0">实例</div>
+ <div class="suning">
+  <ul>
+    <li><img src="suning.jpg">分类</li>
+    <li><img src="suning.jpg">分类</li>
+    <li><img src="suning.jpg">分类</li>
+    <li><img src="suning.jpg">分类</li>
+    <li><img src="suning.jpg">分类</li>
+  </ul>
+ </div> 
+</body>
+</html>

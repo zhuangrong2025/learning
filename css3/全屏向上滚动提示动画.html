@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+body{ height:100%;}
+.p1{
+	height:100%;
+	background:#ccc;	
+}
+.scroll-tip{
+	position:absolute;
+	left:50%;
+	bottom:20px;
+	margin-left:-22px;
+	width:44px;
+	height:44px;
+	background:rgba(0,0,0,.1);
+	border-radius:50%;
+	text-align:center;	
+}
+.arr{
+	width:22px;
+	height:13px;
+	background:url(arrow.png) no-repeat;
+	background-size:100%;
+	display:block;
+	opacity:0.5;	
+	margin:0 auto;
+}
+.tips-ani{
+	-webkit-animation:tips-ani 1s ease-out infinite;
+}
+@-webkit-keyframes tips-ani {
+		0% {-webkit-transform:translateY(20px); opacity: 0.5;}
+		100% { -webkit-transform:translateY(-10px); opacity: 0;}
+}  
+
+</style> 
+</head>
+<body>
+	<aside class="scroll-tip">
+  	<span class="arr tips-ani"></span>
+  </aside>
+	<section id="home" class="p1">
+  	swiper
+  </section>
+</body>
+</html>

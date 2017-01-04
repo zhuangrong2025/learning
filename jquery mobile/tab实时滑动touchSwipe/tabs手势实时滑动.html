@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>test</title>
+<link rel="stylesheet" href="../../newCss.css">
+<script src="../../jquery-2.1.4.min.js"></script>
+<script src="jquery.touchSwipe.min.js"></script>
+<script>
+var IMG_WIDTH=0;
+var currentImg = 0;
+var maxImages = 4;
+var speed = 300;
+var imgs;
+
+$(function(){
+		//ajax加载开始动画
+	 $("#art1").ajaxStart(function(){
+        $(this).html("加载中...");
+   });
+
+	/*滑屏手势*/
+	IMG_WIDTH = $(window).width();
+	imgs = $(".tabs-box");
+	$(".tabs-box").swipe( { swipeStatus:swipe2, allowPageScroll:"vertical",threshold: 50} );
+	
+	function swipe2(event, phase, direction, distance) {
+		if (phase == "move" && (direction == "left" || direction == "right")) {
+				var duration = 0;
+	
+				if (direction == "left") {
+						scrollImages((IMG_WIDTH * currentImg) + distance, duration);
+				} else if (direction == "right") {
+						scrollImages((IMG_WIDTH * currentImg) - distance, duration);
+				}
+	
+		} else if (phase == "cancel") {
+				scrollImages(IMG_WIDTH * currentImg, speed);
+		} else if (phase == "end") {
+				if (direction == "right") {
+						previousImage();
+				} else if (direction == "left") {
+						nextImage();
+				}
+		}
+	}
+	
+	function previousImage() {
+		currentImg = Math.max(currentImg - 1, 0);
+		scrollImages(IMG_WIDTH * currentImg, speed);
+		changeTab(currentImg);
+	}
+	
+	function nextImage() {
+		currentImg = Math.min(currentImg + 1, maxImages - 1);
+		scrollImages(IMG_WIDTH * currentImg, speed);
+		changeTab(currentImg);
+	}
+	
+	function scrollImages(distance, duration) {
+		//移动的速率，可以平滑滑动
+		imgs.css("transition-duration", (duration / 1000).toFixed(1) + "s"); 
+		$(".nav-line").css("transition-duration", (duration / 1000).toFixed(1) + "s"); 
+		
+	
+		var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
+		imgs.css("transform", "translate3d(" + value + "px,0,0)");
+		$(".nav-line").css("transform", "translate3d(" + (-value/4) + "px,0,0)");
+	}
+	
+	/*点击a*/
+	$("nav a").each(function(index){
+		$(this).on("click",function(){
+			$(this).addClass("active").siblings().removeClass("active");
+			currentImg=index;
+			scrollImages(IMG_WIDTH * currentImg, speed);
+			changeTab(index);
+			var dis=index*100;
+			$(".nav-line").css("transform", "translate3d("+ dis +"%,0,0)");
+		})
+	})
+
+	/*切换tab*/
+	function changeTab(num){
+			if(num==1){
+				//ajax加载-国内
+				$.ajax({  
+					type:"get",  
+					url:"art1.html",  
+					dataType:"html",  
+					success:function(data){  
+								$('#art1').html(data);
+						 } 
+					});	
+			}
+			if(num==2){
+				//ajax加载-地方
+				$.ajax({  
+					type:"get",  
+					url:"art2.html",  
+					dataType:"html",  
+					success:function(data){  
+								$('#art2').html(data);
+						 } 
+					});	
+			}
+			if(num==3){
+				//ajax加载-政策
+				$.ajax({  
+					type:"get",  
+					url:"art3.html",  
+					dataType:"html",  
+					success:function(data){  
+								$('#art3').html(data);
+						 } 
+					});	
+			}
+			//切换tabs
+			$("#nav-tabs a").eq(num).addClass("active").siblings().removeClass("active");
+			$(document).scrollTop(0);
+		}
+
+})
+ 
+</script>
+<style>
+body,html{
+	overflow-x:hidden; /*body,html都要加*/
+}
+.tabs-content{
+	 width:100%;
+	 height:100%;
+	 padding:40px 0 0;
+}
+.tabs-content .tabs-box{
+	width:100%;
+	height:100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.tabs-content .tabs-box > div{
+	width: 100%;
+	height:100%;
+	-webkit-flex-shrink: 0; /*铺满不平均分*/
+	flex-shrink: 0;
+	background:#fff;
+}
+/*新闻tabs*/
+nav{
+	position:fixed;
+	background:#eee;
+	top:0;
+	right:0;
+	left:0;
+	z-index:99999;
+}
+nav > div{
+  display: -webkit-box;
+  display: -webkit-flex;
+	display:flex;
+}
+nav a{
+	display:block;
+	-webkit-box-flex:1;
+  -webkit-flex:1;
+	flex:1;
+	height:100%;
+	text-align:center;
+	padding:8px 0;
+	-webkit-transition: color .3s;
+	transition:color .3s ;
+	text-decoration:none;
+	color:#000;
+}
+nav a.active{
+  color:#f60;
+	text-decoration:none;
+}
+.nav-line{
+  display:block;
+	height:2px;
+	width:25%;
+	-webkit-transform:translate3d(0,0,0);
+	transform:translate3d(0,0,0);
+	-webkit-transition: -webkit-transform .3s;
+	transition: transform .3s ;
+	background:#f60;
+}
+</style>
+</head>
+<body >
+
+<!--导航tabs-->
+<nav class="nav-tabs" id="nav-tabs">
+	<div>
+    <a href="#" class="active">文章0</a>
+    <a href="#">文章1</a>
+    <a href="#">文章2</a>
+    <a href="#">文章3</a>
+  </div>
+<span class="nav-line"></span>
+</nav>
+<!--//导航tabs-->
+<!--滑屏切换-->
+<div class="tabs-content">
+  <div class="tabs-box">
+    <div id="art0">
+    	<!--文章-->
+      <div style="padding:20px;">
+        <h3>1、什么是HTML语义化？</h3>
+    　　 <p>根据内容的结构化（内容语义化），选择合适的标签（代码语义化）便于开发者阅读和写出更优雅的代码的同时让浏览器的爬虫和机器很好地解析。</p>
+        <h3>2、为什么要语义化？</h3>
+        <p>为了在没有CSS的情况下，页面也能呈现出很好地内容结构、代码结构:为了裸奔时好看；
+        用户体验：例如title、alt用于解释名词或解释图片信息、label标签的活用；
+        有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；
+        方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；
+        便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</p>
+        <h3>1、什么是HTML语义化？</h3>
+    　　 <p>根据内容的结构化（内容语义化），选择合适的标签（代码语义化）便于开发者阅读和写出更优雅的代码的同时让浏览器的爬虫和机器很好地解析。</p>
+        <h3>2、为什么要语义化？</h3>
+        <p>为了在没有CSS的情况下，页面也能呈现出很好地内容结构、代码结构:为了裸奔时好看；
+        用户体验：例如title、alt用于解释名词或解释图片信息、label标签的活用；
+        有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；
+        方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；
+        便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</p>
+      </div>
+    </div>
+    <div id="art1">
+    	<!--文章2-->
+      <div style="margin:100px 0 0; text-align:center;">
+      	<img src="loading.gif">加载中...
+      </div>
+    </div>
+    <div id="art2">
+    	<!--文章3-->
+      <div style="margin:100px 0 0; text-align:center;">
+      	<img src="loading.gif">加载中...
+      </div>
+    </div>
+    <div id="art3">
+    	<!--文章4-->
+      <div style="margin:100px 0 0; text-align:center;">
+      	<img src="loading.gif">加载中...
+      </div>
+    </div>
+  </div>
+</div>
+<!--滑屏切换-->
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.nav {
+	width: 32px;
+	height: 32px;
+	background: url(img/nav.png) no-repeat center center;
+	background-size: 100%;
+	display: block;
+	text-indent: -999px;
+}
+.mask {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: #000;
+	opacity: 0.3;
+	z-index: 900;
+}
+#sideNav {
+	display: none;
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	width: 75px;
+	height: 225px;
+	margin-top: -112px;
+	z-index: 9999;
+	background:#fff;
+}
+</style>
+<script src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(document).on("click",function(e){
+			var id=$(e.target).attr("id");
+			if(id==="nav"){
+				$("#mask").show();
+				$("#sideNav").show();
+			}
+			if(id==="mask"){//点击遮罩层隐藏遮罩层
+				$("#mask").hide();
+				$("#sideNav").hide();
+			}
+		})
+		$("#close").on("click",function(){
+				$("#mask").hide();
+				$("#sideNav").hide();
+		})
+});
+</script>
+</head>
+<body>
+<div class="mask" id="mask"></div>
+<span class="nav" id="nav">导航</span><label>点击图标弹出遮罩层</label>
+<div class="" id="sideNav">
+	<a href="#">首页</a>
+  <div style="cursor:pointer;position:absolute; bottom:10px;">
+    <span id="close">关闭</span>
+  </div>
+</div>
+</body>
+</html>

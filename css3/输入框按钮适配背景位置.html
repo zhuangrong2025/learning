@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+/*公用*/
+body, html {
+	color: #000;
+	font-family: tahoma, 'Microsoft yahei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased
+}
+html {
+	font-size:12px;
+}
+body {
+  font-size: 1rem;
+  background-color: #F3F3F3;
+}
+body,div,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td {
+    margin: 0;
+    padding: 0;
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box
+}
+li {
+	list-style: none;
+	-webkit-tap-highlight-color:transparent; 
+    -webkit-user-select:none; 
+
+}
+a {
+  color:#a6aab2;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-tap-highlight-color:transparent; 
+  -webkit-user-select:none; 
+}
+a:active,
+a:hover{
+  outline: 0;
+	text-decoration:none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+img {
+  max-width: 100% !important;
+	vertical-align: middle;
+	border: 0;
+}
+input,
+button,
+textarea{
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  -webkit-tap-highlight-color:transparent; 
+  -webkit-user-select:none; 
+  -webkit-appearance: none;
+  outline:0; 
+  background-repeat: no-repeat;
+}
+/*********公用*********/
+body,html{ height:100%;}
+.adapte-bg{
+	background-color:#f1f0f5;
+	background-image: url(adapte-bg.png);
+	background-repeat: no-repeat;
+	background-position:center top;
+	background-size:100%;  /*或者用contain才能保证input的位置和背景适配*/
+}
+.form-wrap{
+	background:#ff2;
+	text-align:center;
+	width:30%;
+	paddding-bottom:10%;
+	margin:0 auto;
+}
+.ipt2{
+  border:1px solid #0cf;
+	height:30px;
+	width:100%;
+}
+</style>
+</head>
+<body class="adapte-bg">
+<img src="adapte-blank.png">
+<div class="form-wrap">
+	<input type="text" class="ipt2">
+</div>
+</body>
+</html>

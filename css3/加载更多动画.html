@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+a.btn1{
+  display: block;
+  background-color: #fff;
+  color: #333;
+  padding: 10px 0;
+  margin: 10px;
+  border-radius: 3px;
+  font-size: 18px;
+	border:1px solid #ddd;
+	text-decoration:none;
+	/*居中*/
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	display: box;
+	box-orient: horizontal;
+	box-pack: center;
+	box-align: center;
+}
+a.btn1.active{
+	background:#eee;	
+}
+a.btn1.active i,a.btn1.active span{
+	display:block;
+	margin:0 2px;
+}
+a.btn1.active i{
+	width:16px;
+	height:16px;
+	-webkit-animation: anim4 .8s linear infinite;
+	background:url(load-sprite.png) no-repeat;
+	background-position:-3px -4px;
+	background-size:50px 50px;/*不能用100%*/
+}
+@-webkit-keyframes anim4 {
+    from { -webkit-transform:rotateZ(0deg); }
+    50% { -webkit-transform:rotateZ(180deg); }
+    to { -webkit-transform:rotateZ(360deg); }
+}
+
+a.btn2{
+  display: block;
+  background-color: #FE9900;
+  color: #fff;
+  padding: 10px 0;
+  margin: 10px;
+  border-radius: 3px;
+  font-size: 18px;
+	border:1px solid #ddd;
+	text-decoration:none;
+	/*居中*/
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	display: box;
+	box-orient: horizontal;
+	box-pack: center;
+	box-align: center;
+}
+a.btn2 i,a.btn2 span{
+	display:block;
+	margin:0 2px;
+}
+a.btn2 i{
+	width:18px;
+	height:18px;
+	background:url(loading.png) no-repeat;
+	background-size:contain;
+	-webkit-animation: anim4 .8s linear infinite;
+}
+a.btn2 i:hover{
+	animation-play-state: paused;
+}
+@-webkit-keyframes anim4 {
+    from { -webkit-transform:rotateZ(0deg); }
+    50% { -webkit-transform:rotateZ(180deg); }
+    to { -webkit-transform:rotateZ(360deg); }
+}
+</style>
+<script type="text/javascript">
+$(function(){
+	 $(".btn2").click(function(){
+		   $(this).html("<i></i><span>提交中...</span>");
+	 })
+});
+</script>
+
+</head>
+<body>
+	<a href="javascript:;" class="btn1 active"><i></i><span>加载更多</span></a>
+  
+	<a href="javascript:;" class="btn2"><span>提交</span></a>
+</body>
+</html>

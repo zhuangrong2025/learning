@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<title></title>
+<style>
+</style>
+<script type=text/javascript>
+var Calculate = (function(){
+	   
+			return {
+				//属性
+				val:80,
+				
+				//方法
+				sum:function(a,b){
+					var rnd = Math.random() * 200;
+					rnd = parseInt(rnd);
+					a += rnd;
+					b += 2 * rnd;
+					return a + b + this.val	
+				}
+			}
+				
+		})()
+		
+//用点语法调用
+console.log(Calculate.val)
+console.log(Calculate.sum(10,20))
+</script>
+</head>
+<body> 
+<div data-role="data方法">data-role</div> 
+</body>
+</html>
+
+
+

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<style>
+.container, .page, .wrap {
+    width: 300px;
+    height: 400px;
+}
+.container {
+    background: #efefef;
+    box-shadow: 0px 0px 10px black;
+    overflow: hidden;
+    position: relative;
+    margin: 5px auto;
+}
+.wrap {
+    width: 1200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.page {
+    float: left;
+    display: block;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+.page1 {
+    background: yellow;
+}
+.page2 {
+    background: green;
+}
+.page3 {
+    background: blue;
+}
+.page4 {
+    background: red;
+}
+</style>
+<script src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+
+	/*出处  http://jsfiddle.net/Dim13i/RjTTx/7/*/
+$(function(){
+	var mouseDown = false, right;
+var xi, xf, leftX = 0;
+var nPages = $(".page").size();
+var pageSize = $(".page").width();
+var threshold = pageSize/2;
+var currentPage = 0;
+
+$(".container").on("mousedown", function (e) {
+    mouseDown = true;
+    xi = e.pageX;
+});
+
+$(".container").on("mouseup", function (e) {
+    if (mouseDown) {
+        mouseDown = false;
+        xf = e.pageX;
+        leftX = parseInt($(".wrap").css("left").split("px")[0]);
+        if ((e.pageX - xi) < -threshold || (e.pageX - xi) > threshold) {
+            setFocusedPage();
+        } else {
+            restore();
+        }
+    }
+});
+
+$(".container").on("mouseleave", function (e) {
+    if (mouseDown) {
+        mouseDown = false;
+        xf = e.pageX;
+        leftX = parseInt($(".wrap").css("left").split("px")[0]);
+        if ((e.pageX - xi) < -threshold || (e.pageX - xi) > threshold) {
+            setFocusedPage();
+        } else {
+            restore();
+        }
+    }
+});
+
+$(".container").on("mousemove", function (e) {
+    if (mouseDown) {
+        $(".wrap").css({
+            "left": (leftX + (e.pageX - xi))
+        });
+        right = ((e.pageX - xi) < 0) ? true : false;
+    }
+});
+
+function restore() {
+    $(".wrap").stop().animate({
+        "left": -(currentPage * pageSize)
+    }, 200, function () {
+        leftX = parseInt($(".wrap").css("left").split("px")[0]);
+    });
+}
+
+function setFocusedPage() {
+    if (leftX >= (-threshold)) { // First Page
+        currentPage = 0;
+    } else if (leftX < (-threshold) && leftX >= (-(nPages + 1) * threshold)) { // Second to N-1 Page
+        (right) ? currentPage++ : currentPage--;
+    } else if (leftX < -((nPages + 1) * threshold)) { // Third Page
+        currentPage = nPages - 1;
+    }
+    $(".wrap").stop().animate({
+        "left": -(currentPage * pageSize)
+    }, 200, function () {
+        leftX = parseInt($(".wrap").css("left").split("px")[0]);
+    });
+}
+});	
+
+</script>
+</head>
+
+<body>
+<div class="container">
+  <div class="wrap">
+    <div class="page page1"></div>
+    <div class="page page2"></div>
+    <div class="page page3"></div>
+    <div class="page page4"></div>
+  </div>
+</div>
+</body>
+</html>

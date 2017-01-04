@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+.article-box{
+	position:absolute;
+	top:72px;
+	left:0;
+	right:0;
+	bottom:110px;
+}
+.article-box textarea{
+	background:#0ff;
+	width:100%;
+	text-align:center	
+}
+#text1::-webkit-input-placeholder::after {
+    display:block;
+    content:"Line 2\A Line 3";
+}
+#text2::-webkit-input-placeholder::before {
+    color:#666;
+    content:"Line 1\A Line 2\A Line 3\A";
+}
+</style>
+</head>
+<body>
+<div class="article-box">
+<textarea id="text1" placeholder="Line 1" rows="5"></textarea>
+<textarea id="text2" placeholder="."  rows="5"></textarea>
+</div>
+</body>
+</html>
+
+

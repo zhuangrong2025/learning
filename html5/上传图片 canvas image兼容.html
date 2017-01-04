@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script>
+<style>
+img{display:block}
+</style>
+</head>
+<body >
+<label>Image File:</label><br/>
+<input type="file" id="imageLoader" accept="image/*"  name="imageLoader"/>
+<canvas id="imageCanvas"></canvas>
+<!--读取选中的图片编码-->
+<img src="" id="imgcode">
+
+<!--<div id="j_thumb"></div>-->
+
+<script>
+var imageLoader = document.getElementById('imageLoader');
+    imageLoader.addEventListener('change', handleImage, false);
+		
+var canvas = document.getElementById('imageCanvas');
+var ctx = canvas.getContext('2d');
+
+function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            canvas.width = 160;
+            canvas.height = 240;
+            ctx.drawImage(img,0,0,160,240);
+						
+						var base64 = canvas.toDataURL('image/jpeg', 0.5);  /*src中的图片全部编码 data:image/png;base64,iVBORw0KGg...*/
+						$('#imgcode').attr("src",base64);
+						/*$('#j_thumb').val(base64.substr(22)); 取图片编码22位之后的代码iVBORw0KGg...> 上传到服务器 */
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);     
+}
+
+</script>
+</body>
+</html>
+
+

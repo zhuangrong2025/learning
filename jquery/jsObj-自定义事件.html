@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+.qrCode:before{
+	content:" ";
+	display:block;
+	position:absolute;
+	/*top:17.46875rem; */
+	top:18.86875rem;
+	left:5.90625rem;
+	width:4.21875rem;
+	height:1rem;
+	background-image: url(../images/qrCode-text03.png);
+	-webkit-animation:scoret 1s linear infinite;
+	animation: scoret 1s linear infinite;
+}
+
+</style>
+</head>
+<body>  
+<input type="button" id="button1" value="清除所有alert" />
+<input type="button" id="button2" value="清除第一个alert" /> 
+</body>
+</html>
+<script type=text/javascript>
+var elButton1 = document.getElementById("button1")
+
+//原型方式实现
+var Event2 = function(){
+		this._listeners = {}
+}
+Event2.prototype = {
+	constructor: this,
+	
+	addEvent: function(){
+		alert("obj");	
+	}	
+}
+
+var el = new Event2();
+el.addEvent()
+
+//字面量实现
+var Event ={
+		_listeners:{},
+		
+		//添加事件
+		addEvent: function(){
+			alert("add");	
+		},
+		
+		//添加触发
+		fireEvent: function(){
+			elButton1.style.display = "none";	
+		}
+	}
+	elButton1.onclick = Event.fireEvent;
+	
+</script>
+
+
+

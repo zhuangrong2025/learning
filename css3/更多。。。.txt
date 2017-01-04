@@ -1,0 +1,17 @@
+
+1、loadding图片旋转，png格式,
+扩展，点击按钮“加载更多”，弹出遮罩层“加载中。。”动画;
+
+2、app引导页的动画效果，如果qq浏览器刚安装好后引导页动画
+3、点击事件动画
+4、svg图标，字体图标
+5、bounce应用
+6、li：target
+7.仿百度云加速，打字效果，背景动画
+8、min-device-pixel-ratio:3，设备像素比为3时，高度，背景
+
+10、flex左右表单布局
+
+11、Safari下 a标签的active，样式无效--ok
+12、开关设置样式，ckeckbox标签，动画效果--ok
+13、字体样式图标  icomoon.eot

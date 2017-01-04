@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="../../newCss.css">
+<style>
+body,html{
+	overflow-x:hidden	
+}
+.tabs-content{
+	 width:100%;
+	 height:100%;
+	 background:#f00;
+}
+.tabs-content .tabs-box{
+	width:100%;
+	height:100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.tabs-content .tabs-box > div{
+	width: 100%;
+	font-size:18px;
+	text-align: center;
+	-webkit-flex-shrink: 0; /*铺满不平均分*/
+	flex-shrink: 0;
+}
+
+</style>
+<script src="../../jquery-1.11.1.min.js"></script>
+<script src="jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+var IMG_WIDTH=0;
+var currentImg = 0;
+var maxImages = 3;
+var speed = 300;
+var imgs;
+
+$(function() {			
+			IMG_WIDTH = $(window).width();
+			imgs = $(".tabs-box");
+			$(".tabs-box").swipe( { swipeStatus:swipe2, allowPageScroll:"vertical",threshold: 100} );
+			
+
+			function swipe2(event, phase, direction, distance) {
+				$("#info").text( phase +" you have swiped " + distance + "px in direction:" + direction );
+				if (phase == "move" && (direction == "left" || direction == "right")) {
+						var duration = 0;
+			
+						if (direction == "left") {
+								scrollImages((IMG_WIDTH * currentImg) + distance, duration);
+						} else if (direction == "right") {
+								scrollImages((IMG_WIDTH * currentImg) - distance, duration);
+						}
+			
+				} else if (phase == "cancel") {
+						scrollImages(IMG_WIDTH * currentImg, speed);
+				} else if (phase == "end") {
+						if (direction == "right") {
+								previousImage();
+						} else if (direction == "left") {
+								nextImage();
+						}
+				}
+			}
+			
+			function previousImage() {
+				currentImg = Math.max(currentImg - 1, 0);
+				scrollImages(IMG_WIDTH * currentImg, speed);
+			}
+			
+			function nextImage() {
+				currentImg = Math.min(currentImg + 1, maxImages - 1);
+				scrollImages(IMG_WIDTH * currentImg, speed);
+			}
+			
+			function scrollImages(distance, duration) {
+				//移动的速率，可以平滑滑动
+				imgs.css("transition-duration", (duration / 1000).toFixed(1) + "s"); 
+			
+				var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
+				imgs.css("transform", "translate3d(" + value + "px,0,0)");
+				console.log(IMG_WIDTH+","+value)
+			}
+
+});
+</script>
+</head>
+<body>
+	<div class="tabs-content">
+  	<div class="tabs-box">
+      <div style="background:#eee;">
+      	<span id="info" style="; background:#ff0">show</span>
+        <p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动11111</p>
+        <p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动</p><p>滚动22222</p>
+      </div>
+      <div style="background:#ccc;">
+      	<font style="font-size:50px;">page2</font>
+      
+      </div>
+      <div style="background:#ddd;">
+     	 <font style="font-size:50px;">page3</font>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

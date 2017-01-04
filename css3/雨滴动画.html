@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.8.3.min.js"></script>
+<style>
+/* SNOWY */
+.snowy {
+	-webkit-animation: snowy 5s ease-in-out infinite 1s;
+	        animation: snowy 5s ease-in-out infinite 1s;
+	background: #FFFFFF; 
+	border-radius: 50%;
+	box-shadow: 
+		#FFFFFF 65px -15px 0 -5px, 
+		#FFFFFF 25px -25px, 
+		#FFFFFF 30px 10px, 
+		#FFFFFF 60px 15px 0 -10px, 
+		#FFFFFF 85px 5px 0 -5px;
+	display: block;
+	height: 50px;
+	width: 50px;
+	margin-left: -60px;
+	position: absolute;
+	left: 1112px;
+	top: 70px;
+}
+.snowy:after {
+	-webkit-animation: snowy_shadow 5s ease-in-out infinite 1s;
+	        animation: snowy_shadow 5s ease-in-out infinite 1s;
+	background: #000000;
+	border-radius: 50%;
+	content: '';
+	height: 15px;
+	width: 120px;
+	opacity: 0.2;
+	position: absolute;
+	left: 8px;
+	bottom: -60px;
+	-webkit-transform: scale(.7);
+	    -ms-transform: scale(.7);
+	        transform: scale(.7);
+}
+.snowy:before {
+	-webkit-animation: snowy_snow 2s infinite linear;
+	        animation: snowy_snow 2s infinite linear;
+	content: '';
+	border-radius: 50%;
+	display: block;
+	height: 7px;
+	width: 7px;
+	opacity: 0.8;
+	-webkit-transform: scale(.9);
+	    -ms-transform: scale(.9);
+	        transform: scale(.9);
+}
+@-webkit-keyframes snowy {
+	50% { -webkit-transform: translateY(-20px); transform: translateY(-20px); }
+}
+@keyframes snowy {
+	50% { -webkit-transform: translateY(-20px); transform: translateY(-20px); }
+}
+@-webkit-keyframes snowy_shadow {
+	50% { -webkit-transform: translateY(20px) scale(1); transform: translateY(20px) scale(1); opacity: 0.05; }
+}
+@keyframes snowy_shadow {
+	50% { -webkit-transform: translateY(20px) scale(1); transform: translateY(20px) scale(1); opacity: 0.05; }
+}
+@-webkit-keyframes snowy_snow {
+	0% {  
+		box-shadow: 
+			rgba(238,238,238,0) 30px 30px, 
+			rgba(238,238,238,0) 40px 40px,  
+			#EEEEEE 50px 75px, 
+			#EEEEEE 55px 50px, 
+			#EEEEEE 70px 100px, 
+			#EEEEEE 80px 95px, 
+			#EEEEEE 110px 45px, 
+			#EEEEEE 90px 35px; 
+	}
+	25% {  
+	  	box-shadow: 
+			#EEEEEE 30px 45px,
+			#EEEEEE 40px 60px,
+			#EEEEEE 50px 90px,
+			#EEEEEE 55px 65px,
+			rgba(238,238,238,0) 70px 120px,
+			rgba(238,238,238,0) 80px 120px,
+			#EEEEEE 110px 70px,
+			#EEEEEE 90px 60px;
+	}
+	26% {  
+		box-shadow:
+			#EEEEEE 30px 45px,
+			#EEEEEE 40px 60px,
+			#EEEEEE 50px 90px,
+			#EEEEEE 55px 65px,
+			rgba(238,238,238,0) 70px 40px,
+			rgba(238,238,238,0) 80px 20px,
+			#EEEEEE 110px 70px,
+			#EEEEEE 90px 60px; 
+	}
+	50% { 
+		box-shadow:
+			#EEEEEE 30px 70px,
+			#EEEEEE 40px 80px,
+			rgba(238,238,238,0) 50px 100px,
+			#EEEEEE 55px 80px,
+			#EEEEEE 70px 60px,
+			#EEEEEE 80px 45px,
+			#EEEEEE 110px 95px,
+			#EEEEEE 90px 85px;
+	}
+	51% {
+		box-shadow:
+			#EEEEEE 30px 70px,
+			#EEEEEE 40px 80px,
+			rgba(238,238,238,0) 50px 45px,
+			#EEEEEE 55px 80px,
+			#EEEEEE 70px 60px,
+			#EEEEEE 80px 45px,
+			#EEEEEE 110px 95px,
+			#EEEEEE 90px 85px;
+	}
+	75% {
+		box-shadow:
+			#EEEEEE 30px 95px,
+			#EEEEEE 40px 100px,
+			#EEEEEE 50px 60px,
+			rgba(238,238,238,0) 55px 95px,
+			#EEEEEE 70px 80px,
+			#EEEEEE 80px 70px,
+			rgba(238,238,238,0) 110px 120px,
+			rgba(238,238,238,0) 90px 110px;
+	}
+	76% {
+		box-shadow:
+			#EEEEEE 30px 95px,
+			#EEEEEE 40px 100px,
+			#EEEEEE 50px 60px,
+			rgba(238,238,238,0) 55px 35px,
+			#EEEEEE 70px 80px,
+			#EEEEEE 80px 70px,
+			rgba(238,238,238,0) 110px 25px,
+			rgba(238,238,238,0) 90px 15px;
+	}
+	100% {
+		box-shadow:
+			rgba(238,238,238,0) 30px 120px,
+			rgba(238,238,238,0) 40px 120px,
+			#EEEEEE 50px 75px,
+			#EEEEEE 55px 50px,
+			#EEEEEE 70px 100px,
+			#EEEEEE 80px 95px,
+			#EEEEEE 110px 45px,
+			#EEEEEE 90px 35px;
+	}
+}
+@keyframes snowy_snow {
+	0% {  
+		box-shadow: 
+			rgba(238,238,238,0) 30px 30px, 
+			rgba(238,238,238,0) 40px 40px,  
+			#EEEEEE 50px 75px, 
+			#EEEEEE 55px 50px, 
+			#EEEEEE 70px 100px, 
+			#EEEEEE 80px 95px, 
+			#EEEEEE 110px 45px, 
+			#EEEEEE 90px 35px; 
+	}
+	25% {  
+	  	box-shadow: 
+			#EEEEEE 30px 45px,
+			#EEEEEE 40px 60px,
+			#EEEEEE 50px 90px,
+			#EEEEEE 55px 65px,
+			rgba(238,238,238,0) 70px 120px,
+			rgba(238,238,238,0) 80px 120px,
+			#EEEEEE 110px 70px,
+			#EEEEEE 90px 60px;
+	}
+	26% {  
+		box-shadow:
+			#EEEEEE 30px 45px,
+			#EEEEEE 40px 60px,
+			#EEEEEE 50px 90px,
+			#EEEEEE 55px 65px,
+			rgba(238,238,238,0) 70px 40px,
+			rgba(238,238,238,0) 80px 20px,
+			#EEEEEE 110px 70px,
+			#EEEEEE 90px 60px; 
+	}
+	50% { 
+		box-shadow:
+			#EEEEEE 30px 70px,
+			#EEEEEE 40px 80px,
+			rgba(238,238,238,0) 50px 100px,
+			#EEEEEE 55px 80px,
+			#EEEEEE 70px 60px,
+			#EEEEEE 80px 45px,
+			#EEEEEE 110px 95px,
+			#EEEEEE 90px 85px;
+	}
+	51% {
+		box-shadow:
+			#EEEEEE 30px 70px,
+			#EEEEEE 40px 80px,
+			rgba(238,238,238,0) 50px 45px,
+			#EEEEEE 55px 80px,
+			#EEEEEE 70px 60px,
+			#EEEEEE 80px 45px,
+			#EEEEEE 110px 95px,
+			#EEEEEE 90px 85px;
+	}
+	75% {
+		box-shadow:
+			#EEEEEE 30px 95px,
+			#EEEEEE 40px 100px,
+			#EEEEEE 50px 60px,
+			rgba(238,238,238,0) 55px 95px,
+			#EEEEEE 70px 80px,
+			#EEEEEE 80px 70px,
+			rgba(238,238,238,0) 110px 120px,
+			rgba(238,238,238,0) 90px 110px;
+	}
+	76% {
+		box-shadow:
+			#EEEEEE 30px 95px,
+			#EEEEEE 40px 100px,
+			#EEEEEE 50px 60px,
+			rgba(238,238,238,0) 55px 35px,
+			#EEEEEE 70px 80px,
+			#EEEEEE 80px 70px,
+			rgba(238,238,238,0) 110px 25px,
+			rgba(238,238,238,0) 90px 15px;
+	}
+	100% {
+		box-shadow:
+			rgba(238,238,238,0) 30px 120px,
+			rgba(238,238,238,0) 40px 120px,
+			#EEEEEE 50px 75px,
+			#EEEEEE 55px 50px,
+			#EEEEEE 70px 100px,
+			#EEEEEE 80px 95px,
+			#EEEEEE 110px 45px,
+			#EEEEEE 90px 35px;
+	}
+}
+.container {
+	background: -webkit-linear-gradient(left, #00BBFF, #00BBFF 14.3%, #2EB5E5 14.3%, #2EB5E5 28.6%, #E6E6E6 28.6%, #E6E6E6 42.9%, #F3D166 42.9%, #F3D166 57.2%, #222233 57.2%, #222233 71.5%, #444444 71.5%, #444444 85.8%, #85DB8C 85.8%);
+	background: linear-gradient(left, #00BBFF, #00BBFF 14.3%, #2EB5E5 14.3%, #2EB5E5 28.6%, #E6E6E6 28.6%, #E6E6E6 42.9%, #F3D166 42.9%, #F3D166 57.2%, #222233 57.2%, #222233 71.5%, #444444 71.5%, #444444 85.8%, #85DB8C 85.8%);
+	-webkit-transform: scale(.9);
+	    -ms-transform: scale(.9);
+	        transform: scale(.9);
+	width: 1200px;
+	position: absolute;
+	height: 210px;
+	left: 50%;
+	top: 50%;
+	margin: 365px -600px;
+}
+
+/*jomoo*/
+.jomoo{
+	margin-top:10px;
+	width:300px;
+	height:300px;
+  background:#040E23
+}
+.rain1{
+  width:64px;
+	height:160px;
+	margin:0 auto;
+}
+.rain1 i{
+	display:block;
+  width:7px;
+	height:10px;
+	background-image:url(raindrop.png);
+	background-repeat:no-repeat;
+	-webkit-animation: drop 2s infinite linear;
+}
+.rain1 i:nth-child(1){
+	margin:0 0 0 10px;
+	-webkit-animation: drop 1.5s infinite linear;
+}
+.rain1 i:nth-child(2){
+	margin:10px 0 0 30px;
+	-webkit-animation: drop 1s infinite linear;
+}
+.rain1 i:nth-child(3){
+	margin:-10px 0 0 50px;
+	-webkit-animation: drop 1.8s infinite linear;
+}
+.rain1 i:nth-child(4){
+	margin:-20px 0 0 40px;
+	-webkit-animation: drop 1s infinite linear;
+}
+
+.rain2{
+	width:64px;
+	height:160px;
+	margin:0 auto;
+	position:relative;
+}
+.rain2 i{
+	position:absolute;
+	display:block;
+  width:28px;
+	height:57px;
+	background-image:url(rainline.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	color:#fff;
+}
+.rain2 i:nth-child(1){
+	top:50px;
+	left:-110px;
+	-webkit-animation: skewdrop 2s infinite linear;
+}
+.rain2 i:nth-child(2){
+	top:10px;
+	left:-90px;
+	-webkit-animation: skewdrop 1.8s infinite linear 0.5s backwards; /*延迟0.5秒,从结束状态开始;forwards是从开始状态*/
+}
+.rain2 i:nth-child(3){
+	top:30px;
+	left:-50px;
+  width:16x;
+	height:32px;
+	-webkit-animation: skewdrop 1.8s infinite linear;
+}
+.rain2 i:nth-child(4){
+	top:0px;
+	left:-15px;
+	-webkit-animation: skewdrop 2s infinite linear;
+}
+.rain2 i:nth-child(5){
+	top:-10px;
+	left:10px;
+	-webkit-animation: skewdrop 2.2s infinite linear 0.5s backwards;
+}
+/*动画*/
+@-webkit-keyframes drop {
+	0% { -webkit-transform: translateY(-10px); opacity:1 }
+	50% { -webkit-transform: translateY(20px);  opacity:.8}
+	100% { -webkit-transform: translateY(50px);  opacity:0 }
+}
+@-webkit-keyframes skewdrop {
+	0% { -webkit-transform:translate3d(0,0,0); opacity:0.0 }
+	30% { -webkit-transform:translate3d(28px,57px,0); opacity:.3 }
+	60% {-webkit-transform:translate3d(56px,114px,0);  opacity:.6}
+	100% { -webkit-transform:translate3d(84px,171px,0);  opacity:.3 }
+}
+
+</style>
+
+<script type="text/javascript">
+$(function(){
+  
+});
+</script>
+
+</head>
+<body style="padding:100px">
+<!--案例http://www.html5tricks.com/demo/pure-css3-weather-icon/index.html-->
+<div class="container">
+	<div class="snowy"></div>
+</div>
+
+<!--jomoo雨滴-->
+<div class="jomoo">
+    <div class="rain1">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+</div>
+<!--jomoo斜雨线-->
+<div class="jomoo">
+    <div class="rain2">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+</div>
+</body>
+</html>
