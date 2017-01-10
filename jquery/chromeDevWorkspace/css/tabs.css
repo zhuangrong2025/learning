@@ -1,0 +1,25 @@
+@charset "utf-8";
+/*tabs1*/
+.flex-tab ul{
+	display: -webkit-box; 
+	display: -webkit-flex;
+	display: flex;
+	color:#00f;
+}
+.flex-tab li{
+	-webkit-box-flex:1;
+	-webkit-flex:1;
+	flex:1;
+	width:0%;/*必须有*/
+	height:30px;
+	text-align:center;
+	border: 1px solid #00E4FF;
+	font-size: 18px;
+}
+.flex-tab li.curr{
+	background-color: #eee;
+	color: #000;
+}
+div[class*="tab-box"] > div:not(:first-child){
+	display:none
+}
