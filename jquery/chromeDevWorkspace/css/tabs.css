@@ -13,12 +13,12 @@
 	width:0%;/*必须有*/
 	height:30px;
 	text-align:center;
-	border: 1px solid #00E4FF;
-	font-size: 18px;
+	border: 1px solid #8C4FE5;
+	font-size: 16px;
 }
 .flex-tab li.curr{
 	background-color: #eee;
-	color: #000;
+	color: #00;
 }
 div[class*="tab-box"] > div:not(:first-child){
 	display:none

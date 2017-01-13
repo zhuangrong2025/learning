@@ -1,0 +1,88 @@
+<!--index.wxml-->
+<!--
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
+-->
+<!--
+<view wx:for="{{icons}}" wx:for-item="icon">
+	<icon type="warn" size="{{icon.size}}" color="{{icon.color}}"></icon>
+</view>
+-->
+
+<!--
+<view class="group">
+	<block wx:for="{{iconType}}" >
+		<icon type="{{item}}" size="40"></icon>
+	</block>
+</view>
+<view class="group">
+	<block wx:for="{{iconSize}}" >
+		<icon type="info" size="{{item}}"></icon>
+	</block>
+</view>
+<view class="group">
+	<block wx:for="{{iconColor}}" >
+		<icon type="warn" color="{{item}}"></icon>
+	</block>
+</view>
+-->
+<!--
+<view class="section">
+	<text>{{text}}</text>
+</view>
+
+<view>
+	<button type="primary" size="mini" bindtap="add">add line</button>
+</view>
+-->
+<!--<progress percent="20" show-info stroke-width="22" active />-->
+<!--
+<view class="section">
+	<text>你输入的是：{{inputVal}}</text>
+	<input bindinput="getvalue" class="ipt" placeholder="请输入用户名" type="emoji"/>
+</view>
+-->
+<!--
+<view class="section">	
+	<input bindinput="hideKeyboard" class="ipt" placeholder="请输入123隐藏键盘" type="idcard"/>
+</view>
+-->
+<radio-group bindchange="checkboxChange">
+	<label wx:for="{{items}}" >
+		<radio  class="checkbox" value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+	</label>
+</radio-group>
+<checkbox-group bindchange="checkboxChange">
+	<label wx:for="{{items}}" >
+		<checkbox  class="checkbox" value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+	</label>
+</checkbox-group>
+<!--
+<view class="btn-area">
+  <navigator url="../logs/logs" redirect>查看日志</navigator>
+</view>
+<button bindtap="navTo">跳转</button>
+-->
+<!--图片image-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

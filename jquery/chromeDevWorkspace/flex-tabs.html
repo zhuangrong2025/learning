@@ -10,7 +10,10 @@
 
 <script>
 $(function(){
-	$.TabChange("tabs",1)
+	$.TabChange("tabs",1);
+	$("#btn").click(function(){
+		alert("a");
+	})
 })
 /*tabs切换组件*/
 $.TabChange = function(obj,num){
@@ -27,15 +30,17 @@ $.TabChange = function(obj,num){
 <!--tabs1-->
 <div class="flex-tab" id="tabs">
 	<ul>
-		<li class="curr">文本111aa</li>
-		<li>文本21</li>
-		<li>文本33</li>
+		<li class="curr">文本1</li>
+		<li>文本21bbb</li>
+		<li>文本33cc</li>
+		<li>文本b</li>
 	</ul>
 </div>
 <div class="tab-box1">
 	<div>内容11111111  <button id="btn">点击</button></div>
 	<div>内容2222222</div>
 	<div>内容3333333</div>
+	<div>dddcc</div>
 </div>
 
 

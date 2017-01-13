@@ -19,3 +19,14 @@
 .usermotto {
   margin-top: 200px;
 }
+.ipt{
+	border: 1px solid #000;
+}
+
+.checkbox:checked{
+	background-image: url(../../resources/icon-star.png);
+}
+.navigator-hover{
+	background-color: #00f;
+}
+
