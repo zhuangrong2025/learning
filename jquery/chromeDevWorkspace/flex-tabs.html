@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title></title>
+<link rel="stylesheet" href="../../newCss.css">
+<link rel="stylesheet" href="css/tabs.css" class="css">
+<script src="../../jquery-1.11.1.min.js"></script>
+
+<script>
+$(function(){
+	$.TabChange("tabs",1)
+})
+/*tabs切换组件*/
+$.TabChange = function(obj,num){
+	$("li","#" + obj).each(function(index){
+			$(this).click(function(i){
+			 	$("div.tab-box" + num + " > div").eq(index).show().siblings().hide();
+				$(this).addClass("curr").siblings().removeClass("curr");
+			})													
+	})
+}
+</script>
+</head>
+<body >
+<!--tabs1-->
+<div class="flex-tab" id="tabs">
+	<ul>
+		<li class="curr">文本111aa</li>
+		<li>文本21</li>
+		<li>文本33</li>
+	</ul>
+</div>
+<div class="tab-box1">
+	<div>内容11111111  <button id="btn">点击</button></div>
+	<div>内容2222222</div>
+	<div>内容3333333</div>
+</div>
+
+
+</body>
+</html>
