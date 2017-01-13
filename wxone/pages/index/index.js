@@ -3,7 +3,14 @@
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello World3',
+    motto: 'Hello World',
+    iconColorSize: [{
+      color: 'blue',
+			size: '30'
+    }, {
+      color: 'red',
+			size: '50'
+    }],
     userInfo: {}
   },
   //事件处理函数
