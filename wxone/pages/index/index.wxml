@@ -1,5 +1,0 @@
-<!--index.wxml-->
-
-<block wx:for="{{iconColorSize}}" wx:for-item="colorSize">
-  <icon type="warn" color="{{colorSize.color}}" size = "{{colorSize.size}}"></icon>
-</block>
