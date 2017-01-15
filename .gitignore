@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+wxone/movie/app.js
+wxone/movie/pages/cinema/cinema.js
+wxone/movie/pages/index/index.js
+wxone/movie/pages/logs/logs.json

@@ -1,0 +1,165 @@
+/**index.wxss**/
+.search-bar{
+	display: -webkit-flex;
+	align-items: center;
+	height: 90rpx;
+	padding: 0 20rpx;
+	background-color: #f5f5f5;
+	border-bottom: 	1px solid #e5e5e5;
+}
+.city-switch{
+	flex: none;
+	min-width: 100rpx;
+	padding-right: 20px;
+	color: #666;
+}
+.icon-dropdown{
+	display: inline-block;
+	width: 26rpx;
+	height: 26rpx;
+	background-color: #fff;
+	background-image: url(../../images/icon-dropdown.png);
+	background-size: 100%;
+}
+.search{
+	flex: 1;
+	height: 56rpx;
+	line-height: 56rpx;
+	text-align: center;
+	color: #b2b2b2;
+	background-color: #fff;
+	border: 1rpx solid  #e6e6e6;
+	border-radius: 10rpx;
+}
+.icon-search{
+	display: inline-block;
+	width: 26rpx;
+	height: 26rpx;
+	vertical-align: middle;
+	margin: 0 10rpx 5rpx;
+	background-image: url(../../images/icon-search.png);
+	background-size: 100%;
+}
+
+/*广告栏*/
+.ad{
+	display: flex;
+	align-items: center;
+	height: 58rpx;
+	padding: 0 20rpx;
+	margin: 24rpx 30rpx;
+	border-radius: 5rpx;
+	color: #333;
+	background-color: #F5F5F5;
+	background-image: url(../../images/icon-link.png);
+	background-size: 26rpx 26rpx;
+	background-repeat: no-repeat;
+	background-position: center right;
+	-webkit-background-origin: content-box;
+	background-origin: content-box;
+}
+.icon-money{
+	display: inline-block;
+	width: 36rpx;
+	height: 36rpx;
+	vertical-align: middle;
+	margin: 0 5rpx;
+	background-image: url(../../images/icon-money.png);
+	background-size: 100%;
+}
+
+/*列表*/
+.list-wrap{
+	padding:20rpx 24rpx;
+}
+.list{
+	display: -webkit-flex;
+}
+.pic{
+	flex: none;
+	width: 128rpx;
+}
+.poster{
+	width: 128rpx;
+	height: 180rpx;
+}
+.info{
+	flex: 1;
+	padding-left: 20rpx;
+}
+.info-title{
+	position: relative;
+	font-size: 36rpx;
+	color: #222;
+}
+.info-score{
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 30rpx;
+	color: #ffb400;
+}
+.icon-3dmax{
+	display: inline-block;
+	width: 84rpx;
+	height: 28rpx;
+	vertical-align: middle;
+	margin: 0 5rpx;
+	background-image: url(../../images/icon-3dmax.png);
+	background-size: 100%;
+}
+.info-detail{
+	position: relative;
+	padding-right: 130rpx;
+	color: #666;
+}
+.info-detail view{
+	padding: 6rpx 0;
+}
+.info-author{
+	overflow : hidden;
+	line-height: 1.8;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;	
+}
+.info-number{
+	color: #999;
+}
+.btn-buy{
+	position: absolute;
+	top: 36rpx;
+	right: 0;
+	width: 92rpx;
+	height: 56rpx;
+	padding: 0; /**需要加上padding:0和margin:0*/
+	margin: 0;
+	font-size: 26rpx;
+	border-radius: 6px;
+	color: #fff;
+	background-color: #ef4238;
+	
+}
+.text-wrap{
+	display: -webkit-flex;
+}
+.text-l{
+	flex: none;
+	width: 128rpx;
+	background-color: #eee;
+}
+.voer{
+	flex: 1;
+	overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;	
+}
+
+
+
+
+
+

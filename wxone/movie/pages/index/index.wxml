@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<!--搜索栏-->
+<view class="search-bar">
+	<view class="city-switch">
+		<text>福州市</text>
+		<icon class="icon-dropdown"></icon>
+	</view>
+	<view class="search">
+		  <icon class="icon-search"></icon>找影视剧、影院
+	</view>
+</view>
+<!--//搜索栏-->
+
+<!--广告栏-->
+<view class="ad">
+	<icon class="icon-money"></icon>
+	<text>首次体验小程序，电影福利送不停！</text>
+</view>
+<!--//广告栏-->
+<!--列表-->
+<view class="list-wrap">
+	<block>
+	<view class="list">
+		<view class="pic">
+			<image src="../../images/pic01.png" class="poster"></image>
+		</view>
+		<view class="info">
+			<view class="info-title">
+				<text>星球大战外传：侠盗一号</text>
+				<icon class="icon-3dmax"></icon>
+				<text class="info-score">7.9<span>分</span></text>
+			</view>
+			<view class="info-detail">
+				<view class="info-category">动作、冒险、科幻</view>
+				<view class="info-author">主演：菲丽希缇·琼斯，迭戈·鲁纳，艾伦·图代克</view>
+				<view class="info-number">今天175家影院放映2395场</view>
+				<button class="btn-buy">购票</button>
+			</view>
+		</view>
+	</view>
+	</block>
+</view>
+
+<!--//列表-->
