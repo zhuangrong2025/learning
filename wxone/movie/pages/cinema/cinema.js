@@ -10,5 +10,8 @@ Page({
         return util.formatTime(new Date(log))
       })
     })
-  }
+  },
+	lower: function(e) {
+    console.log("a")
+  },
 })

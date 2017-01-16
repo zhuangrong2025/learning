@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<scroll-view scroll-y="true" bindscrolltolower="lower" style="height:{{scrollHeight}}px">
 <!--搜索栏-->
 <view class="search-bar">
 	<view class="city-switch">
@@ -6,11 +7,10 @@
 		<icon class="icon-dropdown"></icon>
 	</view>
 	<view class="search" bindtap="bindLogs">
-		  <icon class="icon-search"></icon>找影视剧、影院
+		<icon class="icon-search"></icon>找影视剧、影院
 	</view>
 </view>
 <!--//搜索栏-->
-
 <!--广告栏-->
 <view class="ad">
 	<icon class="icon-money"></icon>
@@ -33,9 +33,11 @@
 				<view class="info-category">{{item.category}}</view>
 				<view class="info-author">{{item.author}}</view>
 				<view class="info-number">{{item.number}}</view>
-				<button class="btn-buy">购票</button>
+				<button class="btn-buy" wx:if="{{item.preSale !== 1}}">购票</button>
+				<button class="btn-sale" wx:else>预售</button>
 			</view>
 		</view>
 	</view>
 </view>
 <!--//列表-->
+</scroll-view>
