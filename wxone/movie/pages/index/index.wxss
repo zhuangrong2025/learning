@@ -70,9 +70,10 @@
 
 /*列表*/
 .list-wrap{
-	padding:20rpx 24rpx;
+	padding:10rpx 24rpx 20rpx;
 }
 .list{
+	margin: 24rpx 0;
 	display: -webkit-flex;
 }
 .pic{
@@ -85,7 +86,7 @@
 }
 .info{
 	flex: 1;
-	padding-left: 20rpx;
+	padding: 5rpx 0 0 20rpx;
 }
 .info-title{
 	position: relative;
@@ -99,13 +100,17 @@
 	font-size: 30rpx;
 	color: #ffb400;
 }
+.score-unit{
+	font-size: 26rpx;
+	color: #ffb400;
+}
 .icon-3dmax{
 	display: inline-block;
 	width: 84rpx;
 	height: 28rpx;
 	vertical-align: middle;
 	margin: 0 5rpx;
-	background-image: url(../../images/icon-3dmax.png);
+	background-image: url(../../images/icon-3dimax.png);
 	background-size: 100%;
 }
 .info-detail{
@@ -113,30 +118,32 @@
 	padding-right: 130rpx;
 	color: #666;
 }
-.info-detail view{
-	padding: 6rpx 0;
+.info-category{
+	margin: 8rpx 0 0;
 }
 .info-author{
+	margin: 8rpx 0 0;
 	overflow : hidden;
-	line-height: 1.8;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;	
 }
 .info-number{
+	margin: 8rpx 0 0;
 	color: #999;
 }
 .btn-buy{
 	position: absolute;
-	top: 36rpx;
+	top: 30rpx;
 	right: 0;
 	width: 92rpx;
 	height: 56rpx;
+	line-height: 58rpx;
 	padding: 0; /**需要加上padding:0和margin:0*/
 	margin: 0;
 	font-size: 26rpx;
-	border-radius: 6px;
+	border-radius: 3px;
 	color: #fff;
 	background-color: #ef4238;
 	

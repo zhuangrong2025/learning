@@ -2,6 +2,7 @@
 page{
 	font-size: 26rpx;
 	background-color: #fff;
+	font-family: tahoma, 'Microsoft yahei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 view, text {
   box-sizing: border-box;

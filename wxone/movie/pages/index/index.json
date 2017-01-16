@@ -1,0 +1,19 @@
+{
+	"movies": [{
+		"title": "星球大战外传：侠盗二号",
+		"src": "../../images/pic01.png",
+		"score": "7.9",
+		"author": "主演：菲丽希缇·琼斯，迭戈·鲁纳，艾伦·图代克",
+		"number": "今天175家影院放映2395场",
+		"category": "动作，冒险，科幻",
+		"isThree": true
+	}, {
+		"title": "情圣",
+		"src": "../../images/pic02.png",
+		"score": "8.7",
+		"author": "主演：肖央，闰妮，小沈阳",
+		"number": "今天164家影院放映1247场",
+		"category": "喜剧，爱情",
+		"isThree": false
+	}]
+}

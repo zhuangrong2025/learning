@@ -4,23 +4,34 @@ var app = getApp()
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {}
+    userInfo: {},
+		films:[]
   },
-  //事件处理函数
-  bindViewTap: function() {
+  onLoad: function () {
+    var _this = this
+		
+		_this.loadFilms()
+		
+  },
+	//获取电影数据json
+	loadFilms: function(){
+		var _this = this
+		//console.log("request")
+		wx.request({
+			url: "http://192.168.95.1/learning/wxone/movie/pages/index/index.json",
+			success: function(res) {
+				//console.log(res.data.movies)
+				_this.setData({
+					films: res.data.movies
+				})
+			}
+		})
+	},
+	//调整到logs
+	bindLogs: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
-    })
-  }
+	
 })
