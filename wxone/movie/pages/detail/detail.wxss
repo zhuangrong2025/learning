@@ -1,0 +1,138 @@
+/**detail.wxss**/
+page{
+	height: 100%;
+}
+.content-bg{
+	height: 100%;
+	background-color: #fff;
+}
+.bg-pic{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size:cover;
+	width: 100%;
+	height: 100%;
+	filter: blur(50rpx);
+}
+
+.summary-wrap{
+	background-color: rgba(0,0,0,0.20);
+	padding: 20rpx;
+}
+.summary{
+	display: flex;
+}
+.pic{
+	width: 202rpx;
+}
+.movie-pic{
+	width: 200rpx;
+	height: 280rpx;
+	border: 1px solid  #eee;
+}
+.info{
+	flex: 1;
+	padding: 0 10rpx 10rpx 30rpx;
+}
+.title,
+.score,
+.category,
+.duration,
+.date{
+	color: #fff;
+	display: block;
+	padding-top: 10rpx;
+}
+
+/*剧情介绍*/
+.description{
+	padding: 30rpx 50rpx;
+	margin-bottom: 10rpx;
+	overflow : hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;      
+}
+
+/*展开箭头*/
+.retract,
+.expand{
+	width: 100%;
+	height: 36rpx;
+	background-color: #F5F5F5;
+	background-image: url(../../images/icon-expand.png);
+	background-repeat: no-repeat;
+	background-size: 26rpx 26rpx;
+	background-position: center center;
+}
+.retract{
+	background-image: url(../../images/icon-retract.png);
+}
+.btn-wrap{
+	padding-top: 10rpx;
+}
+.btn-watch{
+	display: inline-block;
+	width: 320rpx;
+	height: 60rpx;
+	text-align: center;
+	padding: 0;
+	margin: 0 10rpx;
+	font-size: 26rpx;
+	color: #fff;
+	background-color: rgba(173,173,173,0.80);
+	border: 1px solid #eee;
+	border-radius: 5rpx;
+}
+
+/*评论*/
+.comment-title{
+	padding: 10rpx 20rpx;
+	margin-top: 30rpx;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+.comment-wrap{
+	padding: 30rpx;
+}
+.comment-flex{
+	display: flex;
+	margin-bottom: 30rpx;
+}
+.avatar-wrap{
+	flex: none;
+	width: 60rpx;
+}
+.comment-info{
+	flex: 1;
+	padding-left: 30rpx;
+	color: #666;
+	font-size: 30rpx;
+}
+.avatar{
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 50%;
+}
+.user-name{
+	font-size: 24rpx;
+}
+.comment-text{
+	padding-top: 10rpx;
+}
+.comment-tip{
+	padding-top: 10rpx;
+	color: #aaa;
+	font-size: 22rpx;
+}
+
+
+
+
+
+

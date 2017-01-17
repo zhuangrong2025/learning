@@ -76,6 +76,9 @@
 	margin: 24rpx 0;
 	display: -webkit-flex;
 }
+.list-active{
+	background-color: #eee;	
+}
 .pic{
 	flex: none;
 	width: 128rpx;

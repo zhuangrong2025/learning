@@ -1,2 +1,2 @@
 <!--logs.wxml-->
-<view>我的</view>
+<view class="c-blue" hover-class="c-red">我的</view>

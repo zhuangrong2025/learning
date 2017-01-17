@@ -1,0 +1,44 @@
+<!--detail.wxml-->
+<image src="{{detail.img}}" class="bg-pic"></image>
+<view class="summary-wrap">
+	<view class="summary">
+		<view class="pic">
+			<image src="{{detail.img}}" class="movie-pic"></image>
+		</view>
+		<view class="info">
+			<text class="title">{{detail.nm}}</text>
+			<text class="score">评分：{{detail.sc}}</text>
+			<text class="category">{{detail.cat}}</text>
+			<text class="duration">{{detail.src}}/{{detail.dur}}</text>
+			<text class="date">{{detail.rt}}</text>
+		</view>
+	</view>
+	<view class="btn-wrap">
+		<button class="btn-watch">看过</button>
+		<button class="btn-watch">评论</button>
+	</view>
+</view>
+<view class="content-bg">
+	<!--	剧情	-->
+	<view class="description" style='{{hideText ? "-webkit-line-clamp: 2" : ""}}'>{{detail.dra}}</view>
+	<icon class="{{switchClass ? 'expand' : 'retract'}}" bindtap="bindExpand"></icon>
+	<!--	评论	-->
+	<view class="comment-title">评论</view>
+	<view class="comment-wrap">
+		<view class="comment-flex" wx:for="{{comment}}" wx:key="{{index}}">
+			<view class="avatar-wrap">
+				<image class="avatar" src="{{item.avatarurl}}"></image>
+			</view>
+			<view class="comment-info">
+					<view class="user-info">
+						<text class="user-name">{{item.nickName}}</text>
+						<view class="rating">★★★★★</view>
+					</view>
+					<view class="comment-text">{{item.content}}</view>	
+					<view class="comment-tip">
+						<text>{{item.time}}</text>
+					</view>
+			</view>
+		</view>
+	</view>
+</view>

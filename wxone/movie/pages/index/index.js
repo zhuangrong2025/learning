@@ -33,7 +33,7 @@ Page({
 	loadFilms: function(){
 		var _this = this
 		wx.request({
-			url: "http://192.168.95.1/learning/wxone/movie/pages/index/index.json",
+			url: "http://192.168.95.1/learning/wxone/movie/pages/index/movies.json",
 			data: {
 				type: "movies",
 				offset: this.data.offset,
@@ -63,6 +63,13 @@ Page({
 	lower(e){
 		console.log("a")
    	//this.loadFilms()
+  },
+	//查看详情
+	bindDetail:function(e){
+		var uid = e.currentTarget.dataset.id
+    wx.navigateTo({
+			url: "../detail/detail?id=" + uid
+		})
   }
 	
 	

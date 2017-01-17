@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/cinema/cinema",
     "pages/user/user",
+    "pages/detail/detail",
     "pages/logs/logs"
   ],
   "window":{

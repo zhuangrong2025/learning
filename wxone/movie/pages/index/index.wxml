@@ -19,7 +19,7 @@
 <!--//广告栏-->
 <!--列表-->
 <view class="list-wrap">
-	<view class="list" wx:for="{{films}}" wx:key="film">
+	<view class="list" wx:for="{{films}}" wx:key="index" hover-class="list-active" data-id="{{item.id}}" bindtap="bindDetail">
 		<view class="pic">
 			<image src="{{item.src}}" class="poster"></image>
 		</view>

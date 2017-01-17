@@ -6,3 +6,10 @@
 .log-item {
   margin: 10rpx;
 }
+.c-blue{
+	background-color: #00f;
+}
+
+.c-red{
+	background-color: #f00;
+}
