@@ -22,6 +22,43 @@
 	<!--	剧情	-->
 	<view class="description" style='{{hideText ? "-webkit-line-clamp: 2" : ""}}'>{{detail.dra}}</view>
 	<icon class="{{switchClass ? 'expand' : 'retract'}}" bindtap="bindExpand"></icon>
+	
+<!--	演职人员	swiper-->
+	<view class="artist-title">演职人员</view>
+	<scroll-view scroll-x="true" class="artist-wrap" style="width:100%">
+<!--
+		<view class="artist" wx:for="{{detail.photos}}" wx:key="{{index}}">
+			<image class="artist-pic" src="{{item}}"></image>
+			<text class="artist-name">詹妮弗·劳伦斯</text>
+		</view>
+-->
+
+		<view class="artist">
+			<image class="artist-pic" src="http://p1.meituan.net/movie/ca237d3e6e41835f8bd602008c15006b38546.jpg@130w_180h.webp"></image>
+			<text class="artist-name">詹妮弗·劳伦斯</text>
+		</view>
+		<view class="artist">
+			<image class="artist-pic" src="http://p1.meituan.net/movie/ca237d3e6e41835f8bd602008c15006b38546.jpg@130w_180h.webp"></image>
+			<text class="artist-name">詹妮弗·劳伦斯</text>
+		</view>
+		<view class="artist">
+			<image class="artist-pic" src="http://p1.meituan.net/movie/ca237d3e6e41835f8bd602008c15006b38546.jpg@130w_180h.webp"></image>
+			<text class="artist-name">詹妮弗·劳伦斯</text>
+		</view>
+		<view class="artist">
+			<image class="artist-pic" src="http://p1.meituan.net/movie/ca237d3e6e41835f8bd602008c15006b38546.jpg@130w_180h.webp"></image>
+			<text class="artist-name">詹妮弗·劳伦斯</text>
+		</view>
+		<view class="artist">
+			<image class="artist-pic" src="http://p1.meituan.net/movie/ca237d3e6e41835f8bd602008c15006b38546.jpg@130w_180h.webp"></image>
+			<text class="artist-name">詹妮弗·劳伦斯</text>
+		</view>
+		<view class="artist">
+			<image class="artist-pic" src="http://p1.meituan.net/movie/ca237d3e6e41835f8bd602008c15006b38546.jpg@130w_180h.webp"></image>
+			<text class="artist-name">詹妮弗·劳伦斯</text>
+		</view>
+
+	</scroll-view>
 	<!--	评论	-->
 	<view class="comment-title">评论</view>
 	<view class="comment-wrap">
@@ -41,4 +78,8 @@
 			</view>
 		</view>
 	</view>
+	<view class="blank"></view>
 </view>
+
+<button class="btn-buy" hover-class="btn-hover">优惠购票</button>
+
