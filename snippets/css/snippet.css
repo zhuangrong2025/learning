@@ -116,6 +116,28 @@ body {
 	font-style: normal;
 }
 
+/**************头像居中**************/
+.avatar-wrap2{
+	height: 150px;
+	padding-top: 15px;
+	text-align: center;
+	color: #000;
+	background-color: #fff;
+}
+.avatar-wrap2 .avatar{
+	display: block;
+  width: 90px;
+  height: 90px;
+	margin: 0 auto;
+	border: 1px solid  #fff;
+	background-color: #eee;
+	border-radius: 50%;
+}
+.avatar-wrap2 span{
+	display: block;
+	margin-top: 5px;
+}
+
 /**************Item List**************/
 .item-list{
 	
@@ -344,13 +366,32 @@ body {
 }
 .checkbox:checked{
 	background-position: 0 -22px;
-	opacity: .2;
 }
 
 
-
-
-
+/**************数字加减spinner**************/
+.spinner{
+	display: inline-block;	
+}
+.spinner a i{
+	display: inline-block;	
+	width: 36px;
+	height: 36px;
+	background-color: #ccc;
+	font-size: 18px;
+	font-style: normal;
+	text-align: center;
+	vertical-align: middle;
+}
+.spinner input{
+	display: inline-block;
+	width: 60px;
+	height: 36px;
+	padding: 0 5px;
+	margin: 0 10px;
+	background-color: #fff;
+	border: 1px solid  #ccc;
+}
 
 
 

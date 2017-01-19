@@ -7,7 +7,19 @@
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="stylesheet" href="css/snippet.css">
 <script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/jquery.Spinner.js"></script>
 <title>snippet</title>
+<script>
+$(function(){
+	/***方法二 用组件 jquery.Spinner***/
+	$(".spinner").Spinner();
+
+	$(document).on("click",".spinner a",function(){
+		$("#total").text($(".spinner").find(".Amount").val());/*获取数字*/
+	})
+})
+
+</script>
 </head>
 <body>
 <!--------------header && nav-------------->
@@ -15,11 +27,9 @@
 	<a class="icon-back" href="javascrit:"></a>
 	Title
 	<a class="icon-user" href="javascrit:"></a>
-	<a class="icon-user" href="javascrit:"></a>
-	<a class="icon-user" href="javascrit:"></a>
 </div>
 
-<!--------------Profile-------------->
+<!--------------头像1-Profile-------------->
 <h3>Profile</h3>
 <div class="wrap">
 	<div class="avatar-wrap">
@@ -27,6 +37,14 @@
 		<span>Donald J. Trump<em>@realDonaldTrump</em></span>
 	</div>
 </div>
+
+<!--------------头像2-居中-------------->
+<!--avatar2-->
+<div class="avatar-wrap2">
+  <i class="avatar" style="background-image:url(images/avatar.png);"></i>
+  <span>Trump</span>
+</div>
+<!--//avatar2-->
 
 <!--------------Item List-------------->
 <h3>Item List</h3>
@@ -91,5 +109,10 @@
 	</ul>
 </div>
 
+<div style="clear: both"></div>
+<!--------------数字加减steper-------------->
+<h3>数字加减</h3>
+<div class="spinner"></div>
+<div>总数：<span id="total"></span></div>
 </body>
 </html>
