@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>pingan</title>
+<style>
+h1 {
+	font: bold 20px/1.5 georgia, simsun, sans-serif;
+}
+.box {
+	display: -webkit-flex;
+	display: flex;
+	width: 300px;
+	margin: 0;
+	padding: 10px;
+	list-style: none;
+	background-color: #eee;
+}
+.box li {
+	height: 100px;
+	border: 1px solid #aaa;
+	text-align: center;
+	margin: 1rem;
+	-webkit-flex: 1 7rem;  /*5rem 是flex-basis ,宽度,根据外框的大小，按比例缩放*/
+}
+#box {
+	-webkit-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+}
+#box2 {
+	width: 400px;
+	-webkit-flex-flow: row wrap;/*换行*/
+	
+}
+#box3 {
+	-webkit-flex-wrap: wrap-reverse;
+	flex-wrap: wrap-reverse;
+}
+</style>
+</head>
+<body>
+<h1>flex-wrap示例：</h1>
+<h2>flex-wrap:nowrap</h2>
+<ul id="box" class="box">
+	<li>a</li>
+	<li>b</li>
+	<li>c</li>
+</ul>
+<h2>flex-wrap:wrap</h2>
+<ul id="box2" class="box">
+	<li>a</li>
+	<li>b</li>
+	<li>c</li>
+</ul>
+<h2>flex-wrap:wrap-reverse</h2>
+<ul id="box3" class="box">
+	<li>a</li>
+	<li>b</li>
+	<li>c</li>
+</ul>
+</body>
+</html>
