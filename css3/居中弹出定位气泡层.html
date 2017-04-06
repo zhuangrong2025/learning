@@ -8,11 +8,14 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title></title>
 <link rel="stylesheet" href="../newCss.css">
-<script src="../jquery-1.11.1.min.js"></script><script>
+<script src="../jquery-1.11.1.min.js"></script>
+<script>
 $(function(){
-  
+  //获取图标位置信息
   var $wxPosi = $(".icon-wx2").offset();
   var $sinaPosi = $(".icon-sina").offset();
+  
+  //获取弹出层的位置
   $(".weixin").css({top: ($wxPosi.top - 130) + "px", left: ($wxPosi.left - 90) + "px"})
   $(".sina").css({top: ($sinaPosi.top - 130) + "px", left: ($sinaPosi.left - 90) + "px"})
   
@@ -81,9 +84,7 @@ body {
   height: 50px;	
   vertical-align: middle;
   background-color: #ccc;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100%;
+  border-radius: 5px;
 }
 .icon-sina{
   background-color: #f60;
@@ -109,11 +110,13 @@ body {
   <img src="tb0.png">
   <p>sina排版排版排版排版排版排版排版排版排版排版排</p>
 </div>
+
 <div class="mask"></div>
+
 <div class="shareto">
   <span>share</span>
-  <i class="icon-wx2"></i>
-  <i class="icon-sina"></i>
+  <i class="icon-wx2">wx</i>
+  <i class="icon-sina">sina</i>
 </div>
 
 </body>
