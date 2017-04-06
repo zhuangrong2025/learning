@@ -1,0 +1,139 @@
+@charset "utf-8";
+body, html {
+	color: #000;
+	font-family: tahoma, 'Microsoft yahei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased
+}
+html {
+	font-size: 16px;
+}
+body, div, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, a {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box
+}
+body, span, label, p, h1, h2, h3, h4, h5, h6, a, div, li, dt, dd, i, em, section, article, :after, :before, button, input, textarea {
+	background-repeat: no-repeat !important;
+	background-position: center center;
+	background-size: 100% !important;
+}
+li {
+	list-style: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
+}
+a {
+	color: #fff;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-tap-highlight-color: transparent;
+	/*解决Safari 点击时 标签文本被选中，有底色*/
+	-webkit-user-select: none;
+}
+a:active, a:hover {
+	outline: 0;
+	text-decoration: none;
+}
+img {
+	max-width: 100% !important;
+	vertical-align: middle;
+	border: 0;
+}
+input, button, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	-webkit-appearance: none;
+	background-color: transparent;;
+	background-repeat: no-repeat;
+	-webkit-tap-highlight-color: transparent;
+  -webkit-user-select:none;
+	border:none;
+  outline:0;
+}
+input[type=text], textarea {
+	background-color: #fff;
+}
+button {
+	overflow:visible;
+	border: none;
+	outline: 0;
+}
+
+/**************外框**************/
+body {
+	background-color: #f6f6f6;
+}
+.title {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #999;
+}
+/**************组件-列表**************/
+.list{
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+.list ul{
+	padding: 0 0 0 15px;
+}
+.list ul li{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.list ul li i.icon-list{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin:10px 10px 0 0;
+}
+.list ul li div{
+	position: relative;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	flex: 1;
+	padding: 10px 10px 10px 0;
+	border-bottom: 1px solid  #ddd;
+	overflow: hidden;
+	background-image: url(../images/item-arrow.png);
+	background-repeat: no-repeat !important;
+	background-position: right center !important;
+	-webkit-background-size: 16px !important;
+	background-size: 16px !important;
+	-webkit-background-origin: content-box;
+	background-origin: content-box;
+}
+.list ul li:active{
+	background-color: #eee;
+}
+.list ul li div .tip{
+	position: absolute;
+	top: 12px;
+	right: 30px;
+	color: #aaa;
+}
+.list ul li .last-none{
+	border-bottom: none;
+}
+.list ul li i.icon-list.icon01{
+	background-image: url(../images/icon01.png)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

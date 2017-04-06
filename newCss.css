@@ -42,7 +42,7 @@ ul{
 	padding:0;
 }
 a {
-  color: #337ab7;
+  color: #999;
   text-decoration: none;
   background-color: transparent;
 }
@@ -225,8 +225,5 @@ a.text-warning:focus {
 .bg-success {
   background-color: #dff0d8;
 }
-
-
-
 
 

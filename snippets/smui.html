@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="css/smui.css">
+<script src="js/jquery-2.1.4.min.js"></script>
+<title>snippet</title>
+<script>
+$(function(){
+	$(document).on("click","li",function(){
+		var url = $(this)[0].dataset.url
+		console.log(url)
+		window.location.href= "frame.html?url=" + url
+		//fixed :用https://来访问才正常跳转
+	})
+})
+</script>
+</head>
+<body>
+<h1 class="title">表单</h1>
+<div class="list">
+	<ul>
+		<li data-url="">
+			<i class="icon-list icon01"></i>
+			<div>头像</div>
+		</li>
+		<li data-url="list">
+			<i class="icon-list icon01"></i>
+			<div class="last-none">列表<label class="tip">#1</label></div>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

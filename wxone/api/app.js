@@ -1,3 +1,19 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //app.js
 App({
   onLaunch: function () {
@@ -26,6 +42,5 @@ App({
   },
   globalData:{
     userInfo:null
-  },
-	globalData2:2
+  }
 })

@@ -16,19 +16,6 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
-function sayHi(name){
-	
-	console.log(`hi, ${name} !`)
-	
-}
-function sayBye(name){
-	
-	console.log(`bye, ${name} !`)
-	
-}
-
 module.exports = {
-  formatTime: formatTime,
-  sayHi: sayHi,
-  sayBye: sayBye
+  formatTime: formatTime
 }

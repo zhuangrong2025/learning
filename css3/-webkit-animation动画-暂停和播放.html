@@ -16,14 +16,22 @@
 	-webkit-animation-name: fangda;
 	-webkit-animation-duration: 1s;
 	-webkit-animation-timing-function: ease-out;
-	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: 1;
 	-webkit-animation-play-state:paused; /*默认先暂停*/
 }
 @-webkit-keyframes fangda {
   0% {-webkit-transform:scale(1,1)}
- 50% {-webkit-transform:scale(1.2,1.2); }
+ 50% {-webkit-transform:scale(1.5,1.5); }
 100% {-webkit-transform:scale(1,1); }
 }
+	
+	.move{
+		width: 100px;
+		height: 100px;
+		background-color: #ccc;
+
+		-webkit-transition:all 1s
+	}
 
 </style> 
 <script type="text/javascript">
@@ -31,6 +39,7 @@ $(function(){
 		/*启动*/
     $("#erjidiv").on("click",function(){
 			$("#erjidiv").css("-webkit-animation-play-state","running");
+			$(".move").css("-webkit-transform","translate(10px,200px)");
 		})
 		
 		/*暂停*/
@@ -41,6 +50,8 @@ $(function(){
 </script>
 </head>
 <body>
-<div id="erjidiv" class="fangda">点我动画</div><button id="pause">点我暂停动画</button>
+<div id="erjidiv" class="fangda">点我动画</div>
+<button id="pause">1点我暂停动画</button>
+<div class="move">动画</div>
 </body>
 </html>

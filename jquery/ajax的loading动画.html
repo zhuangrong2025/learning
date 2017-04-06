@@ -36,17 +36,21 @@ $(function(){
 			$.ajax({  
 				type:"get",  
 				url:"ajax.html",  
-				dataType:"html",  
+				dataType:"html",
+				//ajax请求前执行
+//				beforeSend:function(data){  
+//							$("#load-content").html("<img src='loading.gif'> 加载中...");
+//				},
 				success:function(data){  
 							$('#load-content').html(data);
 					 } 
-				});	
+				})	
 	})
 	
 	//ajax加载开始动画
 	$("#load-content").ajaxStart(function(){
-        $(this).html("<img src='loading.gif'> 加载中...");
-   });
+       $(this).html("<img src='loading.gif'> 加载中...");
+  });
 		
 });
 </script>

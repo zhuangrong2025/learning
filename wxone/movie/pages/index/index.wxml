@@ -8,7 +8,7 @@
 	</view>
 	<view class="search" bindtap="bindLogs">
 		<icon class="icon-search"></icon>找影视剧、影院
-	</view>
+	</view>  
 </view>
 <!--//搜索栏-->
 <!--广告栏-->

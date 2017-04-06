@@ -1,0 +1,67 @@
+<!--
+  ***** list.html
+	***** 列表	
+	***** 触发键:1
+-->
+
+<!--****************css****************-->
+<style>
+.list{
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+.list ul{
+	padding: 0 0 0 15px;
+}
+.list ul li{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.list ul li i.icon-list{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin:10px 10px 0 0;
+}
+.list ul li div{
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	flex: 1;
+	padding: 10px 10px 10px 0;
+	border-bottom: 1px solid  #ddd;
+	overflow: hidden;
+	background-image: url(../images/item-arrow.png);
+	background-repeat: no-repeat !important;
+	background-position: right center !important;
+	-webkit-background-size: 16px !important;
+	background-size: 16px !important;
+	-webkit-background-origin: content-box;
+	background-origin: content-box;
+}
+.list ul li:active{
+	background-color: #eee;
+}
+.list ul li .last-none{
+	border-bottom: none;
+}
+.list ul li i.icon-list.icon01{
+	background-image: url(../images/icon01.png)
+}
+</style>
+
+<!--****************html****************-->
+<h1 class="title">表单</h1>
+<div class="list">
+	<ul>
+		<li>
+			<i class="icon-list icon01"></i>
+			<div>头像</div>
+		</li>
+		<li>
+			<i class="icon-list icon01"></i>
+			<div class="last-none">列表</div>
+		</li>
+	</ul>
+</div>
+

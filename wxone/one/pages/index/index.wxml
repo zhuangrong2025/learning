@@ -54,6 +54,7 @@
 	<input bindinput="hideKeyboard" class="ipt" placeholder="请输入123隐藏键盘" type="idcard"/>
 </view>
 -->
+<!--
 <radio-group bindchange="checkboxChange">
 	<label wx:for="{{items}}" >
 		<radio  class="checkbox" value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
@@ -64,6 +65,7 @@
 		<checkbox  class="checkbox" value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
 	</label>
 </checkbox-group>
+-->
 <!--
 <view class="btn-area">
   <navigator url="../logs/logs" redirect>查看日志</navigator>
@@ -71,10 +73,38 @@
 <button bindtap="navTo">跳转</button>
 -->
 <!--图片image-->
+<!--
+<switch checked class="swi" bindchange="switch1Change"/>
+<switch class="swi" bindchange="switch2Change"/>
+-->
+<!--<slider show-value min="3" max="10" value="6" step="2"/>-->
+<!--
+<view class="section">
+  <view class="section__title">地区选择器</view>
+  <picker bindchange="bindPickerChange" range="{{country}}">
+    <view class="picker">
+      当前选择：{{country[index]}}
+    </view>
+  </picker>
+</view>
+-->
+<!--底部弹出showActionSheet-->
+<!--<button bindtap="bindOpen">打开</button>-->
 
+<!--模块框showModal-->
+<!--<button bindtap="bindModal">打开模态框</button>-->
 
+<!--动画-->
+<!--<view animation="{{animationData}}" style="width:100rpx;height:100rpx;background-color:red" ></view>-->
 
+<!--修改多层值-->
+<!--<view bindtap="changeTextInObj">{{object.text}}</view>-->
 
+<!--获取app.js中的值-->
+<!--<view>{{newGlobalData}}</view>-->
+
+<!--*********************API*************************-->
+<view>{{userInfo}}</view>
 
 
 

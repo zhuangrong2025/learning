@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="../newCss.css">
+ 	<script src="../jquery-1.11.1.min.js"></script>
+<title>smui</title>
+<script>
+	  
+		var  i= 0;
+    /*******滚动到底部加载更多********/
+	  var timer = null;
+		window.onscroll= function () {
+			
+			window.clearTimeout(timer);
+			
+			timer = window.setTimeout(function(){
+				if ($(document).scrollTop()>=$(document).height()-$(window).height()){ 	
+					//ajax从这里开始
+					$.ajax({
+						type: 'get',
+						url: 'http://192.168.95.1/data.json',
+						dataType: 'json',
+						beforeSend:function(){
+							$('.loading').show() //数据加载成功之前，显示loading
+						},
+						success: function(data){
+							
+							$('.loading').hide()//成功后隐藏
+							
+							var getli = '<div class="loadData"> '+ data[2].FORMAT_NAME + i +'</div>'
+							$("#more").append(getli)
+							  
+							i++;
+						 }
+						}); 
+				 }  
+			},1500)
+			
+		} 
+
+    
+</script>
+<style>
+/**************组件-列表**************/
+.list{
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	background-color: #fff;
+}
+.list ul li{
+	padding:50px 10px;
+	border: 1px solid  #eee;
+}
+.loading{
+	display: none;
+	padding: 20px 0 0;
+	height: 50px;
+	text-align: center;
+	background: #ccc
+}
+.loadData{
+	color: #00f;
+}
+</style>
+</head>
+<body>
+<div class="list">
+	<ul>
+		<li>
+			<a href="#">内容文本</a>
+		</li>
+		<li>
+			<a href="#">内容文本</a>
+		</li>
+		<li>
+			<a href="#">内容文本</a>
+		</li>
+		<li>
+			<a href="#">内容文本</a>
+		</li>
+		<li>
+			<a href="#">内容文本</a>
+		</li>
+		<li>
+			<a href="#">内容文本</a>
+		</li>
+	</ul>
+</div>
+<div id="more"></div>
+<div class="loading">加载中...</div>
+
+
+</body>
+</html>

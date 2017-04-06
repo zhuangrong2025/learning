@@ -18,6 +18,8 @@ Page({
 		//加载电影
 		this.loadFilms()
 		
+		
+		
 		//获取滚动的高度
 		wx.getSystemInfo({
 			 success(res){

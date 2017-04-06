@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<link rel="stylesheet" href="../newCss.css">
+<script src="../jquery-1.11.1.min.js"></script><script>
+$(function(){
+  
+  var $wxPosi = $(".icon-wx2").offset();
+  var $sinaPosi = $(".icon-sina").offset();
+  $(".weixin").css({top: ($wxPosi.top - 130) + "px", left: ($wxPosi.left - 90) + "px"})
+  $(".sina").css({top: ($sinaPosi.top - 130) + "px", left: ($sinaPosi.left - 90) + "px"})
+  
+  //分享弹出层
+	$(".icon-wx2").on("click",function(){		 
+		 $(".mask").show()
+		 $(".weixin").show()	 
+	})
+	$(".icon-sina").on("click",function(){		 
+		 $(".mask").show()
+		 $(".sina").show()	 
+	})
+	
+	//点击遮罩层隐藏
+	$(".mask").on("click",function(e){
+			e.stopPropagation()
+		 $(".weixin").hide()	 
+		 $(".sina").hide()	 
+     $(".mask").hide()
+	})
+  
+})
+</script>
+<style>
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  padding: 300px;
+}
+
+.share-pop{
+  position: absolute;
+  padding: 10px;
+  width: 230px;
+  background-color: #fff;
+	box-shadow: -0.837px 11.971px 19.11px 1.89px rgba(0, 0, 0, 0.11);
+  font-size: 14px;
+  display: none;
+}
+.share-pop img{
+  float:left;
+  width: 80px;
+  margin-right: 20px;
+}
+.share-pop:after{
+	position: absolute;
+  top: 100px;
+  left: 100px;
+	content: "";
+	width:0; 
+	height:0; 
+	border-left: 16px solid transparent;
+	border-right: 16px  solid transparent;
+	border-top: 16px  solid #fff;
+}
+.shareto span{
+  display: inline-block;
+  margin-right: 30px;
+}
+.icon-sina,
+.icon-wx2{
+  display: inline-block;
+  width: 50px;
+  height: 50px;	
+  vertical-align: middle;
+  background-color: #ccc;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+}
+.icon-sina{
+  background-color: #f60;
+}
+.mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+	background-color: rgba(255, 255, 255, .01);
+	display: none;
+}
+</style>
+</head>
+<body>
+<div class="share-pop weixin">
+  <img src="tb0.png">
+  <p>wx排版排版排版排版排版排版排版排版排版排版排</p>
+</div>
+<div class="share-pop sina">
+  <img src="tb0.png">
+  <p>sina排版排版排版排版排版排版排版排版排版排版排</p>
+</div>
+<div class="mask"></div>
+<div class="shareto">
+  <span>share</span>
+  <i class="icon-wx2"></i>
+  <i class="icon-sina"></i>
+</div>
+
+</body>
+</html>
