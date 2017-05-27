@@ -22,7 +22,7 @@
 					//ajax从这里开始
 					$.ajax({
 						type: 'get',
-						url: 'http://192.168.95.1/data.json',
+						url: 'http://192.168.95.1:8080/data.json',
 						dataType: 'json',
 						beforeSend:function(){
 							$('.loading').show() //数据加载成功之前，显示loading
@@ -66,8 +66,33 @@
 	color: #00f;
 }
 </style>
+
+<!--下拉-->
+<style>
+  .select > li{
+    float: left;
+    display: block;
+    padding: 3px 10px;
+    border: 1px solid  #000;
+  }
+  .select > li:hover div{
+    border: 1px solid #000;
+    display: none;
+    width: 100px;
+    height: 30px;
+  }
+</style>
 </head>
 <body>
+<div class="select">
+    <li href="#">
+      <span>下拉<i></i></span>
+      <div>
+        1
+      </div>
+    </li>
+ </div>
+<!--下拉-->
 <div class="list">
 	<ul>
 		<li>

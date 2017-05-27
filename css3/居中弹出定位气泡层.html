@@ -11,13 +11,23 @@
 <script src="../jquery-1.11.1.min.js"></script>
 <script>
 $(function(){
-  //获取图标位置信息
-  var $wxPosi = $(".icon-wx2").offset();
-  var $sinaPosi = $(".icon-sina").offset();
+  //窗口变化时候重新定位
+  var timer = null
+  window.onresize = function () {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(function(){
+      
+      //获取图标位置信息
+      var $wxPosi = $(".icon-wx2").offset();
+      var $sinaPosi = $(".icon-sina").offset();
+      //获取弹出层的位置
+      $(".weixin").css({top: ($wxPosi.top - 130) + "px", left: ($wxPosi.left - 90) + "px"})
+      $(".sina").css({top: ($sinaPosi.top - 130) + "px", left: ($sinaPosi.left - 90) + "px"})
+
+    },300)
+  } 
+  window.onresize();
   
-  //获取弹出层的位置
-  $(".weixin").css({top: ($wxPosi.top - 130) + "px", left: ($wxPosi.left - 90) + "px"})
-  $(".sina").css({top: ($sinaPosi.top - 130) + "px", left: ($sinaPosi.left - 90) + "px"})
   
   //分享弹出层
 	$(".icon-wx2").on("click",function(){		 
